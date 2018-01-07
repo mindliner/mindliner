@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Bar Chart Report</title>
+        <script src="../resources/js/d3.v3.min.js"></script>
+        <script src="../resources/js/barChartReport.js"></script>
+        <link href="../resources/css/barChartReport.css" rel="stylesheet" type="text/css" />
+    </h:head>
+    <h:body>
+        <h2>Bar Chart Report</h2>
+        <h:form>
+            <div id="barChartContainer"></div> 
+            <script>
+                var data = '[{"date": "January", "values": [{"word": "abc", "count": 22},{"word": "efg", "count": 11},{"word": "hij", "count": 11}]}]';
+
+                var chart = buildBarChart(data);
+            </script>
+        </h:form>
+    </h:body>
+</html>
+

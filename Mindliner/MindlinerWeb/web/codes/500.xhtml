@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Mindliner 500</title>
+        <h:outputStylesheet name="css/default.css"/>
+    </h:head>
+    <h:body>
+        <div id="header-wrapper">
+            <div id="header" style="text-align:center">
+                <a href="/MF2/faces/dashboard.xhtml" style="padding:0" class="header-title">Mindliner
+                    <h:graphicImage library="images" name="logo.png" />
+                </a>
+            </div>
+        </div>
+        <div id="content" class="centered">
+            <h1 style="color: tomato;">Internal Server Error 500</h1>
+            <p>Sorry, something went wrong. Please help us improve Mindliner by reporting this issue 
+               to <a href="mailto:support@mindliner.com">support@mindliner.com</a> including following message: </p>
+            <h:form style="margin-top: 1.5em;">  
+                <textarea rows="30" cols="75" style="word-wrap: normal;">  
+                    <h:outputText escape="false" value="#{errorBB.stackTrace}"/>  
+                </textarea>  
+            </h:form>      
+        </div>     
+    </h:body>
+</html>

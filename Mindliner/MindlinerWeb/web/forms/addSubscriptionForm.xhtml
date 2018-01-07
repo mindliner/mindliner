@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:body>
+        <h:outputText value="#{txt['AddSubscriptionTitle']}" class="block uppercase title"/>
+        <h:panelGrid columns="1" class="underlay">
+            <h:outputText class="block infotext" value="#{txt['CreateSubscriptionInfo']}"/>
+            <h:panelGrid columns="2">
+                <h:outputLabel for="eventSelector" value="Event"/>
+                <h:selectOneMenu id="eventSelector" value="#{subscriptionBB.eventType}">
+                    <f:selectItems value="#{subscriptionBB.eventTypes}"/>
+                </h:selectOneMenu>
+
+                <h:outputLabel value="Specify Actor"/>
+                <h:selectBooleanCheckbox 
+                    id="anyActorCheckbox" 
+                    value="#{subscriptionBB.actorSpecified}"
+                    valueChangeListener="#{subscriptionBB.specificActorCheckboxChanged}"
+                    immediate="true">
+                    <f:ajax render="@form"/>
+                </h:selectBooleanCheckbox>
+
+                <h:outputLabel for="actorSelector" value="Actor" rendered="#{subscriptionBB.actorSpecified}"/>
+                <h:selectOneMenu id="actorSelector" value="#{subscriptionBB.actor}" rendered="#{subscriptionBB.actorSpecified}">
+                    <f:selectItems value="#{subscriptionBB.actors}"/>
+                    <f:converter binding="#{mlUserConverter}"/>
+                </h:selectOneMenu>
+
+                <h:outputLabel value="Reverse" title="#{txt['ReverseFlagInfo']}"/>
+                <h:selectBooleanCheckbox value="#{subscriptionBB.reverseSubscription}"/>
+
+            </h:panelGrid>
+            <h:commandButton value="Create Subscription" styleClass="rounded mlButton" action="#{subscriptionBB.createSubscription()}">
+                <f:ajax execute="@form" render="@form tab:subscriptionsForm"/>
+            </h:commandButton>
+        </h:panelGrid> 
+    </h:body>
+</html>

@@ -1,0 +1,17 @@
+/* 
+    Document   : ViewHelpStyles
+    Created on : 07.01.2013, 17:21:05
+    Author     : marius
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+.body{
+    font-family: sans-serif;
+    color: darkslateblue;
+}
+

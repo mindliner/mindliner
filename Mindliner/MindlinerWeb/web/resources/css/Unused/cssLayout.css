@@ -1,0 +1,27 @@
+
+#bottom {
+    float: bottom;
+    background-color: #b4aeaa;
+    padding: 5px;
+}
+
+#clientbar {
+    /*float: left;*/
+    background-color: whitesmoke;
+    padding: 10px;
+}
+
+#top{
+    background-color: whitesmoke;
+    border-bottom: solid;
+    border-bottom-color: #AFAFAF;
+}
+
+#status {
+    margin-top: 10px;
+    border-top-style: solid;
+    border-color: whitesmoke;
+}
+
+
+

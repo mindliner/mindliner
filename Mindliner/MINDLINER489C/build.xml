@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- You may freely edit this file. See commented blocks below for -->
+<!-- some examples of how to customize the build. -->
+<!-- (If you delete it and reopen the project it will be recreated.) -->
+<!-- By default, only the Clean and Build commands use this build script. -->
+<!-- Commands such as Run, Debug, and Test only use this build script if -->
+<!-- the Compile on Save feature is turned off for the project. -->
+<!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
+<!-- in the project's Project Properties dialog box. -->
+<project name="MindlinerDesktop" default="default" basedir=".">
+    <description>Builds, tests, and runs the project MindlinerDesktop.</description>
+    <import file="nbproject/build-impl.xml"/>
+    
+    <!-- Release number must be updated manually -->
+    <property name="mindliner.name" value="Mindliner_2.6.24" />
+    <!--
+
+    There exist several targets which are by default empty and which can be 
+    used for execution of your tasks. These targets are usually executed 
+    before and after some main targets. They are: 
+
+      -pre-init:                 called before initialization of project properties
+      -post-init:                called after initialization of project properties
+      -pre-compile:              called before javac compilation
+      -post-compile:             called after javac compilation
+      -pre-compile-single:       called before javac compilation of single file
+      -post-compile-single:      called after javac compilation of single file
+      -pre-compile-test:         called before javac compilation of JUnit tests
+      -post-compile-test:        called after javac compilation of JUnit tests
+      -pre-compile-test-single:  called before javac compilation of single JUnit test
+      -post-compile-test-single: called after javac compilation of single JUunit test
+      -pre-jar:                  called before JAR building
+      -post-jar:                 called after JAR building
+      -post-clean:               called after cleaning build products
+
+    (Targets beginning with '-' are not intended to be called on their own.)
+
+    Example of inserting an obfuscator after compilation could look like this:
+
+        <target name="-post-compile">
+            <obfuscate>
+                <fileset dir="${build.classes.dir}"/>
+            </obfuscate>
+        </target>
+
+    For list of available properties check the imported 
+    nbproject/build-impl.xml file. 
+    -->
+    
+    <!-- copies required libraries into dist folder. As we use an enterprise application client, the default behavior
+         of netbeans for ear distribution is to copy libraries into ear dist folder (Mindliner10/dist). For normal distribution,
+         netbeans doesn't copy the libraries at all. (see build-impl.xml target library-inclusion-in-manifest) -->
+        
+    <target name="copy-files-to-dist">
+        <echo> Copying libs from ear dir into local dist directory </echo>
+        <copy todir="${dist.dir}/lib" >
+            <fileset dir="${dist.ear.dir}/lib" />
+        </copy>
+    </target>
+    
+    
+    <!-- Adds a reference to gf-client.jar in the manifest of MindlinerDesktop.jar. Is needed when Mindliner is started outside of ACC -->
+    <target name="-add-gf-client-manifest">
+        <property name="mindliner.classes" value="build/jar" />
+        <taskdef name="manifestAppender" classpath="${mindliner.classes}" classname="com.mindliner.ant.ManifestUpdateTask" />
+        <manifestAppender dir="${basedir}/${dist.dir}" jar="${jar.name}" append="../appclient/glassfish/lib/gf-client.jar" property="newClasspath" />
+
+        <jar file="${dist.jar}" update="true">
+            <manifest>
+                <attribute name="Class-Path" value="${newClasspath}" />
+            </manifest>
+        </jar>    
+    </target>
+    
+    
+    
+    <!-- overrite dist targets such that the libraries are copied to local dist folder (for ear dist) -->
+    <target depends="init,compile,-pre-dist,library-inclusion-in-manifest,copy-files-to-dist,-do-ear-dist-without-manifest,-do-ear-dist-with-manifest" name="-do-ear-dist"/>
+        
+    <target name="-do-zip" if="lib.dir.present" depends="-add-gf-client-manifest">
+        <echo> Creating java bundled zip file for windows distribution... </echo>
+        <zip destfile="${dist.dir}/${zip.name}" >
+            <zipfileset file="${desktop.dist.dir}/${execution.exe.file}" prefix="${mindliner.name}"/>
+            <zipfileset dir="${dist.dir}" prefix="${mindliner.name}/bin"/>
+            <zipfileset dir="${desktop.dist.dir}/${java.bundle.folder64}" prefix="${mindliner.name}/java">
+                <include name="**" if="${is.64}"/>
+            </zipfileset>
+            <zipfileset dir="${desktop.dist.dir}/${java.bundle.folder32}" prefix="${mindliner.name}/java">
+                <include name="**" unless="${is.64}"/>
+            </zipfileset>
+            <zipfileset dir="${desktop.dist.dir}/${appclient.folder}" prefix="${mindliner.name}/${appclient.folder}"/>
+            <zipfileset file="${desktop.dist.dir}/${execution.jar.file}" fullpath="${mindliner.name}/setup.jar"/>
+            <zipfileset file="${desktop.dist.dir}/${server.properties.file}" fullpath="${mindliner.name}/config/${server.properties.file}"/>
+            <zipfileset file="${desktop.dist.dir}/${client.properties.file}" fullpath="${mindliner.name}/config/${client.properties.file}"/>
+            <zipfileset file="${desktop.dist.dir}/${login.conf.file}" fullpath="${mindliner.name}/config/${login.conf.file}"/>
+            <zipfileset file="${desktop.dist.dir}/${mindliner.sh.file}" fullpath="${mindliner.name}/${mindliner.sh.file}"/>
+            <zipfileset file="${desktop.dist.dir}/${splash.screen.image}" fullpath="${mindliner.name}/bin/${splash.screen.image}"/>
+            <zipfileset file="${file.reference.moyocore_x64.dll}" fullpath="${mindliner.name}/bin/${file.reference.moyocore_x64.dll}"/>
+            <zipfileset file="${file.reference.moyocore.dll}" fullpath="${mindliner.name}/bin/${file.reference.moyocore.dll}"/>
+        </zip>
+    </target>
+    
+    <target name="-ear-dist-required" unless="lib.dir.present">
+        <fail> ERROR: You need to build EAR project (Mindliner10) before bundling </fail>
+    </target>
+    
+    <!-- Creates a zip file in the dist directory that contains mindliner and all libraries needed for execution. contains also
+    a Mindliner.exe that allows starting mindliner. -->
+    
+    <target name="create-zip-win64">
+          <property name="is.64" value="true" />
+          <property name="zip.name" value="MindlinerDesktop.zip" />
+          <antcall target="-create-zip-win-internal" />   
+    </target>
+    
+    <target name="create-zip-win32">
+          <property name="is.64" value="false" />
+          <property name="zip.name" value="MindlinerDesktop32.zip" />
+          <antcall target="-create-zip-win-internal" />   
+    </target>
+    
+    <target name="-create-zip-win-internal">
+        <property file="nbproject/project.properties"/>
+        <available file="${dist.dir}/lib" type="dir"
+                       property="lib.dir.present"/>
+        <antcall target="-ear-dist-required" />
+        <antcall target="-do-zip" />      
+    </target>
+
+<!--
+<target name="-post-dist" depends="library-inclusion-in-manifest"/>
+    Another way to customize the build is by overriding existing main targets.
+    The targets of interest are: 
+
+      -init-macrodef-javac:     defines macro for javac compilation
+      -init-macrodef-junit:     defines macro for junit execution
+      -init-macrodef-debug:     defines macro for class debugging
+      -init-macrodef-java:      defines macro for class execution
+      -do-jar-with-manifest:    JAR building (if you are using a manifest)
+      -do-jar-without-manifest: JAR building (if you are not using a manifest)
+      run:                      execution of project 
+      -javadoc-build:           Javadoc generation
+      test-report:              JUnit report generation
+
+    An example of overriding the target for project execution could look like this:
+
+        <target name="run" depends="MindlinerDesktop-impl.jar">
+            <exec dir="bin" executable="launcher.exe">
+                <arg file="${dist.jar}"/>
+            </exec>
+        </target>
+
+    Notice that the overridden target depends on the jar target and not only on 
+    the compile target as the regular run target does. Again, for a list of available 
+    properties which you can use, check the target you are overriding in the
+    nbproject/build-impl.xml file. 
+
+    -->
+</project>

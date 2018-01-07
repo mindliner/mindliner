@@ -1,0 +1,1 @@
+UPDATE `mindliner5`.`objects_containermap_links` SET ONE_WAY = 1; 

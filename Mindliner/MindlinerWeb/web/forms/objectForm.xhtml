@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <h:body>
+        <!--<h:outputText class="uppercase block title" value="#{txt['SelectedObjectTitle']}" rendered="#{!objectBB.createMode}"/>-->
+        <h:panelGrid id="selectionInfo" columns="1" class="underlay" rendered="#{!objectBB.createMode and objectBB.object != null}" >
+            <h:outputText id="helptext" value="#{txt['NoObjectSelectedInfo']}" rendered="#{selectedId.value == 0}"/>
+            <!--Group of Actions that can be performed on the selected object-->
+            <h:panelGroup layout="block" rendered="#{selectedId.value > 0}">
+                <!-- EDIT & SAVE BUTTONS -->
+                <h:commandButton title="#{txt['EditObjectTooltip']}" class="rounded edit-button icon-button" rendered="#{!objectBB.editMode}"
+                                 action="#{objectBB.setEditMode(true)}">
+                    <f:ajax execute="@form" render="@form" />
+                </h:commandButton>
+                <h:commandButton title="#{txt['SaveChangesTooltip']}" class="ok rounded save-button icon-button" rendered="#{objectBB.editMode}"
+                                 action="#{objectBB.save()}">
+                    <f:ajax execute="@form" render="@form" />
+                </h:commandButton>
+                <h:commandButton title="#{txt['CancelEditObjectTooltip']}" class="cancel rounded edit-button icon-button" rendered="#{objectBB.editMode}"
+                                 action="#{objectBB.setEditMode(false)}" immediate="true">
+                    <f:ajax execute="@form" render="@form" />
+                </h:commandButton>
+                <!-- DELETE BUTTON -->
+                <h:commandButton id="deleteButton" class="rounded trash-button icon-button"
+                                 onclick="if (!confirm('#{txt['DeleteObjectConfirmationDialog']}'))
+                                             return false"
+                                 action="#{objectBB.deleteObjectById(selectedId.value)}" title="#{txt['DeleteObjectTooltip']}"
+                                 disabled="#{!objectBB.myObject}">
+                    <f:ajax execute="@form" render="treeSvg" onevent="removeObject(#{selectedId.value})"/>
+                </h:commandButton>
+                <!-- NEW ROOT BUTTON-->
+                <h:commandButton id="newRootButton" title="#{txt['AsRootTooltip']}" class="rounded bulb-button icon-button"
+                                 action="#{mapBB.fetchTreeRootNode(selectedId.value)}"/>
+                <h:commandButton id="newRelativeButton" title="#{txt['CreateRelativeTooltip']}" class="rounded add-button icon-button" action="#{objectBB.setCreateMode(true)}">
+                    <f:ajax execute="@form" render="@form group:new-form" />
+                    <f:actionListener binding="#{objectBB.initCreationWithRelative(selectedId.value)}"/>
+                </h:commandButton>
+                <!-- SUBSCRIPTION BUTTON -->
+                <h:commandButton class="rounded subscribe-button icon-button" id="subscribe" title="Subscribe to any change events"
+                                 rendered="#{mindlinerWeb.authorizedForSubscription and !subscriptionBB.isSubscribed(objectBB.object)}"
+                                 action="#{subscriptionBB.subscribe(objectBB.object)}">
+                    <f:ajax execute="@form" render="@form" />
+                </h:commandButton>
+                <h:commandButton class="rounded unsubscribe-button icon-button" id="unsubscribe" title="Unsubscribe from any change event"
+                                 rendered="#{mindlinerWeb.authorizedForSubscription and subscriptionBB.isSubscribed(objectBB.object)}"                                           
+                                 action="#{subscriptionBB.unsubscribe(objectBB.object)}">
+                    <f:ajax execute="@form" render="@form" />
+                </h:commandButton>
+            </h:panelGroup>
+            <!--Details of the selected object-->
+            <h:outputText class="h3-style break-words" value="#{objectBB.object.headline}" rendered="#{selectedId.value > 0 and !objectBB.editMode}"/>
+            <h:message for="headline" errorClass="barError"/>
+            <h:inputText p:placeholder="#{txt['HeadlinePlaceholder']}" id="headline" class="h3-style" value="#{objectBB.object.headline}" rendered="#{selectedId.value > 0 and objectBB.editMode}">
+                <f:validateRequired/>
+            </h:inputText>
+            <h:outputText class="block break-words" value="#{objectBB.object.description}" 
+                          rendered="#{objectBB.object.description.length() > 0 and !objectBB.editMode}"/>
+            <h:outputText class="italic" value="#{txt['EmptyDescription']}" 
+                          rendered="#{objectBB.object.description.length() == 0 and !objectBB.editMode}"/>
+            <h:inputTextarea p:placeholder="#{txt['DescriptionPlaceholder']}" value="#{objectBB.object.description}" rendered="#{objectBB.editMode}"
+                             rows="7" cols="40"/>
+            <h:panelGrid columns="2" cellspacing="5" rendered="#{selectedId.value > 0}" style="width:70%;">
+                <!-- OBJECT TYPE -->
+                <h:outputLabel for="type" value="Type"/>
+                <h:graphicImage class="IconColumn" alt="#{objectBB.getObjectClassAltString(objectBB.object)}" url="#{iconBB.getClassIconUrl(objectBB.object)}"
+                                title="#{objectBB.getObjectClassAltString(objectBB.object)}"/>
+                <!-- PRIVATE FLAG -->
+                <h:outputLabel for="privateFlag" value="#{txt['PrivateLabel']}"/>
+                <h:selectBooleanCheckbox id="privateFlag" value="#{objectBB.object.privateAccess}" disabled="#{!objectBB.myObject or !objectBB.editMode}"  
+                                         title="#{txt['OnlyEditableWhenOwned']}" tabindex="3"/>
+                <!-- COMPLETED FLAG -->
+                <h:outputLabel for="completed" value="#{txt['CompletedLabel']}" rendered="#{objectBB.completable}"/>
+                <h:selectBooleanCheckbox id="completed" value="#{objectBB.completed}" rendered="#{objectBB.completable}" tabindex="4" disabled="#{!objectBB.editMode}"/>
+                <!-- ARCHIVED FLAG -->
+                <h:outputLabel for="archiveFlag" value="#{txt['ArchivedLabel']}"/>
+                <h:selectBooleanCheckbox id="archiveFlag" value="#{objectBB.object.archived}" disabled="#{!objectBB.editMode}" tabindex="8"/>
+                <!-- DATAPOOL SELECTOR -->
+                <h:outputLabel for="dpSelector" 
+                               value="#{txt['DatapoolLabel']}"/>
+                <h:outputText value="#{objectBB.object.client}" rendered="#{!objectBB.editMode}"/>
+                <h:selectOneMenu id="dpSelector" title="#{txt['OnlyEditableWhenOwned']}"
+                                 value="#{objectBB.object.client}"
+                                 disabled="#{mindlinerWeb.authorizedForConfidentiality and mindlinerWeb.currentUser.clients.size() > 1 and 
+                                             objectBB.object.owner != mindlinerWeb.currentUser}"
+                                 rendered="#{objectBB.editMode}">
+                    <f:selectItems value="#{objectBB.clients}"/>
+                    <f:converter binding="#{mlDataPoolConverter}"/>
+                    <f:ajax render="confSelector" />
+                </h:selectOneMenu>
+                <!-- CONFIDENTIALITY SELECTOR -->
+                <h:outputLabel for="confSelector" value="#{txt['ConfidentialityLabel']}" 
+                               rendered="#{mindlinerWeb.authorizedForConfidentiality and objectBB.confidentialities.size() > 1}"/>
+                <h:outputText value="#{objectBB.object.confidentiality}" 
+                              rendered="#{mindlinerWeb.authorizedForConfidentiality and objectBB.confidentialities.size() > 1 and !objectBB.editMode}"/>
+                <h:selectOneMenu id="confSelector" value="#{objectBB.object.confidentiality}"
+                                 disabled="#{objectBB.object.owner != mindlinerWeb.currentUser}"
+                                 rendered="#{mindlinerWeb.authorizedForConfidentiality and objectBB.confidentialities.size() > 1 and objectBB.editMode}" tabindex="6">
+                    <f:selectItems value="#{objectBB.confidentialities}"/>
+                    <f:converter binding="#{mlConfidentialityConverter}"/>
+                </h:selectOneMenu>
+                <!-- PRIORITY SELECTOR -->
+                <h:outputLabel for="prioritySelector" value="#{txt['PriorityLabel']}" rendered="#{objectBB.task}"/>
+                <h:outputText value="#{objectBB.priority}" rendered="#{objectBB.task and !objectBB.editMode}"/>
+                <h:selectOneMenu rendered="#{objectBB.task and objectBB.editMode}" class="mlselector" id="prioritySelector" value="#{objectBB.priority}" tabindex="7">
+                    <f:selectItems value="#{objectBB.priorities}"/>
+                    <f:converter binding="#{mlPriorityConverter}"/>
+                </h:selectOneMenu>
+                <!--DUE DATE FIELD-->
+                <h:outputLabel for="dueDateField" value="#{txt['DueDateLabel']}" rendered="#{objectBB.task}"/>
+                <h:outputText value="#{objectBB.dueDate}" rendered="#{objectBB.task and !objectBB.editMode}">
+                    <f:convertDateTime pattern="dd.MM.yyyy" type="date"/>
+                </h:outputText>
+                <h:panelGroup>
+                    <h:message for="dueDateField" errorClass="barError"/>
+                    <h:inputText id="dueDateField" p:placeholder="#{txt['DueDatePlaceholder']}" value="#{objectBB.dueDate}" rendered="#{objectBB.task and objectBB.editMode}">
+                        <f:convertDateTime pattern="dd.MM.yyyy" type="date"/>
+                    </h:inputText>
+                </h:panelGroup>
+            </h:panelGrid>
+            <!-- SECONDARY INFORMATION -->
+            <h:outputFormat class="block secondaryInformation" rendered="#{selectedId.value > 0}" value="#{txt['ObjectSecondaryInformation']}">
+                <f:param value="#{objectBB.object.creationDate}" />
+                <f:param value="#{objectBB.object.owner.firstName} #{objectBB.object.owner.lastName}" />
+                <f:param value="#{objectBB.object.id}" />
+            </h:outputFormat>
+        </h:panelGrid>
+    </h:body>
+</html>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Master Admin Home</title>
+        <meta name="viewport" content="width=device-width"/>
+    </h:head>
+    <h:body>
+        <ui:composition template="MasterAdmTmpl.xhtml">
+            <ui:define name="top">
+                <!--This is just the title section-->
+                <h:panelGroup>
+                    <h:outputText class="masterAdminTitle" value="Mindliner Master Admin Page"/>
+                </h:panelGroup>
+            </ui:define>
+            
+            <ui:define name="actionbar">
+                <h:form rendered="#{masterAdminBB.masterAdmin}">
+                    <h:outputText value="General Actions:" class="h2-style"/>
+                    <h:commandButton class="rounded mlButton" action="#{masterAdminBB.showAllUsers()}" value="All Users"/>
+                    <h:commandButton styleClass="rounded mlButton" value="Hand-Deliver News" action="#{subscriptionBB.deliver()}" title="This is initiated automatically every 1 minute by the server"/>
+                    <h:commandButton styleClass="rounded mlButton" value="Release Details" action="releaseManager.xhtml" title="View/Update Release Details"/>
+                    <h:commandButton styleClass="rounded mlButton" value="Re-Init Object Relative Count" action="#{masterAdminBB.initializeObjectRelativeCount()}" title="Recomputes the number of relatives for each object"/>
+                    <h:commandButton class="rounded mlButton" action="/faces/workspace.xhtml?faces-redirect=true" value="Workspace"/>
+                </h:form>
+            </ui:define>
+
+            <ui:define name="clientbar">
+                <h:form rendered="#{masterAdminBB.masterAdmin}">
+                    <h:outputText value="Datapool Actions:" class="h2-style"/>
+                    <h:selectOneMenu class="mlselector" id="clientSelector" value="#{masterAdminBB.currentClient}">
+                        <f:selectItems value="#{masterAdminBB.clients}"/>
+                        <f:converter binding="#{mlDataPoolConverter}"/>
+                    </h:selectOneMenu>                    
+                    <h:commandButton class="rounded mlButton" action="userDetails.xhtml?faces-redirect=true" value="Show Users"/>
+                    <h:commandButton class="rounded mlButton" action="dataManager.xhtml?faces-redirect=true" value="Manage Data"/>
+                    <h:commandButton styleClass="rounded mlButton" value="Delete Client..." action="deleteClientConfirmation.xhtml?faces-redirect=true"/>
+                </h:form>
+            </ui:define>
+
+            <ui:define name="status">
+                <h:outputText id="loggedInUsers" value="Logged In: #{masterAdminBB.loggedInUsers}" rendered="#{masterAdminBB.masterAdmin and masterAdminBB.loggedInUsers.length() > 0}"/>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

@@ -1,0 +1,30 @@
+[{
+    "title" : "User Account Management",
+    "description" : "This 8 minute tutorial shows how to register as a new user, how to create data pools and invite people to existing data pools to build virtual teams.",
+    "video" : "videos/AccountManagement.mp4"
+},
+{
+    "title" : "Mindliner WebApp Intro",
+    "description" : "This tutorial shows how to work with the Mindliner WebApp. Specifically I show how to search for and add information. ",
+    "video" : "videos/MindlinerWebAppIntro.mp4"   
+},
+{
+    "title" : "Importing PDF Documents Into Mindliner",
+    "description" : "This tutorial demonstrates how you can bring specific content from a PDF document into Mindliner and how the PDF document itself becomes shared among the users of your Mindliner data pool.",
+    "video" : "videos/DroppingPDFsIntoMindliner.mp4"   
+},
+{
+    "title" : "Creating and Navigating Mind Maps",
+    "description" : "This tutorial describes how to create an adhoc mind map starting with one or several objects in the search hits table.",
+    "video" : "videos/CreatingAndNavigatingMindmaps.mp4"   
+},
+{
+    "title" : "Creating New Stories From Existing Material",
+    "description" : "This tutorial shows how you can build a new story, prepare for a meeting, or highlight a new aspect using existing material. The tutorial explains how to create links between new and existing objects and how to manage visibility using link directions.",
+    "video" : "videos/MindlinerLinking.mp4"   
+},
+{
+    "title" : "The Mindliner Story",
+    "description" : "This video is not a tutorial but instead it explains why and how Mindliner was created.",
+    "video" : "videos/MindlinerStory.mp4"   
+}]

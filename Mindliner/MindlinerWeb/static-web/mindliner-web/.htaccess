@@ -1,0 +1,24 @@
+# Apache .htaccess
+
+# prevent directory listing
+# Options -Indexes
+Options FollowSymLinks
+
+<ifModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Small measure to prevent file access via URL
+    # Not spoofing-safe
+    RewriteCond %{HTTP_REFERER} !http://(www\.)?mindliner.com [NC]
+    RewriteRule \.(json|js|css)$ - [R=404]
+ 
+    # Make sure that index.html is the base of all URLs
+    # in order for AngularJS to route correctly
+    RewriteBase /
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . /index.html [L]    
+</ifModule>
+
+ErrorDocument 404 http://www.mindliner.com/404
+

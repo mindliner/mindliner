@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="../resources/css/default.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="../resources/css/slidebars.min.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans" type="text/css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+        <title><ui:insert name="title">Mindliner Web</ui:insert></title>
+        <!--FAVICON-->
+        <link rel="shortcut icon" href="#{resource['images/favicons/favicon.ico']}"/>  
+        <meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=0" />
+    </h:head>
+
+    <h:body>
+        <div id="sb-site" class="top-padding">
+            <div id="header-wrapper">
+                <div id="header">
+                    <ui:insert name="header" >
+                        <ui:include src="/templates/header.xhtml" />
+                    </ui:insert>
+                </div>
+                <h:messages globalOnly="true" errorClass="msgError" infoClass="msgInfo"/>
+            </div>
+
+            <div id="content" class="inner-content">
+                <ui:insert name="content"></ui:insert>
+            </div>
+            <div id="fullwidth-content">
+                <ui:insert name="fullwidth-content"></ui:insert>
+            </div>
+        </div>
+        
+        <div  id="slidebar" class="sb-slidebar sb-left">
+            <h:form rendered="#{not empty request.remoteUser}">
+                <li>Menu</li>
+                <li><h:link value="Dashboard" outcome="dashboard" /></li>
+                <li><h:link value="Workspace" outcome="workspace" /></li>
+                <li><h:link value="Account" outcome="account" /></li>
+                <li><h:link value="News &#38; Subscriptions" outcome="news" rendered="#{mindlinerWeb.authorizedForSubscription}" /></li>       
+                <li><h:link value="Datapools" outcome="datapools"/></li>
+                <li><h:link value="Masteradmin" outcome="masteradmin/adminHome" rendered="#{masterAdminBB.masterAdmin}"/></li>
+                <h:outputText value="Signed in as #{mindlinerWeb.currentUser.userName}" style="display:block; padding:15px; color: #4E9797"/>
+                <p>Powered by Slidebars © 2014 Adam Smith</p>
+            </h:form>
+            <li><h:outputText value="Menu" rendered="#{empty request.remoteUser}"/></li>
+            <li><h:link value="Sign In" outcome="dashboard" rendered="#{empty request.remoteUser}"/></li>
+	</div>
+        
+        <!-- Slidebars -->
+	<script src="../resources/js/slidebars.min.js"></script>
+	<script>
+            (function($) {
+                    $(document).ready(function() {
+                            $.slidebars();
+                    });
+            }) (jQuery);
+	</script>
+
+        <!--
+        <div id="footer">
+                <ui:insert name="footer" >
+                  <ui:include src="/templates/footer.xhtml" />
+                </ui:insert>
+        </div>
+        -->
+    </h:body>  
+</html>

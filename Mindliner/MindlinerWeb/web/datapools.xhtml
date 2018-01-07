@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:body>
+        <ui:composition template="/templates/layout.xhtml">
+            <ui:define name="title">Mindliner | Datapools</ui:define>
+            <ui:define name="content">
+                <h:outputStylesheet name="responsive/users.css" library="css"/>
+                <!--POOL SELECTION (SMALL SCREEN <800PX)-->
+                <h:form id="poolSelectionSmall" >
+                    <h:panelGrid columns="1" class="underlay" style="padding: 0;" cellspacing="10">
+                        <h:outputText value="Select a data pool below to view its details."/>
+                        <h:selectOneMenu id="datapoolSelectorSmall"
+                                         value="#{clientBB.dataPool}"
+                                         valueChangeListener="${clientBB.resetEditModes}">
+                            <f:selectItems value="#{mindlinerWeb.currentUser.clients}"/>
+                            <f:ajax render="poolDetails :changeNameForm :inviteForm :confForm"/>
+                            <f:converter binding="#{mlDataPoolConverter}"/>
+                        </h:selectOneMenu>
+                        <h:commandButton class="rounded mlButton" value="#{txt['AddDatapool']}" action="#{clientBB.setDataPool(null)}">
+                            <f:ajax render="poolSelection poolDetails :poolForm"/>
+                        </h:commandButton>
+                    </h:panelGrid>
+                </h:form>
+                <h:panelGrid id="container" columns="2" headerClass="title" columnClasses="poolSelection, poolDetails" style="width:auto;">
+                    <!--POOL SELECTION (LARGE SCREEN >=800PX)-->
+                    <h:form id="poolSelection" style="padding:0;">
+                        <h:outputText value="#{txt['MyDatapoolsTitle']}" class="uppercase block title"/>
+                        <h:panelGrid columns="1" class="underlay">
+                            <h:selectOneRadio style="padding-right: 1.0em;"
+                                              value="#{clientBB.dataPool}" 
+                                              layout="pageDirection" 
+                                              styleClass="ml-datatable"
+                                              valueChangeListener="#{clientBB.resetEditModes()}"
+                                              >
+                                <f:selectItems value="#{mindlinerWeb.currentUser.clients}"/>
+                                <f:ajax render="poolDetails :changeNameForm :inviteForm :confForm"/>
+                                <f:converter binding="#{mlDataPoolConverter}"/>
+                            </h:selectOneRadio>
+                            <h:commandButton class="rounded mlButton" value="#{txt['AddDatapool']}" action="#{clientBB.setDataPool(null)}">
+                                <f:ajax render="poolSelection poolDetails :poolForm"/>
+                            </h:commandButton>
+                        </h:panelGrid>
+                    </h:form>
+
+                    <!--POOL DETAILS-->
+                    <h:panelGroup id="poolDetails" style="padding:0">
+                        <h:outputText value="#{txt['DatapoolDetailsTitle']}" class="block uppercase title" rendered="#{clientBB.dataPool != null}"/>
+                        <h:panelGrid columns="1" class="underlay" rendered="#{clientBB.dataPool != null}">
+                            <!-- DATAPOOL NAME -->
+                            <h:form id="changeNameForm">
+                                <h:panelGroup rendered="${!clientBB.editNameMode}">
+                                    <h:outputText style="padding:0; display:inline; margin-right:1.0em;" class="h2-style" value="#{clientBB.dataPool.name}" />
+                                    <h:commandButton style="vertical-align:top;" class="smaller rounded mlButton" value="#{txt['ChangeDatapoolName']}" 
+                                                     action="#{clientBB.setEditNameMode(true)}" rendered="${clientBB.ownedByCurrentUser}">
+                                        <f:ajax execute="@form" render="@form"/>
+                                    </h:commandButton>
+                                </h:panelGroup>
+                                <h:message for="clientName" errorClass="rounded barError"/>
+                                <h:inputText id="clientName" class="rounded h2-style" value="#{clientBB.dataPool.name}" rendered="${clientBB.editNameMode}">
+                                    <f:validateRequired />
+                                </h:inputText>
+                                <h:panelGroup>
+                                    <h:commandButton class="smaller rounded mlButton" value="#{txt['Save']}" action="#{clientBB.saveName}" rendered="${clientBB.editNameMode}">
+                                        <f:ajax execute="@form" render="poolDetails poolSelection"/>
+                                    </h:commandButton>
+                                    <h:commandButton class="smaller rounded mlButton" value="#{txt['Cancel']}" action="#{clientBB.setEditNameMode(false)}" rendered="${clientBB.editNameMode}"
+                                                     immediate="true">
+                                        <f:ajax render="@form"/>
+                                    </h:commandButton>
+                                </h:panelGroup>
+                            </h:form>
+
+                            <!-- SECONDARY INFORMATION -->
+                            <h:outputFormat value="#{txt['DatapoolSecondaryInformation']}" class="block secondaryInformation" escape="false">
+                                <f:param value="#{clientBB.getObjectCount()}" />
+                                <f:param value="#{clientBB.dataPool.owner.userName}" />
+                            </h:outputFormat>
+
+                            <!--ENROLLED USERS-->
+                            <h:outputText class="h3-style" style="margin-top: 2.0em;padding:0;"
+                                          value="#{txt['EnrolledDatapoolUsers']}" />
+                            <h:dataTable id="userTable" class="mltable" value="#{clientBB.dataPool.users}" columnClasses="break-words, , center"
+                                         var="item" cellpadding="3" cellspacing="5" width="100%" headerClass="left-column bold">
+                                <h:column>
+                                    <f:facet name="header">#{txt['UserName']}</f:facet>
+                                    <h:outputText value="#{item.userName}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">#{txt['Name']}</f:facet>
+                                    <h:outputText value="#{item.firstName} #{item.lastName}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">#{txt['Active']}</f:facet>
+                                    <h:selectBooleanCheckbox value="#{item.active}" disabled="true"/>
+                                </h:column>
+                                <h:column rendered="#{mindlinerWeb.authorizedForConfidentiality and clientBB.dataPool.confidentialities.size() > 1}">
+                                    <f:facet name="header">#{txt['MaxConfidentiality']}</f:facet>
+                                    <h:outputText value="#{item.getMaxConfidentiality(clientBB.dataPool)}"/>
+                                </h:column>
+                            </h:dataTable>
+
+                            <!-- INVITE USER-->
+                            <h:form id="inviteForm" rendered="#{clientBB.ownedByCurrentUser}">
+                                <ui:include src="forms/inviteUserForm.xhtml" />
+                            </h:form>
+
+                            <!--SHOW AND EDIT CONFIDENTIALITIES-->
+                            <h:form id="confForm">
+                                <h:outputText class="h3-style" style="margin-top: 2.0em;padding:0;"
+                                              value="#{txt['DatapoolConfidentialities']}" rendered="#{mindlinerWeb.authorizedForConfidentiality}"/>
+                                <h:dataTable id="conftable" class="mltable" value="#{clientBB.dataPoolConfidentialities}"
+                                             var="conf" cellpadding="3" cellspacing="5" width="100%" headerClass="left-column bold"
+                                             rendered="#{mindlinerWeb.authorizedForConfidentiality}">
+                                    <h:column>
+                                        <f:facet name="header">#{txt['Name']}</f:facet>
+                                        <h:outputText value="#{conf.name}" rendered="#{!clientBB.editMode}" />
+                                        <h:inputText style="width: 150px" class="turquoise" value="#{conf.name}" rendered="#{clientBB.editMode}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">#{txt['Level']}</f:facet>
+                                        <h:outputText value="#{conf.clevel}" rendered="#{!clientBB.editMode}"/>
+                                        <h:inputText style="width: 50px;" class="turquoise" value="#{conf.clevel}" rendered="#{clientBB.editMode}"/>
+                                    </h:column>
+                                </h:dataTable>
+                                <h:panelGroup rendered="#{mindlinerWeb.authorizedForConfidentiality and clientBB.ownedByCurrentUser}">
+                                    <h:commandButton class="smaller rounded mlButton" value="#{txt['EditConfidentialities']}" action="#{clientBB.setEditMode(true)}" rendered="#{!clientBB.editMode}">
+                                        <f:ajax execute="@form" render="@form"/>
+                                    </h:commandButton>
+                                    <h:commandButton class="smaller rounded mlButton" value="#{txt['AddNewConfidentialityLevel']}" action="#{clientBB.addConfidentiality()}" rendered="#{!clientBB.editMode}">
+                                        <f:ajax execute="@form" render="@form"/>
+                                    </h:commandButton>
+                                </h:panelGroup>
+                                <h:panelGroup rendered="#{mindlinerWeb.authorizedForConfidentiality}">
+                                    <h:commandButton class="smaller rounded mlButton" value="#{txt['Save']}" action="#{clientBB.saveConfidentialities}" rendered="#{clientBB.editMode}">
+                                        <f:ajax execute="@form" render="@form"/>
+                                    </h:commandButton>
+                                    <h:commandButton class="smaller rounded mlButton" value="#{txt['Cancel']}" action="#{clientBB.cancelConfidentiality()}" rendered="#{clientBB.editMode}">
+                                        <f:ajax execute="@form" render="@form"/>
+                                    </h:commandButton>
+                                </h:panelGroup>
+                            </h:form>
+
+                            <!--DATA POOL ICONS-->
+<!--                            <h:form id="IconForm">
+                                <h:outputText class="h3-style" style="margin-top: 2.0em;padding:0;" value="Icons" rendered="#{clientBB.ownedByCurrentUser}"/>
+                                <h:panelGrid columns="1">
+                                    <h:outputText value="This data pool has #{imageBB.getIconCount(clientBB.dataPool)} icons."
+                                                  rendered="#{clientBB.dataPool == null}"/>
+                                    <h:commandButton value="Manage" action="masteradmin/iconManager.xhtml" rendered="#{clientBB.ownedByCurrentUser}"/>
+                                </h:panelGrid>
+                            </h:form>-->
+
+                        </h:panelGrid>
+                        <!--<h:commandButton value="Delete Pool" class="rounded warning mlButton" action="administrateDatapool" rendered="#{clientBB.getObjectCount() == 0}"/>-->
+
+                        <!-- ADD POOL -->
+                        <h:form id="poolForm" rendered="#{clientBB.dataPool == null}">
+                            <ui:include src="forms/addPoolForm.xhtml">
+                                <ui:param name="poolBean" value="#{clientBB}" />
+                                <ui:param name="helptext" value="#{txt['DatapoolCreationInfoGeneral']}" />
+                            </ui:include>
+                        </h:form>
+                    </h:panelGroup>
+                </h:panelGrid>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

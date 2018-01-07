@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:body>
+        <h:outputScript name="advancedSearch.js" library="js" />
+        <h:panelGrid class="centered" columns="1">
+            <!--Search Field-->
+            <h:panelGroup>
+                <h:inputText class="rounded-left #{searchInputClass}" id="searchstring" value="#{searchBB.searchString}" size="20" 
+                             title="Enter search words or the term id followed by the object id"  tabindex="1" />
+                <h:commandButton class="rounded-right #{searchButtonClass}" id="searchbtn" title="Alternatively use ENTER in the search box"
+                                 action="#{searchBB.loadObjectsMatchingSearchString()}">
+                </h:commandButton>
+                <h:graphicImage id="advancedbtn" class="search-settings-button #{settingsIcon}" library="images/icons/32" name="settings.png" title="#{txt['SearchSettings']}"/>
+                <h:commandButton id="addbtn" class="icon-button add-button" style="#{addButtonStyle}}" 
+                                 title="#{txt['AddNewObjectOption']}" action="workspace?create=true&#38;faces-redirect=true" immediate="true"/>
+            </h:panelGroup>
+            <!--Advanced Search-->
+            <h:panelGroup id="advanced-searchbox">
+                <h:panelGrid columns="4" class="advanced-searchbox-table #{fontSize}">
+                    <h:panelGroup id="datapoolsLabel">
+                        <h:outputText value="Datapools" class="searchbox-label"/>
+                        <h:outputText class="arrow-down-right"/>
+                    </h:panelGroup>
+                    <h:panelGroup id="objectownersLabel">
+                        <h:outputText value="Object Owner" class="searchbox-label"/>
+                        <h:outputText class="arrow-down-right"/>
+                    </h:panelGroup>
+                    <h:panelGroup id="moreLabel">
+                        <h:outputText value="More" class="searchbox-label"/>
+                        <h:outputText class="arrow-down-right"/>
+                    </h:panelGroup>
+                    <h:commandButton class="rounded smaller mlButton" action="#{searchBB.init()}" value="Reset" style="margin-left: 1.0em;">
+                        <f:ajax execute="@form" render="@form"/>
+                    </h:commandButton>
+                    <!--DATAPOOLS-->
+                    <h:panelGroup id="datapools" class="rounded searchpanel">
+                        <h:outputText id="selectAllClients" class="smaller rounded ml-light-blue fakeButton" value="Select All"/>
+                        <h:outputText id="deselectAllClients" class="smaller rounded ml-light-blue fakeButton" value="Deselect All"/>
+                        <h:selectManyCheckbox id="clientsCheckbox" value="#{searchBB.selectedClients}" layout="pageDirection">
+                            <f:selectItems value="#{mindlinerWeb.currentUser.clients}"/>
+                            <f:converter binding="#{mlDataPoolConverter}"/>
+                        </h:selectManyCheckbox>
+                    </h:panelGroup>
+                    <!--OBJECT OWNER-->
+                    <h:panelGroup id="objectowners" class="rounded searchpanel">
+                        <h:outputText id="selectAllOwners" class="smaller rounded ml-light-blue fakeButton" value="Select All"/>
+                        <h:outputText id="deselectAllOwners" class="smaller rounded ml-light-blue fakeButton" value="Deselect All"/>
+                        <h:selectManyCheckbox id="ownersCheckbox" value="#{searchBB.selectedObjectOwners}" layout="pageDirection" converter="javax.faces.Integer">
+                            <f:selectItems value="#{searchBB.objectOwners}" var="owner" itemLabel="#{owner.firstName} #{owner.lastName}" itemValue="#{owner.id}"/>
+                           <!-- <f:converter binding="#{mlUserConverter}"/> -->
+                        </h:selectManyCheckbox>
+                    </h:panelGroup>
+                    <!--MORE OPTIONS-->
+                    <h:panelGrid id="more" class="rounded searchpanel" columns="2">
+                        <h:outputLabel for="includeArchivedCB" value="Include archived" title="Include archived objects"/>
+                        <h:selectBooleanCheckbox id="includeArchivedCB" value="#{searchBB.includeArchived}"/>
+                        <h:outputLabel for="includePrivate" value="Include private" title="Include private objects in the search"/>
+                        <h:selectBooleanCheckbox id="includePrivate" value="#{searchBB.includePrivate}"/>
+                        <h:outputLabel for="includeFiles" value="Include files" title="Include files in the search"/>
+                        <h:selectBooleanCheckbox id="includeFiles" value="#{searchBB.includeFiles}"/>
+                        <h:outputLabel for="maxHits" value="Max results" title="Maximum number of search hits to be returned"/>
+                        <h:inputText id="maxHits" value="#{searchBB.maxHits}" size="5" class="rounded">
+                            <f:convertNumber integerOnly="true"/>
+                        </h:inputText>
+                        <h:outputLabel for="searchDepth" value="Search depth" title="Specify a number >= 0"/>
+                        <h:inputText id="searchDepth" class="rounded" value="#{searchBB.relationLevel}" size="5">
+                            <f:convertNumber integerOnly="true"/>
+                        </h:inputText>
+                        <h:outputLabel for="modificationAge" value="Modification Age" title="Maximum modification age of returned search hits"/>
+                        <h:selectOneMenu id="modificationAge" class="rounded" value="#{searchBB.maxModificationAge}">
+                            <f:selectItems value="#{searchBB.modificationAges}"/>
+                        </h:selectOneMenu>   
+                        <h:outputLabel for="defaultSorting" value="Sorting" title="Sorting of the returned search hits"/>
+                        <h:selectOneMenu id="defaultSorting" class="rounded" value="#{searchBB.defaultSorting}">
+                            <f:selectItems value="#{searchBB.defaultSortingModes}"/>
+                        </h:selectOneMenu>  
+                    </h:panelGrid>
+                </h:panelGrid>
+            </h:panelGroup>
+        </h:panelGrid>
+    </h:body>
+</html>

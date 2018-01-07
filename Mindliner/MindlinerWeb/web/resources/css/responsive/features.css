@@ -1,0 +1,48 @@
+/* Based on https://css-tricks.com/examples/ResponsiveTables/responsive.php*/
+
+@media
+only screen and (max-width: 600px)  {
+    
+    #features table, thead, tbody, th, td, tr {
+        width: auto;
+        display: block;
+        
+    }   
+
+    /* Hide table headers (but not display: none;, for accessibility) */
+    #features .ml-datatable thead tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+    }
+    
+    #features .ml-datatable tr {
+        border-bottom: 1px solid #1B4D4D;
+    }
+    
+    #features .ml-datatable td {
+        border: none;
+        border-bottom: 1px dotted #4E9797;
+        position: relative;
+        padding-left: 40%;
+        padding-bottom: 0.5em;
+        height: 100%;
+        text-align: left;
+    }
+    
+    #features .ml-datatable td:before {
+            /* Now like a table header */
+            position: absolute;
+            /* Top/left values mimic padding */
+            top: 1.0em;
+            left: 6px;
+            width: 45%;
+            padding-right: 10px;
+            white-space: nowrap;
+    }
+    
+    /* Label feature data */
+    #features .ml-datatable td:nth-of-type(1):before { content: "Feature"; font-weight: bold;}
+    #features .ml-datatable td:nth-of-type(2):before { content: "Active"; font-weight: bold;}
+    #features .ml-datatable td:nth-of-type(3):before { content: "Description"; font-weight: bold;}
+}

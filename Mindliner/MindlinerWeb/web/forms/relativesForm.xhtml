@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:body>
+        <!--<h:outputText class="uppercase block title" value="Relatives"/>-->
+        <h:dataTable id="relatives" class="underlay ml-datatable" columnClasses="icon-column, , icon-column"
+                     value="#{searchBB.getRelatedObjects(objectBB.object)}" var="relative" cellspacing="0">
+            <h:column>
+                <h:graphicImage alt="#{objectBB.getObjectClassAltString(relative)}" url="#{iconBB.getClassIconUrl(relative)}"/>
+            </h:column>
+
+            <h:column>
+                <h:link value="#{relative.headline}" outcome="workspace" rendered="#{!relative.archived}" title="#{relative.description}">
+                    <f:param name="id" value="#{relative.id}"/>
+                </h:link>
+                <h:link class="expired" value="#{relative.headline}" outcome="workspace" rendered="#{relative.archived}" title="#{relative.description}">
+                    <f:param name="id" value="#{relative.id}"/>
+                </h:link>
+            </h:column>
+
+            <h:column>
+                <h:graphicImage alt="Privacy" url="#{iconBB.getPrivacyIconUrl(relative)}" rendered="#{relative.privateAccess}"/>
+            </h:column>
+        </h:dataTable>
+    </h:body>
+</html>

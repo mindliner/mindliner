@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Mindliner Admin - Data</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="adminHome.xhtml">
+            <ui:define name="content">
+                <h1><h:outputText value="Managing Data Pool #{masterAdminBB.currentClient}"/></h1>
+                <h:form id="dataForm" enctype="multipart/form-data">
+
+
+                    <!--Icon Section -->
+                    <h2>Icons</h2>
+
+                    <h:outputText value="#{masterAdminBB.currentClient.name} has #{imageBB.getIconCount(masterAdminBB.currentClient)} icons."/>
+                    <h:commandButton styleClass="mlButton rounded" value="Manage Icons" action="iconManager.xhtml"/>
+
+                    <!--Rating Section-->
+                    <h2>Rating</h2>
+
+                    <h:panelGrid columns="2">
+
+                        <h:outputLabel for="inheritanceField" value="Inheritance Rate"/>
+                        <h:inputText id="inheritanceField" value="#{ratingBB.inheritanceRate}"/>
+
+                        <h:outputLabel for="expirationDiscountField" value="Expiration Discount"/>
+                        <h:inputText id="expirationDiscountField" value="#{ratingBB.expirationDiscount}"/>
+
+                        <h:outputLabel for="batchSizeField" value="Batch Size"/>
+                        <h:inputText id="batchSizeField" value="#{ratingBB.batchSize}"/>
+
+                        <h:commandButton id="initializeRating" styleClass="mlButton rounded" value="Initialize Rating" action="#{ratingBB.initializeRating(masterAdminBB.currentClient.id)}"/>
+                        <h:commandButton id="runRating" value="Run One Iteration" styleClass="mlButton rounded" action="#{ratingBB.run(masterAdminBB.currentClient.id)}"/>
+
+                        <h:outputLabel class="labelText" for="startdate" value="Timer Start"/>
+                        <h:inputText id="startdate" value="#{ratingBB.timerStart}">
+                            <f:convertDateTime pattern="yyyy-MM-dd HH:mm"/>
+                        </h:inputText>
+
+                        <h:outputLabel class="labelText" for="timerintervall" value="Intervall (minutes)"/>
+                        <h:inputText id="timerintervall" value="#{ratingBB.timerIntervallMinutes}"/>
+
+                        <h:outputLabel value="Timer"/>
+                        <h:commandButton styleClass="mlButton rounded" value="Create New Timer" action="#{ratingBB.createTimer(masterAdminBB.currentClient.id)}"/>
+
+                        <h:selectOneMenu class="mlselector" id="timerSelector" value="#{ratingBB.timerControl}">
+                            <f:selectItems value="#{ratingBB.timers}"/>
+                            <f:converter binding="#{mlTimerConverter}"/>
+                        </h:selectOneMenu>
+
+                        <h:commandButton styleClass="mlButton rounded" value="Delete Selected Timer"/>
+
+                    </h:panelGrid>
+
+                    <!--Island Section-->
+
+                    <h2>Islands</h2>
+
+                    <h:outputText value="The objects of the current client group into #{masterAdminBB.currentClient.islands.size()} islands."/>
+
+                    <h:commandButton value="Initialize Islands" action="#{masterAdminBB.initializeIslands()}"/>
+                    <h:commandButton value="Delete Islands" action="#{masterAdminBB.deleteIslands()}"/>
+
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:body>
+        <h2>User Links Report</h2>
+        <h:form id="linksChartForm">
+            <h:panelGrid columns="3" class="rounded mlmasterpanel">
+                <h:outputLabel class="labelText" value="Period"/>
+                <h:selectOneRadio class="periods-radio" value="#{reportBB.period}" layout="lineDirection">
+                    <f:selectItems value="#{reportBB.reportingPeriods}"/>
+                    <f:ajax render="linksChartForm"/>
+                </h:selectOneRadio>
+                <h:selectOneMenu class="periods-menu">
+                    <f:selectItems value="#{reportBB.reportingPeriods}"/>
+                    <f:ajax render="linksChartForm"/>
+                </h:selectOneMenu>
+            </h:panelGrid>
+            <div id="userLinksInfoContainer"></div>
+            <div id="userLinksContainer"></div>
+            <script>
+                var userLinks;
+                <h:outputText value = "#{reportBB.getUserLinksJson('userLinks')}"/>
+                buildLinksReport(userLinks);
+            </script>
+        </h:form>
+    </h:body>
+</html>
+

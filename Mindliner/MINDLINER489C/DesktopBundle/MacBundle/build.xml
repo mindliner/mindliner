@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="MindlinerDesktop" default="default" basedir=".">
+
+    <target name="clean">
+        <delete dir="sandbox"/>
+    </target>
+
+    <target name="modifyClassPath" depends="clean">
+        <echo message="${basedir}"/>
+        <unzip dest="sandbox" src="MindlinerDesktop.zip"/>
+        <unzip dest="sandbox/MindlinerDesktop" src="sandbox/bin/MindlinerDesktop.jar"/>
+        <replace file="sandbox/MindlinerDesktop/META-INF/MANIFEST.MF" token="../appclient" value="appclient"/>
+        <zip basedir="sandbox/MindlinerDesktop" destfile="MindlinerDesktop.jar"/>
+        <copy todir="sandbox/lib">
+            <fileset dir="sandbox/bin/lib"/>
+        </copy>
+        <copy todir="sandbox">
+            <fileset file="SplashScreen.icns"/>
+        </copy>
+        <mkdir dir="dist"/>
+        <copy todir="sandbox/config">
+            <fileset file="sandbox/java/lib/security/cacerts"/>
+        </copy>
+    </target>
+
+    <property environment="env"/>
+
+    <taskdef name="bundleapp"
+             classname="com.oracle.appbundler.AppBundlerTask"
+             classpath="MindlinerBundle-1.0.jar"/>
+
+    <target name="bundle" depends="modifyClassPath">
+        <bundleapp outputdirectory="dist"
+                   name="MindlinerDesktop"
+                   displayname="Mindliner Desktop"
+                   identifier="com.mindliner.main.MindlinerMain"
+                   mainclassname="com.mindliner.main.MindlinerMain"
+                   icon="sandbox/SplashScreen.icns">
+
+            <runtime dir="${env.JAVA_HOME}"/>
+            <classpath file="MindlinerDesktop.jar" casesensitive="yes"/>
+            <classpath dir="sandbox/" casesensitive="yes">
+                <include name="lib/*.jar"/>
+                <include name="appclient/**"/>
+                <include name="config/**"/>
+            </classpath>
+
+            <option value="-Djava.naming.factory.initial=com.sun.enterprise.naming.SerialInitContextFactory"/>
+            <option value="-Dorg.omg.CORBA.ORBInitialHost=mls1.mindliner.com"/>
+            <option value="-Dorg.omg.CORBA.ORBInitialPort=3820"/>
+            <option value="-Dcom.sun.CSIV2.ssl.standalone.client.required=true"/>
+            <option value="-Duser.dir=$APP_ROOT/Contents/Java"/>
+
+        </bundleapp>
+    </target>
+
+</project>

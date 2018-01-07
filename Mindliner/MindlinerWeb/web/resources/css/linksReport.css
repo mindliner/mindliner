@@ -1,0 +1,47 @@
+#userLinksContainer {
+    transform: translate(-20%, 0);
+}
+
+text {
+    font-family:  Helvetica;
+}
+
+path.arc {
+    cursor: move;
+    fill: #fff;
+}
+
+.node {
+    font-size: 10px;
+}
+
+.node:hover {
+    fill: #1f77b4;
+}
+
+.link {
+    fill: none;
+    stroke: #1f77b4;
+    stroke-opacity: 0.8;
+    pointer-events: none;
+}
+
+.link.source, .link.target {
+    stroke-opacity: .5;
+}
+
+.node.target {
+    fill: #d62728 !important;
+}
+
+.link.source {
+    stroke: #d62728;
+}
+
+.node.source {
+    fill: #2ca02c;
+}
+
+.link.target {
+    stroke: #2ca02c;
+}

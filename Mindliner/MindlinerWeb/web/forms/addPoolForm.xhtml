@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <h:body>
+        <!--poolBean is a parameter to be defined when this form is included!-->
+        <h:outputText class="uppercase block title" value="#{txt['DatapoolCreationTitle']}"/>
+        <h:panelGrid columns="1" class="underlay">
+                <h:outputText class="block infotext" value="#{helptext}"/>
+                <h:message for="clientname" errorClass="barError"/>
+                <h:inputText id="clientname" value="#{poolBean.datapoolName}" p:placeholder="#{txt['DatapoolNamePlaceholder']}" class="rounded">
+                    <f:validateRequired />
+                </h:inputText>
+        </h:panelGrid>
+        <!--Here the real action is in the listener (which gets executed first) and the follow-up action in the command tag-->
+        <h:commandButton class="rounded mlButton" id="addButton" value="#{txt['CreateDatapool']}" action="#{searchBB.init()}">
+             <f:actionListener binding="#{poolBean.createPool()}"/>
+        </h:commandButton>
+    </h:body>
+</html>

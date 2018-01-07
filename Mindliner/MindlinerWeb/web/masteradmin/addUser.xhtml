@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Add New User [Mindliner Admin]</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="adminHome.xhtml">
+            <ui:define name="content">
+                <h:outputText class="block title" value="Creating a new user for data pool [#{masterAdminBB.currentClient}]"/>
+                <h:form id="UserForm" class="underlay">
+                    <h:panelGrid columns="2" id="userInputGrid">
+
+                        <h:outputLabel for="login" value="Login"/>
+                        <h:panelGroup>
+                            <h:inputText id="login" value="#{masterAdminBB.login}">
+                                <f:validator validatorId="usernameValidator"/>
+                            </h:inputText>
+                            <h:message for="login" styleClass="inputError" showDetail="true" showSummary="true"/>
+                        </h:panelGroup>
+
+                        <h:outputLabel for="firstname" value="Firstname"/>
+                        <h:panelGroup>
+                            <h:inputText id="firstname" value="#{masterAdminBB.firstName}"/>
+                            <h:message for="firstname" styleClass="inputError"/>
+                        </h:panelGroup>
+
+                        <h:outputLabel for="lastname" value="Lastname"/>
+                        <h:panelGroup>
+                            <h:inputText id="lastname" value="#{masterAdminBB.lastName}"/>
+                            <h:message for="lastname" styleClass="inputError"/>
+                        </h:panelGroup>
+
+                        <h:outputLabel for="password" value="Password"/>
+                        <h:panelGroup>
+                            <h:inputSecret class="newClientInput"  id="password" value="#{masterAdminBB.password}"/>
+                            <h:message for="password" styleClass="inputError"/>
+                        </h:panelGroup>
+
+                        <h:outputLabel for="maxconf" value="Max Confidentiality"/>
+                        <h:selectOneMenu id="maxconf" value="#{masterAdminBB.maxConfidentiality}">
+                            <f:selectItems value="#{masterAdminBB.currentClient.confidentialities}"/>
+                            <f:converter binding="#{mlConfidentialityConverter}">
+                            </f:converter>
+                        </h:selectOneMenu>
+                    </h:panelGrid>
+                    <h:commandButton value="Create User" action="#{masterAdminBB.createUser()}"/>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

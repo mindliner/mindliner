@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:body>
+        <!-- Form Title -->
+        <h:panelGroup class="uppercase block title" rendered="#{showTitle}">
+            <h:link value="#{txt['NewsTitle']}" style="color: #DAEEF2;" outcome="news"/>
+            <h:outputLink class="right fake-icon-button settings-button" value="news.xhtml?faces-redirect=true&#38;tabidx=1"
+                             style="background-color: transparent;padding: 0; padding-right: 10px;" title="#{txt['SubscriptionSettingsInfo']}"/>
+        </h:panelGroup>
+        <h:outputText value="No notifications" style="position:relative;top:20px;left:30px;" rendered="#{subscriptionBB.news.size() == 0}"/>
+        <h:outputText class="smaller block" style="margin:1.5em 2.0em 0 2.0em;" rendered="#{subscriptionBB.subscriptions.size() == 0}" value="#{txt['NoSubscriptionsHelptext']}" escape="true"/>
+        <h:commandButton id="archiveButton" style="margin-left:2.0em;margin-top:1.5em;"
+                         class="smaller rounded mlButton" value="Mark all as read" 
+                         action="#{subscriptionBB.archiveAllArticles()}" rendered="#{subscriptionBB.news.size() > 0}"/>
+        <!--THE NEWS ARTICLES-->
+        <h:dataTable id="news-table"
+                     rendered="#{subscriptionBB.news.size() > 0}"
+                     value="#{subscriptionBB.newsForDisplay}" 
+                     var="news"
+                     cellspacing="0"
+                     columnClasses="icon-column, , icon-column"
+                     style="font-size:smaller;padding:2.0em;"
+                     styleClass="ml-datatable">
+            <h:column>
+                <h:graphicImage library="images/icons/32" name="#{iconBB.getEventIcon(news.log.eventType)}" rendered="#{not empty news.log}"/>
+            </h:column>
+            <h:column>
+                <h:outputText value="#{subscriptionBB.getFormattedNewsMessage(news)}" escape="false"/>
+                <h:outputText value="#{utility.getReadableDate(news.creationDate)}" class="secondaryInformation"/>
+            </h:column>
+            <h:column>
+                <h:commandButton action="#{subscriptionBB.archiveNewsArticle(news)}" value="&#x2713;" title="Mark as read" class="symbol-button">
+                    <f:ajax render="@form"/>
+                </h:commandButton>
+            </h:column>
+        </h:dataTable>
+        <h:outputLink class="rounded fakeButton" style="margin-left:2.0em;margin-bottom:1.5em;"
+                      value="news.xhtml?faces-redirect=true&#38;tabidx=0" rendered="#{subscriptionBB.news.size() > subscriptionBB.numNewsRows and !loadMore}">
+            <h:outputText value="#{txt['SeeMoreNews']}" />
+        </h:outputLink>
+    </h:body>
+</html>
+

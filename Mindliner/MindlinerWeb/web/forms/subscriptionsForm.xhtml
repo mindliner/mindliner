@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:body>
+        <h:outputText class="smaller" value="You can create event- or actor-specific subscriptions below. Object-specific 
+                      subscriptions can be created on the object's details page in the workspace. "/>
+        <h:outputText class="smaller" value="To edit any of your #{subscriptionBB.subscriptions.size()} 
+                      subscriptions, you need to delete the current one and create an updated one." 
+                      rendered="#{subscriptionBB.subscriptions.size() > 0}"  style="margin-bottom: 2.0em;display:inline-block;"/>
+        <h:dataTable rendered="#{subscriptionBB.subscriptions.size() > 0}"
+                     id="subscriptionTable" 
+                     value="#{subscriptionBB.subscriptions}" var="sub"
+                     styleClass="ml-datatable"
+                     headerClass="ml-datatable-header"
+                     cellspacing="0"
+                     columnClasses="center, , , , , center">
+            <h:column>
+                <f:facet name="header">ID</f:facet>
+                <h:outputText value="#{sub.id}"/>
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Event</f:facet>
+                <h:outputText value="#{sub.eventType}"/>
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Actor</f:facet>
+                <h:outputText value="#{sub.actor == null ? 'Any' : sub.actor}"/>
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Object</f:facet>
+                <h:outputText value="Any" rendered="#{sub.object == null}"/>
+                <h:link value="#{sub.object.headline}" outcome="workspace" rendered="#{sub.object != null}">
+                    <f:param name="id" value="#{sub.object.id}"/>
+                </h:link>
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Reverse</f:facet>
+                <h:selectBooleanCheckbox value="#{sub.reverse}" disabled="true"/>
+            </h:column>
+            <h:column>
+                <h:commandButton styleClass="icon-column symbol-button" value="&#x2715;" action="#{subscriptionBB.deleteSubscription(sub)}" title="#{txt['DeleteSubscription']}">
+                    <f:ajax execute="@form" render="@form"/>
+                </h:commandButton>
+            </h:column>
+        </h:dataTable>
+        <h:commandButton value="Delete All My Subscriptions" styleClass="rounded mlButton" 
+                         action="#{subscriptionBB.deleteAllSubscriptions()}" 
+                         rendered="#{subscriptionBB.subscriptions.size() > 0}">
+            <f:ajax render="@form" />
+        </h:commandButton>
+    </h:body>
+</html>

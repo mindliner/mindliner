@@ -1,0 +1,129 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+-->
+
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="ViewHelpStyles.css" rel="stylesheet" type="text/css" />
+    </head>
+
+    <body>
+        <table class="body" border="0" cellpadding="5">
+            <thead>
+                <tr>
+                    <th>Key/Button</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Mouse wheel</td>
+                    <td>Zoom in/out to location under cursor.</td>
+                </tr>
+                <tr>
+                    <td>Left click and drag</td>
+                    <td>Pan the view when clicking on background, drag node(s) when clicking on node.</td>
+                </tr>
+                <tr>
+                    <td>Drop node onto another node</td>
+                    <td>Move (or copy if Alt key down) draged node to target node.</td>
+                </tr>
+                <tr>
+                    <td>Left click</td>
+                    <td>On node: selecting the node. On background: de-select all.</td>
+                </tr>
+                <tr>
+                    <td>Left double-click</td>
+                    <td>Load children, if any, of the double-clicked node.</td>
+                </tr>
+                <tr>
+                    <td>Space</td>
+                    <td>Expand or collapse the selected node</td>
+                </tr>
+                <tr>
+                    <td>Left Arrow</td>
+                    <td>Navigate to the parent of the currently selected node.</td>
+                </tr>
+                <tr>
+                    <td>Right Arrow</td>
+                    <td>Navigate to the first child of the current selection. If the 
+                        node has not been populated children (if any) are loaded.</td>
+                </tr>
+                <tr>
+                    <td>Up/Down Arrow</td>
+                    <td>Navigating to sibling. With ALT key pressed: swapping position with sibling.</td>
+                </tr>
+                <tr>
+                    <td>Delete</td>
+                    <td>Options: Hide (removes the node from the map but does not alter the database),
+                        Hide + Unlink (removes the node and unlinks the two Mindliner objects permanently), 
+                        Hide + Unlink + Delete (removes the node, and deletes the selected object permanently). 
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Ctrl-C</td>
+                    <td>Has no function, sorry. Use Copy/Paste button on the toolbar to transfer to clipboard.</td>
+                </tr>
+
+                <tr>
+                    <td>Save New Map</td>
+                    <td>Saves the current layout on the server (currently all maps are visible to others).
+                        <i>Note</i>: It is not neccessary to save maps unless the layout is manually edited after map creation. If nodes
+                        are edited the changes are automatically stored for the base object.</td>
+                </tr>
+                <tr>
+                    <td>Load Map</td>
+                    <td>Replaces the current map with the contents of the loaded map. Nodes for which the base object has been
+                        deleted in the meantime are no longer shown.</td>
+                </tr>
+                <tr>
+                    <td>Update Map</td>
+                    <td>This options is available only after a map has been loaded. For newly built maps use Save New Map. The update
+                        map function updates all existing objects with the alterations and adds new nodes. (it does not delete nodes yet)</td>
+                </tr>
+
+                <tr>
+                    <td>Expand Contacts</td>
+                    <td>Contact nodes can have very many children. If this checkbox
+                        is off then contacts are not automatically expanded and build performance
+                        is better for maps with contact nodes.</td>
+                </tr>
+
+                <tr>
+                    <td>A Key</td>
+                    <td>Toggle anchor node status for current selection an anchor node (only for dynamic maps). An anchor node does not move.</td>
+                </tr>
+                <tr>
+                    <td>E</td>
+                    <td>Edit the selected node.</td>
+                </tr>
+                <tr>
+                    <td>F Key</td>
+                    <td>Assign new font to the currently selected node.</td>
+                </tr>
+                
+                <tr>
+                    <td>K Key</td>
+                    <td>Assign a new color to the selected node.</td>
+                </tr>
+
+                <tr>
+                    <td>P Key</td>
+                    <td>Re-arranges all node positions. This is only useful/necessary after a node has been manually placed by dragging.</td>
+                </tr>
+                <tr>
+                    <td>V Key</td>
+                    <td>Rebuilds a new map with the current selection as root node.</td>
+                </tr>
+
+            </tbody>
+        </table>
+
+    </body>
+</html>

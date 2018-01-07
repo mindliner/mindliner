@@ -1,0 +1,1 @@
+java\bin\java.exe -jar setup.jar

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jnlp spec="1.0+" codebase="" href="">
+    <information>
+        <title>Mindliner Desktop</title>
+        <vendor>Mindliner AG (Zurich)</vendor>
+        <homepage href="http://www.mindliner.com"/>
+        <description>
+            Mindliner: Thoughts Lined Up for Action
+        </description>
+        <icon href="http://arboardone.mindliner.com:8080/images/MindlinerDesktopJNLP/icon.png" />
+        <icon kind="splash" href="http://arboardone.mindliner.com:8080/images/MindlinerDesktopJNLP/splash.jpg" />
+        <offline-allowed />
+        <shortcut>
+            <desktop/>
+        </shortcut>
+    </information>
+    <resources>
+        <!-- Application Resources -->
+    </resources>
+    <application-desc main-class="">
+        <!-- Application Arguments -->
+    </application-desc>
+    <update check="always" policy="always"/>
+    <!--PUT THE MOYOSOFT LIBRABRIES HERE-->
+    <!--<resources os="Windows" arch="sparc">-->
+    <!--<nativelib href="lib/solaris/corelibs.jar"/>-->
+    <!--</resources>-->
+</jnlp>

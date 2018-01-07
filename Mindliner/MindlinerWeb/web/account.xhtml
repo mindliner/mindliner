@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:body>
+        <ui:composition template="/templates/layout.xhtml">
+            <ui:define name="title">Mindliner | Account</ui:define>
+            <ui:define name="content">
+                <h:outputStylesheet name="responsive/features.css" library="css"/>
+                <h:form id="personal">
+                    <h:outputText value="#{txt['AccountDetailsTitle']}" class="block uppercase title"/>    
+                    <h:panelGroup class="block underlay">
+                        <h:panelGrid columns="2" cellpadding="3" cellspacing="5">
+                            <!-- USERNAME -->
+                            <h:outputLabel for="username" value="#{txt['UserName']}"/>
+                            <h:outputText id="username" value="#{mindlinerWeb.currentUser.userName}"/>
+                            <!-- FIRST NAME, LAST NAME -->
+                            <h:outputLabel for="name" value="#{txt['Name']}"/>
+                            <h:outputText id="name" value="#{mindlinerWeb.currentUser.firstName} #{mindlinerWeb.currentUser.lastName}" rendered="#{!userBB.editMode}"/>
+                            <h:panelGrid columns="1" rendered="#{userBB.editMode}">
+                                <h:message for="firstName" errorClass="barError"/> 
+                                <h:inputText id="firstName" value="#{userBB.user.firstName}" style="width:250px;" p:placeholder="#{txt['FirstName']}">
+                                    <f:validateRequired />
+                                </h:inputText>
+                                <h:message for="lastName" errorClass="barError"/> 
+                                <h:inputText id="lastName" value="#{userBB.user.lastName}" style="width:250px;" p:placeholder="#{txt['LastName']}">
+                                    <f:validateRequired />
+                                </h:inputText>
+                            </h:panelGrid>
+                            <!-- EMAIL -->
+                            <h:outputLabel for="email" value="#{txt['Email']}"/>
+                            <h:outputText id="outEmail" value="#{mindlinerWeb.currentUser.email}" rendered="#{!userBB.editMode}"/>
+                            <h:panelGrid columns="1" rendered="#{userBB.editMode}">
+                                <h:message for="email" errorClass="barError"/> 
+                                <h:inputText id="email" value="#{userBB.user.email}" validatorMessage="#{txt['EmailNotValid']}">
+                                   <f:validateRegex pattern="^\S+@\S+\.\S+$"/>
+                                </h:inputText>
+                            </h:panelGrid>
+                            <!-- USAGE -->
+                            <h:outputLabel class="labelText" for="logincount" value="Usage"/>
+                            <h:outputText id="logincount" 
+                                          value="logged in last #{mindlinerWeb.currentUser.lastLogin} 
+                                          (#{mindlinerWeb.currentUser.loginCount} times in total) and has 
+                                          #{mindlinerWeb.getObjectCount(mindlinerWeb.currentUser)} objects"/>
+                        </h:panelGrid>
+                                            <h:commandButton class="rounded mlButton" value="#{txt['UpdateAccount']}" action="#{userBB.setEditMode(true)}" rendered="#{!userBB.editMode}"/>
+                        <h:commandButton class="rounded mlButton" value="#{txt['Cancel']}" action="#{userBB.setEditMode(false)}" rendered="#{userBB.editMode}"/>
+                        <h:commandButton class="rounded mlButton" value="#{txt['Save']}" rendered="#{userBB.editMode}"
+                                         action="#{userBB.saveAccountDetails(userBB.user.firstName, userBB.user.lastName, userBB.user.email)}" />
+                    </h:panelGroup>
+                </h:form>
+                
+                <h:form id="passwordForm">
+                    <h:outputText value="#{txt['ChangePasswordTitle']}" class="block uppercase title"/>
+                    <h:panelGrid class="underlay" columns="1" cellspacing="5" cellpadding="5">
+                        <!-- OLD PASSWORD -->
+                        <h:message for="oldPassword" errorClass="barError"/>
+                        <h:inputSecret id="oldPassword" binding="#{oldPassword}" p:placeholder="Old Password"/>
+                        <!-- NEW PASSWORD -->
+                        <h:message for="password" errorClass="barError"/>
+                        <h:inputSecret id="password" value="#{newPassword}" p:placeholder="New Password">
+                            <f:validator validatorId="passwordValidator"/>
+                            <f:attribute name="confirmPassword" value="#{confirmPassword}" />
+                            <f:attribute name="oldPassword" value="#{oldPassword}" />
+                        </h:inputSecret>
+                        <!-- CONFIRM PASSWORD -->
+                        <h:message for="confirmPassword" errorClass="barError"/>  
+                        <h:inputSecret id="confirmPassword" binding="#{confirmPassword}" p:placeholder="#{txt['RepeatPassword']}"/>
+                        <h:commandButton class="rounded mlButton" value="#{txt['ChangePassword']}" action="#{userBB.savePassword(newPassword)}"/>
+                    </h:panelGrid>
+                </h:form>
+                
+                <h:form id="features">
+                    <h:outputText value="#{txt['SoftwareFeaturesTitle']}" class="block uppercase title"/>
+                    <h:panelGrid columns="1" class="underlay">
+                        <h:panelGroup class="block" style="margin-bottom:1.0em;">
+                            <h:outputText
+                                value="The table below displays the available software features. Please contact us at "/>
+                            <h:outputLink value="mailto:support@mindliner.com">support@mindliner.com</h:outputLink>
+                            <h:outputText value=" to have your feature set changed."/>
+                        </h:panelGroup>
+                        <h:dataTable id="featureTable" value="#{userBB.userFeatures}" var="feature" cellspacing="0"
+                                     styleClass="ml-datatable"
+                                     headerClass="ml-datatable-header"
+                                     columnClasses="">
+                            <h:column>
+                                <f:facet name="header">#{txt['Feature']}</f:facet>
+                                <h:outputText value="#{feature.feature.name}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">#{txt['Active']}</f:facet>
+                                <h:selectBooleanCheckbox value="#{feature.active}" disabled="true">
+                                    <f:ajax render="featureTable"/>
+                                </h:selectBooleanCheckbox>
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">#{txt['Description']}</f:facet>
+                                <h:outputText value="#{feature.feature.description}"/>
+                            </h:column>
+                        </h:dataTable>
+                    </h:panelGrid>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

@@ -1,0 +1,13 @@
+            <h1 style="text-align: center;">Tutorials</h1>
+            <div ng-controller="tutorialsController" >
+                <section ng-repeat="tutorial in tutorials">
+                    <div class="video-section" tutorial-slider>
+                        <h2>{{tutorial.title}}</h2>
+                        <p class="description">{{tutorial.description}}</p>
+                        <div class="arrow-down"></div>
+                        <div class="arrow-up hidden"></div>
+                    </div>
+                    <div preload="none" class="tutorial-content hidden"><video width="75%" height="auto" controls="controls" ng-src="{{tutorial.video}}">Your browser does not support video playback. Please click <a ng-href="{{tutorial.video}}">here</a> to download the tutorial to your computer. </video>
+                    </div>
+                </section>
+            </div>

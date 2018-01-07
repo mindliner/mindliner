@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:body>
+        <ui:composition template="templates/layout.xhtml">
+            <ui:define name="title">Mindliner | Workspace</ui:define>
+            <ui:define name="fullwidth-content">
+                <!--SCRIPTS & CSS-->
+                <h:outputScript name="d3.v3.min.js" library="js"/>
+                <h:outputScript name="treeLayout.js" library="js"/>
+                <h:outputStylesheet name="treeLayout.css" library="css"/>
+                <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+                <span id="contextPath" style="display:none;">#{facesContext.externalContext.request.contextPath}</span>
+                <!-- HELPER FIELDS AND COMMAND LINKS -->
+                <h:form id="helper-form" >
+                    <!--Hidden field so that JS can access the computed nodes-->
+                    <h:inputHidden id="treeNodes" value="#{mapBB.treeNodes}"/>
+                    <!--Hidden field used to dynamically load relatives-->
+                    <h:inputHidden id="treeNodesToBeAdded" value="#{mapBB.treeNodesToBeAdded}"/>
+                    <!--Hidden field used to incorporate the search results into the chart-->
+                    <h:inputHidden id="searchResuls" value="#{mapBB.searchResults}"/>
+                    <!--Hidden field so that JS can set the ID of the selected object (part of the json tree data)-->
+                    <h:inputHidden binding="#{selectedId}" value="#{objectBB.selectedId}" id="nodeId"/>
+                    <!--HIdden field used by JS to set the parent when fetching relatives-->
+                    <h:inputHidden binding="#{parentId}" id="parentId"/>
+                    <!--Hidden field used by JS to set the object currently being dragged-->
+                    <h:inputHidden binding="#{draggingNodeId}" id="draggingNodeId"/>
+                    <!--Hidden field used by JS to set the object to be unlinked from the selected object-->
+                    <h:inputHidden binding="#{oldParentId}" id="oldParentId"/>
+                    <!--Hidden field used by JS to set the object to be linked to the selected object-->
+                    <h:inputHidden binding="#{newParentId}" id="newParentId"/>
+                    <!--Field for object creation-->
+                    <h:inputHidden id="newObjectId" value="#{objectBB.newId}"/>
+                    <h:inputHidden id ="newHeadline" value="#{objectBB.headline}"/>
+                    <!--Hidden link that can be triggered via JS to set the selected bean object-->
+                    <h:commandLink id="objectSetter" class="hidden">
+                        <f:ajax execute="@form" listener="#{objectBB.setObject(selectedId.value)}" render="group:detailsForm group:relatives-form"/>
+                    </h:commandLink>
+                    <!--Hidden link to issue object relinking (make sure data is set in JS)-->
+                    <h:commandLink id="objectRelinker" class="hidden">
+                        <f:ajax execute="@form" listener="#{mapBB.relink(draggingNodeId.value, oldParentId.value, newParentId.value)}" render="group:relatives-form"/>
+                    </h:commandLink>
+                    <!--Hidden link to fetch relatives of a toggled item (make sure correct parentId is set in JS)-->
+                    <h:commandLink id="fetchRelatives" class="hidden">
+                        <f:ajax execute="@form" listener="#{mapBB.fetchRelatives(parentId.value)}" onevent="addNodes" render="helper-form"/>
+                    </h:commandLink>
+                </h:form>
+
+                <h:panelGroup layout="block" id="tree-container">
+                    <p:accordionPanel id="group" class="fixed-sidebar-left" activeIndex="#{objectBB.activePanel}">
+                        <!--<h:panelGroup id="group" class="fixed-sidebar-left">-->
+                        <!--SEARCH BOX-->
+                        <p:tab title="Browse Objects">
+                            <h:form class="turquoise" id="searchbox-form" rendered="#{mindlinerWeb.datapoolAvailable()}">
+                                <ui:include src="forms/searchForm.xhtml">
+                                    <ui:param name="searchInputClass" value="small-search" />
+                                    <ui:param name="searchButtonClass" value="small-search-button"/>
+                                    <ui:param name="settingsIcon" value="small-settings-icon"/>
+                                    <ui:param name="addButtonStyle" value="background-color: transparent; vertical-align:middle; margin-top:0.6em;"/>
+                                    <ui:param name="fontSize" value="smaller"/>
+                                </ui:include>
+                            </h:form>
+                            <!-- SEARCH OBJECTS -->
+                            <h:form class="turquoise" id="list-form" rendered="#{mindlinerWeb.datapoolAvailable()}">
+                                <ui:include src="forms/listObjectsForm.xhtml"/>
+                            </h:form>
+                        </p:tab>
+                        <!--
+                        <p:tab title="#{txt['NewObjectTitle']}" rendered="#{objectBB.createMode}" >
+                            NEW OBJECT FORM
+                            <h:form id="new-form">
+                                <ui:include src="forms/newObjectForm.xhtml"/>
+                            </h:form>
+                        </p:tab>
+                        -->
+                        <p:tab title ="#{objectBB.createMode ? txt['NewObjectTitle'] : txt['SelectedObjectTitle']}" rendered="#{selectedId.value > 0 or objectBB.createMode}">
+                            <!-- DETAILS OF SELECTED OBJECT -->
+                            <h:form id="detailsForm">
+                                <ui:include src="forms/objectForm.xhtml"/>
+                            </h:form>
+                            <h:form id="new-form">
+                                <ui:include src="forms/newObjectForm.xhtml"/>
+                            </h:form>
+                        </p:tab>    
+                        <!-- RELATIVES FORM -->
+                        <p:tab titleStyleClass="relatives" title="Relatives" rendered="#{selectedId.value > 0}">
+                            <h:form id="relatives-form">
+                                <ui:include src="forms/relativesForm.xhtml"/>
+                            </h:form>
+                        </p:tab>
+                        <!-- FILTER OPTIONS -->
+                        <p:tab title="#{txt['FilterTitle']}">
+                            <h:form id="filter-form">
+                                <h:outputText class="block underlay" value="This filter also applies to the relatives list." style="padding-bottom:0"/>
+                                <h:panelGrid columns="2" class="underlay">
+                                    <h:outputLabel for="level" value="#{txt['LevelLabel']}"/>
+                                    <h:panelGroup>
+                                        <h:message for="level" errorClass="barError"/>
+                                        <h:inputText id="level" value="#{searchBB.levelWS}" validatorMessage="#{txt['LevelValidatorMessage']}" class="numberField">
+                                            <f:validateLongRange minimum="1" maximum="4" />
+                                            <f:convertNumber integerOnly="true" type="number" />
+                                        </h:inputText>
+                                    </h:panelGroup>
+                                    <h:outputLabel value="#{txt['IncludeArchivedLabel']}"/>
+                                    <h:selectBooleanCheckbox value="#{searchBB.includeArchivedWS}"/>
+                                    <h:outputLabel value="#{txt['IncludePrivateLabel']}"/>
+                                    <h:selectBooleanCheckbox value="#{searchBB.includePrivateWS}"/>
+                                    <h:outputText value=" "/>
+                                    <h:commandButton class="right rounded mlButton" value="#{txt['Filter']}" action="#{mapBB.fetchTreeRootNode(-1)}"/>
+                                </h:panelGrid>
+                            </h:form>
+                        </p:tab>
+                        <!--</h:panelGroup>-->
+                    </p:accordionPanel>
+                </h:panelGroup>
+            </ui:define>
+        </ui:composition>
+
+        <f:metadata>
+            <f:viewParam name="id" value="#{id}"/> 
+            <f:event type="preRenderView" listener="#{mapBB.fetchTreeRootNode(id)}" />
+            <!-- Set initial object when view is entered -->
+            <f:viewAction action="#{objectBB.setObject(id)}" onPostback="false" />
+            <f:viewAction action="#{objectBB.setSelectedId(id)}" onPostback="false"/>
+            <f:viewParam name="create" value="#{objectBB.createMode}"/>
+        </f:metadata>
+    </h:body>
+</html>

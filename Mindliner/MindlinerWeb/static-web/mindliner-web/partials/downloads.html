@@ -1,0 +1,34 @@
+<section id="downloads" class="chapter" ng-controller="downloadsController">
+    <h1>Get Started</h1>
+    <article class="col-2-entry">
+        <h3>1. Sign-Up</h3>
+        <p>Before you can use our products, you need to sign up for a Mindliner account. This is a guided process that only take a minute.</p>
+        <div class="link-section">
+            <a class="uppercase larger button" href="https://mls1.mindliner.com:8181/MF2/faces/signup.xhtml">Sign up Here</a>
+        </div>
+    </article>
+    <article class="col-2-entry">
+        <h3>2. Mindliner Web</h3>
+        <p>The Mindliner WebApp serves as an instant and light-weight access to Mindliner. It is recommended to be used in parallel to the Desktop application rather than instead of it and has been designed to work on mobile devices, too.</p>
+        <div class="link-section">
+            <a class="uppercase larger button" href="https://mls1.mindliner.com:8181/MF2/faces/explore.xhtml">Sign Into WebApp</a>
+        </div>
+    </article>
+    <article class="col-2-entry">
+        <h3> 3. Mindliner Desktop</h3>
+        <p>Mindliner DesktopApp 2.5.7 for your operating system. For Windows and Mac Java is included in the distribution 
+            so you don't need to install it separately. (<a href="/desktop">Why Desktop</a>)</p>
+        <section class="link-section">
+            <div class="download-link" ng-repeat="download in downloads">
+                <a target="_self" ng-href="releases/{{download.link}}" download>{{download.title}}</a>
+            </div>
+        </section>
+    </article>
+    <article class="col-2-entry">
+        <h3>4. News & Support</h3>
+
+        <p><a ng-href="http://eepurl.com/bi-vK1">Sign up</a> on our application and release notes (once or twice a month).  Please contact <span class="ml-turquoise">support(at)mindliner(dot)com</span> with your questions and suggestions.
+        </p>
+
+    </article>
+</section> 

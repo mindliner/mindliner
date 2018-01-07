@@ -1,0 +1,15 @@
+<dataConfig>
+  <dataSource type="JdbcDataSource" 
+              driver="com.mysql.jdbc.Driver"
+              url="jdbc:mysql://localhost:3307/mindliner5?useUnicode=true&amp;characterEncoding=UTF-8" 
+              user="mindman" 
+              password="wake.x"/>
+  <document>
+    <entity name="objects" 
+            query="select id, headline, description, owner_id, client_id, modification, private, archived, creation_date, dtype, confidentiality_id, rating from objects">
+			<entity name="tasks" query="select completed, duedate from tasks where id='${objects.id}'"/>
+			<entity name="contacts" query="select firstname, lastname from contacts where id='${objects.id}'"/>
+			<entity name="confidentiality" query="select clevel from confidentiality where id='${objects.confidentiality_id}'"/>
+    </entity>
+  </document>
+</dataConfig>

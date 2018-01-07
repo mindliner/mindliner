@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="448.0" prefWidth="1166.0" styleClass="background" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mindliner.view.news.NewsPaneController">
+    <children>
+        <BorderPane prefHeight="600.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <center>
+                <TreeTableView fx:id="newsTable" prefHeight="200.0" prefWidth="200.0" showRoot="false" tableMenuButtonVisible="true" BorderPane.alignment="CENTER">
+                    <columns>
+                        <TreeTableColumn fx:id="actor" prefWidth="200.0" text="Actor" />
+                        <TreeTableColumn fx:id="timestamp" prefWidth="150.0" text="Time" />
+                        <TreeTableColumn fx:id="headline" prefWidth="500.0" text="Subject" />
+                        <TreeTableColumn fx:id="event" prefWidth="200.0" text="Event" />
+                        <TreeTableColumn fx:id="type" prefWidth="100.0" text="Type" />
+                    </columns>
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#viewSelectedLogObject" text="View Log Object" />
+                    </items>
+                  </ContextMenu>
+               </contextMenu>
+                </TreeTableView>
+            </center>
+            <top>
+                <FlowPane BorderPane.alignment="CENTER">
+                    <children>
+                        <Label styleClass="mindlinerButton" text="Grouping">
+                            <FlowPane.margin>
+                                <Insets left="5.0" right="5.0" />
+                            </FlowPane.margin>
+                        </Label>
+                  <ComboBox fx:id="grouping" onAction="#rebuildView" prefWidth="150.0">
+                     <FlowPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </FlowPane.margin>
+                  </ComboBox>
+                  <Button mnemonicParsing="false" onAction="#selectAll" styleClass="mindlinerButton" text="Select All">
+                     <FlowPane.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </FlowPane.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#deselectAll" styleClass="mindlinerButton" text="Deselect All">
+                     <FlowPane.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </FlowPane.margin>
+                  </Button>
+                        <Button fx:id="archiveButton" mnemonicParsing="false" onAction="#archiveSelectedNewsArticles" styleClass="mindlinerButton" text="Archive Selected">
+                            <FlowPane.margin>
+                                <Insets left="5.0" right="5.0" />
+                            </FlowPane.margin>
+                        </Button>
+                  <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#deleteSelectedNewsArticles" styleClass="deleteButton" text="Delete Selected">
+                     <FlowPane.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </FlowPane.margin>
+                  </Button>
+                  <Button fx:id="manageSubscriptionButton" mnemonicParsing="false" onAction="#manageSubscriptions" styleClass="mindlinerButton" text="Manage Subscriptions" />
+                    </children>
+                </FlowPane>
+            </top>
+        </BorderPane>
+    </children>
+</AnchorPane>

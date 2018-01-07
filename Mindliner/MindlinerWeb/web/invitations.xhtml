@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:body>
+        <ui:composition template="templates/layout.xhtml">
+            <ui:define name="content">
+                <ui:define name="title">Mindliner | Welcome</ui:define>
+                <h:form style="text-align: center;">
+                    <h1 style="color: green;">You are successfully enrolled!</h1>
+                    <h:outputText value="The new data pool &quot;#{clientBB.datapoolName}&quot; is now listed in your "/>
+                    <h:link value="datapools page." outcome="datapools"/>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+        <f:metadata>
+            <f:viewParam name="token" value="#{token}"/> 
+            <f:viewParam name="pool" value="#{pool}"/> 
+            <f:viewAction action="#{clientBB.acceptInvitation(token)}"/>
+        </f:metadata>
+    </h:body>
+</html>

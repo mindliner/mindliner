@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="adminHome.xhtml">
+            <ui:define name="content">
+                <h2>Current Release Details</h2>
+                
+                <h:outputText value="Most of the fields of the release table are 
+                              populated automatically when the new version first deploys and starts. 
+                              Below you can change the two fields that may change: the 
+                              release notes url and the highest version number where the client 
+                              is still compatible with the current server version."/>
+                
+                <h:form id="releaseForm" enctype="multipart/form-data">
+                    <h:panelGrid columns="2">
+                        <h:outputLabel for="releaseId" value="Version/ID"/>
+                        <h:outputText id="releaseId" value="#{releaseBB.releaseVersionString} (id #{releaseBB.releaseId})"/>
+                                                
+                        <h:outputLabel for="releaseReleaseNotesUrl" value="Relnotes URL"/>
+                        <h:inputText id="releaseReleaseNotesUrl" p:placeholder="public url of release notes" value="#{releaseBB.releaseNotesUrl}"/>
+
+                        <h:outputLabel for="releaseDistributionUrl" value="Download URL"/>
+                        <h:inputText id="releaseDistributionUrl" p:placeholder="public url of download page" value="#{releaseBB.distributionUrl}"/>
+
+                        <h:outputLabel for="releaseLatestCompatibleVersion" value="Highest Compatible Client Version"/>
+                        <h:inputText id="releaseLatestCompatibleVersion" p:placeholder="0000000000" value="#{releaseBB.latestCompatibleDesktopVersion}"/>
+                        
+                        <h:commandButton styleClass="mlButton rounded" value="Save" action="#{releaseBB.saveChanges()}"/>
+                    </h:panelGrid>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

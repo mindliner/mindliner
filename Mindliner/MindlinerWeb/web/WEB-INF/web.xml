@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+
+    <servlet>
+        <servlet-name>Faces Servlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>/faces/*</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>*.xhtml</url-pattern>
+    </servlet-mapping>
+    
+    <session-config>
+        <session-timeout>
+            60
+        </session-timeout>
+    </session-config>
+
+
+    <context-param>
+        <param-name>javax.faces.PROJECT_STAGE</param-name>
+        <param-value>Production</param-value>
+    </context-param>
+    <context-param>
+        <param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    <error-page>
+        <exception-type>javax.faces.application.ViewExpiredException</exception-type>
+        <location>/timeout.xhtml</location>
+    </error-page>
+    <error-page>
+        <exception-type>com.sun.faces.context.FacesFileNotFoundException</exception-type>
+        <location>/codes/404.xhtml</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/codes/500.xhtml</location>
+    </error-page>
+    <error-page>
+        <error-code>401</error-code>
+        <location>/codes/401.xhtml</location>
+    </error-page>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/codes/404.xhtml</location>
+    </error-page>
+    <welcome-file-list>
+        <welcome-file>faces/dashboard.xhtml</welcome-file>
+    </welcome-file-list>
+    <security-constraint>
+        <display-name>MasterAdmin Constraint</display-name>
+        <web-resource-collection>
+            <web-resource-name>Master Admin Pages</web-resource-name>
+            <description>Pages to carry out admin functions for everything.</description>
+            <url-pattern>/faces/masteradmin/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>MasterAdmin</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <security-constraint>
+        <display-name>All User Constraint</display-name>
+        <web-resource-collection>
+            <web-resource-name>All Pages</web-resource-name>
+            <description>Requires authentication for user level for any page.</description>
+            <url-pattern>/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>User</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <description/>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint> 
+    </security-constraint>
+    <security-role>
+        <description>Has all the user rights and can perform administration tasks for one particular "client".</description>
+        <role-name>Admin</role-name>
+    </security-role>
+    <security-role>
+        <description>Can perform all user tasks inside the associated client.</description>
+        <role-name>User</role-name>
+    </security-role>
+    <security-role>
+        <description>Can perform all user and admin tasks and create, edit, delete clients.</description>
+        <role-name>MasterAdmin</role-name>
+    </security-role>
+    <security-constraint>
+        <display-name>Public</display-name>
+        <web-resource-collection>
+            <web-resource-name>Public</web-resource-name>
+            <description>Matches a few special pages.</description>
+            <url-pattern>/faces/goodbye.xhtml</url-pattern>
+            <url-pattern>/faces/resources/*</url-pattern>
+            <url-pattern>/resources/*</url-pattern>
+            <url-pattern>/faces/timeout.xhtml</url-pattern>
+            <url-pattern>/faces/signup.xhtml</url-pattern>
+            <url-pattern>/faces/layout.xhtml</url-pattern>
+            <url-pattern>/faces/header.xhtml</url-pattern>
+            <url-pattern>/codes/*</url-pattern>
+            <url-pattern>/faces/registrationsuccess.xhtml</url-pattern>
+            <url-pattern>/faces/javax.faces.resource/*</url-pattern>
+            <url-pattern>/javax.faces.resource/*</url-pattern>
+        </web-resource-collection>
+    </security-constraint>
+</web-app>

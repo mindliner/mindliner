@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:body>
+        <ui:composition template="/templates/layout.xhtml">
+            <ui:define name="title">Mindliner | Sign Up</ui:define>
+            <ui:define name="content">
+                <div id="wizard">
+                    <h:panelGrid columns="3" id="steps">
+                        <h:panelGroup styleClass="block #{signupWizard.getStepStyle(1)}">
+                            <p><strong>Step 1</strong></p>
+                            <h:outputText value="#{txt['WizardStepOneDescription']}"/>
+                        </h:panelGroup>
+                        <h:panelGroup styleClass="block #{signupWizard.getStepStyle(2)}">
+                            <p><strong>Step 2</strong></p>
+                            <h:outputText value="#{txt['WizardStepTwoDescription']}"/>
+                        </h:panelGroup>
+                        <h:panelGroup styleClass="block #{signupWizard.getStepStyle(3)}">
+                            <p><strong>Step 3</strong></p>
+                            <h:outputText value="#{txt['WizardStepThreeDescription']}"/>
+                        </h:panelGroup>
+                    </h:panelGrid>
+                    
+                    <h:form id="signupForm" rendered="#{signupWizard.step == 1}">
+                        <ui:include src="forms/signupForm.xhtml"/>
+                    </h:form>
+                    <h:form id="poolForm" rendered="#{signupWizard.step == 2}">
+                        <ui:include src="forms/addPoolForm.xhtml">
+                            <ui:param name="poolBean" value="#{signupWizard}" />
+                            <ui:param name="helptext" value="#{txt['DatapoolCreationInfo']}" />
+                        </ui:include>
+                    </h:form>
+                    <h:form id="wizardForm" rendered="#{signupWizard.step == 3}">
+                        <h:outputText style="margin-bottom: 2.0em;" class="h3-style" value="#{txt['WizardFinishedInfo']}"/>
+                        <h:panelGrid class="underlay" columns="2">
+                            <h:graphicImage library="images/icons/64" name="bulb64.png" />
+                            <h:panelGroup class="block">
+                                <h:link class="large uppercase rounded fakeButton" value="#{txt['CreateMapOptionLink']}" outcome="workspace?create=true" />
+                                <h:outputText class="block" value="#{txt['CreateMapOptionDescription']}" />
+                            </h:panelGroup>
+                            <h:graphicImage library="images/icons/64" name="news64.png" />
+                            <h:panelGroup class="block">
+                                <h:link class="large uppercase rounded fakeButton" value="#{txt['DashboardOptionLink']}" outcome="dashboard" />
+                                <h:outputText class="block" value="#{txt['DashboardOptionDescription']}" />
+                            </h:panelGroup>
+                                <h:graphicImage  library="images/icons/64" name="display64.png" />
+                            <h:panelGroup class="block">
+                                <h:outputLink class="large uppercase rounded fakeButton" value="http://www.mindliner.com/downloads" >
+                                    #{txt['DownloadDesktopOptionLink']}
+                                </h:outputLink>
+                                <h:outputText class="right block" value="#{txt['DownloadDesktopOptionDescription']}" />
+                            </h:panelGroup>
+                        </h:panelGrid>
+                    </h:form>
+                </div>
+            </ui:define>
+        </ui:composition>
+        <f:metadata>
+            <f:event type="preRenderView" listener="#{signupWizard.check}" />
+        </f:metadata>
+    </h:body>
+</html>

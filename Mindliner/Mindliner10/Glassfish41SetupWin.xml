@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="changeme" default="all" basedir=".">
+    
+    <!-- PROPERTIES THAT MUST BE SET BEFORE RUNNING THE SCRIPT --> 
+    <!-- Where to find the asadmin executable -->
+    <property name="glassfish.asadmin" value="/home/marius/GlassFish_Server/glassfish/bin/asadmin" />
+    <!-- Only used for target start-domain -->
+    <property name="domain.name" value="domain1" />
+    <!-- GF admin port. Defaults to 4848. Is used to specify which domain should be setup -->
+    <property name="domain.port" value="4848" />
+    <!-- Is used for ssljms. In local environment, use localhost. When used in prod environment, use arboardone.mindliner.com.-->
+    <property name="host.name" value="localhost" /> 
+        
+    <!-- Can be used to start the specified domain -->
+    <target name="start-domain">
+        <echo message="starting domain ${domain.name} ..."/>
+        <exec executable="${glassfish.asadmin}" failonerror="false"
+              vmlauncher="false">
+            <arg line="start-domain"/>
+            <arg line="${domain.name}"/>
+        </exec> 
+    </target>
+    
+    <target name="setup-glassfish" depends="create-jms-resources,create-jdbc-resources,create-jdbc-realm">
+        <echo message="Setup finished! Glassfish is now ready to use."/>
+    </target>
+   
+    <!-- Handles the creation of JMS resources like the ConnectionFactory and the Destination. Delets first any existing resources -->
+    <target name="create-jms-resources">
+        <echo message="deleting old JMS ConnectionFactory and Destination (if exist)..."/>
+        <exec executable="${glassfish.asadmin}" failonerror="false"
+               vmlauncher="false">
+            <arg line="--host localhost --port ${domain.port}"/>
+            <arg line="delete-jms-resource"/>
+            <arg line="jms/MindlinerObjectEvent"/>
+        </exec> 
+        <exec executable="${glassfish.asadmin}" failonerror="false"
+               vmlauncher="false">
+            <arg line="--host localhost --port ${domain.port}"/>
+            <arg line="delete-jms-resource"/>
+            <arg line="jms/MindlinerMessage"/>
+        </exec> 
+        
+        <echo message="creating JMS ConnectionFactory and Destination..."/>
+        <exec executable="${glassfish.asadmin}" failonerror="true"
+              vmlauncher="false">
+            <arg line="--host localhost --port ${domain.port}"/>
+            <arg line="create-jms-resource"/>
+            <arg line="--restype javax.jms.Topic" />
+            <arg line="--description 'Handles messages on created, changed, or deleted Mindliner objects'" />
+            <arg line="--property Name=MindlinerObjectEvent"/>
+            <arg line="jms/MindlinerObjectEvent"/>
+        </exec> 
+        <exec executable="${glassfish.asadmin}" failonerror="true"
+              vmlauncher="false">
+            <arg line="--host localhost --port ${domain.port}"/>
+            <arg line="create-jms-resource"/>
+            <arg line="--restype javax.jms.TopicConnectionFactory" />
+            <arg line="--description 'Connectin factory for ssl based JMS communication (ssljms)'" />
+            <arg line="--property AddressList=mqssl\://${host.name}\:7676/jms"/>
+            <arg line="jms/MindlinerMessage"/>
+        </exec> 
+    </target>
+    
+    
+    <!-- Handles the creation of JDBC resources like the Connection Pool and the Data Source Delets first any existing resources -->
+    <target name="create-jdbc-resources">
+        <echo message="deleting old JDBC Connection Pool and Data Source (if exist)..."/>
+        <exec executable="${glassfish.asadmin}" failonerror="false"
+              vmlauncher="false">
+            <arg line="--host localhost --port ${domain.port}"/>
+            <arg line="delete-jdbc-resource"/>
+            <arg line="MindlinerDataSource"/>
+        </exec> 
+        <exec executable="${glassfish.asadmin}" failonerror="false"
+              vmlauncher="false">
+            <arg line="--host localhost --port ${domain.port}"/>
+            <arg line="delete-jdbc-connection-pool"/>
+            <arg line="MindlinerPool"/>
+        </exec> 
+        
+        <echo message="creating JDBC Connection Pool and Data Source..."/>
+        <exec executable="${glassfish.asadmin}" failonerror="true"
+              vmlauncher="false">
+            <arg line="--host localhost --port ${domain.port}"/>
+            <arg line="create-jdbc-connection-pool"/>
+            <arg line="--restype javax.sql.DataSource" />
+            <arg line="--description 'Mindliner Data Pool'" />
+            <arg line="--datasourceclassname com.mysql.jdbc.jdbc2.optional.MysqlDataSource"/>
+            <arg line="--property URL=jdbc\:mysql\:\/\/localhost\:3306\/mindliner5?useUnicode\=true:connectionAttributes=characterEncoding\=UTF-8:User=root:Password=xx7s."/> 
+            <arg line="MindlinerPool"/>
+        </exec> 
+        <exec executable="${glassfish.asadmin}" failonerror="true"
+              vmlauncher="false">
+            <arg line="--host localhost --port ${domain.port}"/>
+            <arg line="create-jdbc-resource"/>
+            <arg line="--connectionpoolid MindlinerPool" />
+            <arg line="--description 'Mindliner Data Source'" />
+            <arg line="MindlinerDataSource"/>
+        </exec> 
+    </target>
+    
+    
+    <!-- Creates the JDBC realm for authentication. Is idempotent -> deletes first the existing jdbc realm -->
+    <target name="create-jdbc-realm" depends="create-jdbc-resources">
+        <echo message="deleting old jdbcRealm (if exists)..."/>
+        <exec executable="${glassfish.asadmin}" failonerror="false"
+              vmlauncher="false">
+            <arg line="--host localhost --port ${domain.port}"/>
+            <arg line="delete-auth-realm"/>
+            <arg line="jdbcRealm"/>
+        </exec> 
+        <echo message="creating new jdbcRealm..."/>
+        <exec executable="${glassfish.asadmin}" failonerror="true"
+              vmlauncher="false">
+            <arg line="--host localhost --port ${domain.port}"/>
+            <arg line="create-auth-realm"/>
+            <arg line="--classname com.sun.enterprise.security.auth.realm.jdbc.JDBCRealm"/>
+            <arg line="--property jaas-context=jdbcRealm:datasource-jndi=MindlinerDataSource:user-table=users:user-name-column=username:password-column=password:group-table=user_group_view:group-name-column=groupname:encoding=Base64:digest-algorithm=SHA-256"/>
+            <arg line="jdbcRealm"/>
+        </exec> 
+    </target>
+    
+    <!--Java Mail Resource-->
+    <target name="create-javamail-resource">
+        <echo message="creating mindliner mail resource..."/>
+        <exec executable="${glassfish.asadmin}" failonerror="false"/>
+        <arg line="create-javamail-resource"/>
+        <arg line="--mailhost mail.mindliner.com"/>
+        <arg line="--mailuser glassfish@mindliner.com"/>
+        <arg line="--fromaddress glassfish@mindliner.com"/>
+        <arg line="--property mail.smtp.port=587:mail.smtp.password=Notify.688008:mail.smtp.auth=true:mail.to=marius.messerli@mindliner.com"/>
+        <arg line="MindlinerMail"/>
+    </target>
+    
+    
+</project>

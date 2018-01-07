@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- You may freely edit this file. See commented blocks below for -->
+<!-- some examples of how to customize the build. -->
+<!-- (If you delete it and reopen the project it will be recreated.) -->
+<!-- By default, only the Clean and Build commands use this build script. -->
+<!-- Commands such as Run, Debug, and Test only use this build script if -->
+<!-- the Compile on Save feature is turned off for the project. -->
+<!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
+<!-- in the project's Project Properties dialog box.-->
+<project name="Mindliner10" default="default" basedir="." xmlns:ear="http://www.netbeans.org/ns/j2ee-earproject/2">
+    <description>Builds, tests, and runs the project Mindliner10.</description>
+    <import file="nbproject/build-impl.xml"/>
+    <!--
+
+    There exist several targets which are by default empty and which can be 
+    used for execution of your tasks. These targets are usually executed 
+    before and after some main targets. They are: 
+
+      pre-init:                 called before initialization of project properties 
+      post-init:                called after initialization of project properties 
+      pre-compile:              called before javac compilation 
+      post-compile:             called after javac compilation 
+      pre-dist:                 called before archive building 
+      post-dist:                called after archive building 
+      post-clean:               called after cleaning build products 
+      pre-run-deploy:           called before deploying
+      post-run-deploy:          called after deploying
+
+    Example of pluging an obfuscator after the compilation could look like 
+
+        <target name="post-compile">
+            <obfuscate>
+                <fileset dir="${build.classes.dir}"/>
+            </obfuscate>
+        </target>
+
+    For list of available properties check the imported 
+    nbproject/build-impl.xml file. 
+
+
+    Other way how to customize the build is by overriding existing main targets.
+    The target of interest are: 
+
+      do-dist:                archive building
+      run:                    execution of project 
+
+    Example of overriding the target for project execution could look like 
+
+        <target name="run" depends="<PROJNAME>-impl.jar">
+            <exec dir="bin" executable="launcher.exe">
+                <arg file="${dist.jar}"/>
+            </exec>
+        </target>
+
+    Notice that overridden target depends on jar target and not only on 
+    compile target as regular run target does. Again, for list of available 
+    properties which you can use check the target you are overriding in 
+    nbproject/build-impl.xml file. 
+
+    -->
+    <!-- creates the jdbcRealm after the EAR has been deployed. 
+    As we don't want to duplicate the jdbcRealm if one already exists, 
+    we always try to delete the jdbcRealm first-->
+    <target name="post-run-deploy">
+        <echo message="deleting old jdbcRealm (if exists)..."/>
+        <exec executable="${j2ee.server.home}/bin/asadmin" failonerror="false"
+             vmlauncher="false">
+            <arg line="delete-auth-realm"/>
+            <arg line="jdbcRealm"/>
+        </exec> 
+        <echo message="creating new jdbcRealm..."/>
+        <exec executable="${j2ee.server.home}/bin/asadmin" failonerror="true"
+             vmlauncher="false">
+            <arg line="create-auth-realm"/>
+            <arg line="--classname com.sun.enterprise.security.auth.realm.jdbc.JDBCRealm"/>
+            <arg line="--property jaas-context=jdbcRealm:datasource-jndi=MindlinerDataSource:user-table=users:user-name-column=username:password-column=password:group-table=user_group_view:group-name-column=groupname:encoding=Base64:digest-algorithm=SHA-256"/>
+            <arg line="jdbcRealm"/>
+        </exec> 
+    </target>
+</project>

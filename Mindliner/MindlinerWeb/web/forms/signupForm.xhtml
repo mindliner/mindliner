@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <h:body>
+        <h:outputText class="uppercase block title" value="#{txt['AccountCreationTitle']}"/>
+        <h:panelGrid id="grid" class="underlay mlpanel" columns="1" cellspacing="5">
+            <h:outputText class="block infotext" value="#{txt['AccountCreationInfo']}"/>
+            <!-- FIRST NAME -->
+            <h:message for="firstName" errorClass="barError"/> 
+            <h:inputText id="firstName" value="#{signupWizard.firstName}" p:placeholder="#{txt['FirstName']}" class="rounded">
+                <f:validateRequired />
+            </h:inputText>
+            <!-- LAST NAME -->
+            <h:message for="lastName" errorClass="barError"/> 
+            <h:inputText id="lastName" value="#{signupWizard.lastName}" p:placeholder="#{txt['LastName']}" class="rounded">
+                <f:validateRequired />
+            </h:inputText>
+            <!-- USERNAME -->
+            <h:message for="username" errorClass="barError"/> 
+            <h:inputText id="username" value="#{signupWizard.username}" p:placeholder="#{txt['UserName']}" class="rounded">
+                <f:validateRequired />
+                <f:validator validatorId="usernameValidator"/>
+            </h:inputText>
+             <!-- EMAIL -->
+            <h:message for="email" errorClass="barError" style="height:2.0em;"/> 
+            <h:inputText id="email" value="#{signupWizard.email}" p:placeholder="#{txt['Email']}" class="rounded">
+                <f:validator validatorId="emailValidator"/>
+            </h:inputText>
+            <!-- PASSWORD -->
+            <h:message for="password" errorClass="barError"/> 
+            <h:inputSecret id="password" value="#{signupWizard.password}" p:placeholder="#{txt['PasswordPlaceholder']}" redisplay="true"
+                           class="rounded">
+                <f:validator validatorId="passwordValidator"/>
+                <f:attribute name="confirmPassword" value="#{confirmPassword}" />
+            </h:inputSecret>
+            <!-- CONFIRM PASSWORD -->
+            <h:message for="confirmPassword" errorClass="barError"/> 
+            <h:inputSecret style="margin-bottom:1.0em;" id="confirmPassword" binding="#{confirmPassword}" p:placeholder="#{txt['RepeatPassword']}" class="rounded"/>
+        </h:panelGrid>
+        <h:commandButton class="rounded mlButton" value="#{txt['CreateAccount']}" action="#{signupWizard.createUser()}"/>
+    </h:body>
+</html>

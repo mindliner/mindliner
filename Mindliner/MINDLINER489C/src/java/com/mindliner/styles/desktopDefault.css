@@ -1,0 +1,40 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 23.03.2015, 08:56:47
+    Author     : Marius using Ming's WebApp CSS
+*/
+
+
+
+.mindlinerButton {
+    -fx-background-color: #B0D9DF;
+    -fx-text-fill: #034E5A;
+    -fx-background-radius: 1
+}
+
+.mindlinerButton:selected {
+    -fx-background-color: #77B6BF;
+}
+
+.deleteButton{
+    -fx-background-color: lightsalmon;
+    -fx-text-fill: crimson;
+}
+
+/* ContainerMap Settings*/
+
+.drawToggleButton{
+    -fx-base: #77B6BF;
+    -fx-text-fill: #034E5A;
+    -fx-font-weight: bold;
+}
+
+#mapLabel{
+    -fx-text-fill: #22A1B5;
+    -fx-font-weight: bold;
+}
+

@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <h:body>
+        <!--<h:outputText class="uppercase block title" value="#{txt['NewObjectTitle']}" rendered="#{objectBB.createMode}"/>-->
+        <h:panelGrid columns="1" class="underlay" rendered="#{objectBB.createMode}">
+            <!-- CANCEL & SAVE -->
+            <h:panelGroup layout="block">
+                <h:commandButton title="#{txt['SaveChangesTooltip']}" class="ok rounded save-button icon-button"
+                                 action="#{objectBB.createObject(selectedId.value)}">
+                    <f:ajax execute="@form" onevent="addObject" render="@form treeSvg group:detailsForm helper-form"/>
+                </h:commandButton>
+                <h:commandButton title="#{txt['CancelEditObjectTooltip']}" class="cancel rounded add-button icon-button"
+                                 action="#{objectBB.setCreateMode(false)}" immediate="true">
+                    <f:ajax execute="@form" render="@form group:detailsForm" />
+                </h:commandButton>
+            </h:panelGroup>
+            <!-- OBJECT DETAILS -->
+            <h:outputFormat value="#{txt['AsRelativeOf']}" rendered="#{objectBB.object != null}" escape="false">
+                <f:param value="#{objectBB.object.headline}" />
+            </h:outputFormat>
+            <!-- HEADLINE -->
+            <h:message for="headline" errorClass="barError" />
+            <h:inputText p:placeholder="#{txt['HeadlinePlaceholder']}" id="headline" class="h3-style" style="width:98%;" value="#{objectBB.headline}">
+                <f:validateRequired/>
+            </h:inputText>
+            <!-- DESCRIPTION-->
+            <h:inputTextarea p:placeholder="#{txt['DescriptionPlaceholder']}" value="#{objectBB.description}"
+                             rows="7" cols="40"/>
+            <!-- TYPE -->
+            <h:outputLabel class="labelText" for="type" value="Type"/>
+            <h:selectOneRadio id="type" value="#{objectBB.type}" layout="lineDirection" tabindex="3">
+                <f:selectItems value="#{objectBB.objectTypes}"/>
+            </h:selectOneRadio>
+            <h:panelGrid columns="2" cellspacing="5" style="width:70%;">
+                <!-- PRIVATE FLAG -->
+                <h:outputLabel for="privateFlag" value="#{txt['PrivateLabel']}"/>
+                <h:selectBooleanCheckbox id="privateFlag" value="#{objectBB.privateAccess}"/>
+                <!-- DATAPOOL SELECTOR -->
+                <h:outputLabel for="dpSelector" 
+                               value="#{txt['DatapoolLabel']}"/>
+                <h:selectOneMenu id="dpSelector" value="#{objectBB.datapool}">
+                    <f:selectItems value="#{objectBB.clients}"/>
+                    <f:converter binding="#{mlDataPoolConverter}"/>
+                    <f:ajax render="confSelector" />
+                </h:selectOneMenu>
+                <!-- CONFIDENTIALITY SELECTOR -->
+                <h:outputLabel for="confSelector" value="#{txt['ConfidentialityLabel']}" 
+                               rendered="#{mindlinerWeb.authorizedForConfidentiality and objectBB.confidentialities.size() > 1}"/>
+                <h:selectOneMenu id="confSelector" value="#{objectBB.confidentiality}"
+                               rendered="#{mindlinerWeb.authorizedForConfidentiality and objectBB.confidentialities.size() > 1}">
+                    <f:selectItems value="#{objectBB.confidentialities}"/>
+                    <f:converter binding="#{mlConfidentialityConverter}"/>
+                </h:selectOneMenu>
+            </h:panelGrid>
+        </h:panelGrid>
+    </h:body>
+</html>

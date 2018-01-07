@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane fx:id="rootPane" onKeyReleased="#onKeyReleased" styleClass="background" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mindliner.view.containermap.FXMLController">
+    <children>
+        <Pane fx:id="mapPane" onDragDropped="#onDragDropped" onDragEntered="#onDragEntered" onDragExited="#onDragExited" onDragOver="#onDragOver" onMouseDragged="#onMouseDragged" onMouseExited="#onMouseExited" onMouseMoved="#onMouseMoved" onMousePressed="#onMousePressed" onMouseReleased="#onMouseReleased" onScroll="#onScroll" style="-fx-background-color: #FAFAFA;">
+            <children>
+                <Group fx:id="nodeGroup" style="-fx-background-color: honeydew;" />
+            </children>
+        </Pane>
+        <AnchorPane fx:id="hoverPane" maxHeight="60.0" prefHeight="60.0" prefWidth="1243.0" StackPane.alignment="TOP_CENTER">
+            <children>
+            <BorderPane layoutX="794.0" layoutY="15.0" prefHeight="31.0" prefWidth="439.0" AnchorPane.leftAnchor="794.0" AnchorPane.rightAnchor="10.0">
+               <center>
+                  <Label fx:id="mapLabel" text="%NoMapLoadedLbl" BorderPane.alignment="CENTER_RIGHT" />
+               </center>
+               <right>
+                  <Button fx:id="newMapButton" mnemonicParsing="false" onAction="#createNewButtonAction" styleClass="mindlinerButton" text="%NewMapBtn" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets left="10.0" />
+                     </BorderPane.margin>
+                  </Button>
+               </right>
+               <left>
+                  <Button fx:id="resetZoomAndPan" mnemonicParsing="false" onAction="#initZoomAndPan" styleClass="mindlinerButton" text="%ResetViewBtn" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets right="10.0" />
+                     </BorderPane.margin>
+                  </Button>
+               </left>
+            </BorderPane>
+            <FlowPane alignment="CENTER_LEFT" hgap="10.0" layoutX="500.0" layoutY="5.0" prefHeight="50.0" prefWidth="336.0" AnchorPane.leftAnchor="500.0" AnchorPane.topAnchor="5.0">
+               <children>
+                      <ComboBox fx:id="containerSelection" prefWidth="150.0" />
+                  <FlowPane prefHeight="25.0" prefWidth="164.0">
+                     <children>
+                        <ToggleButton fx:id="containerToggleButton" mnemonicParsing="false" onAction="#drawToggleAction" styleClass="mindlinerButton">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="mainToggleGroup" />
+                           </toggleGroup>
+                        </ToggleButton>
+                        <ToggleButton fx:id="linkToggleButton" mnemonicParsing="false" onAction="#lineToggleAction" styleClass="mindlinerButton" toggleGroup="$mainToggleGroup" />
+                        <ToggleButton fx:id="cursorToggleButton" mnemonicParsing="false" onAction="#cursorToggleAction" styleClass="mindlinerButton" toggleGroup="$mainToggleGroup" />
+                     </children>
+                  </FlowPane>
+               </children>
+            </FlowPane>
+            <ScrollPane fx:id="IconPickerPane" hbarPolicy="NEVER" layoutX="7.0" layoutY="5.0" onMouseEntered="#onMouseEnteredIconPicker" onMouseExited="#onMouseExitedIconPicker" prefHeight="50.0" prefWidth="240.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="5.0" />
+            <ScrollPane fx:id="TypePickerPane" hbarPolicy="NEVER" layoutX="247.0" layoutY="5.0" onMouseEntered="#onMouseEnteredTypePicker" onMouseExited="#onMouseExitedTypePicker" prefHeight="50.0" prefWidth="144.0" AnchorPane.leftAnchor="260.0" AnchorPane.topAnchor="5.0" />
+            </children>
+        </AnchorPane>
+    </children>
+</StackPane>

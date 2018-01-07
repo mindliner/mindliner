@@ -1,0 +1,62 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 14-Apr-2015, 16:48:57
+    Author     : Ming
+*/
+
+  .node {
+    cursor: pointer;
+    background-color: #9DC6D2;
+  }
+
+  .overlay{
+      /*border: 1px solid black;*/
+  }
+   
+  .node circle {
+    fill: #fff;
+    stroke: steelblue;
+    stroke-width: 1.5px;
+  }
+  
+  circle.selected {
+    fill: coral !important;
+    stroke: indianred;
+    stroke-width: 1.5px;
+  }
+   
+  .node text {
+    font-family: "Trebuchet MS", Arial, sans-serif !important;
+    font-size:14px; 
+    font-family:sans-serif;
+  }
+   
+  .link {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 1.5px;
+  }
+
+  .templink {
+    fill: none;
+    stroke: red;
+    stroke-width: 3px;
+  }
+  
+  .searchlink{
+      fill:none;
+      stoke: blue;
+      stroke-width: 1px;
+  }
+
+  .ghostCircle.show{
+      display:block;
+  }
+
+  .ghostCircle, .activeDrag .ghostCircle{
+       display: none;
+  }

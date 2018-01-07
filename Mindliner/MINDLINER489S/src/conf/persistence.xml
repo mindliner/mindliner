@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+  <persistence-unit name="MindlinerEE-ejbPU" transaction-type="JTA">
+    <provider>oracle.toplink.essentials.PersistenceProvider</provider>
+    <jta-data-source>MindlinerDataSource</jta-data-source>
+    <class>com.mindliner.categories.mlsBusinessCategory</class>
+    <class>com.mindliner.categories.mlsCategory</class>
+    <class>com.mindliner.categories.mlsConfidentiality</class>
+    <class>com.mindliner.categories.mlsKnowletCategory</class>
+    <class>com.mindliner.categories.mlsPriority</class>
+    <class>com.mindliner.entities.Colorizer</class>
+    <class>com.mindliner.entities.MlsCell</class>
+    <class>com.mindliner.entities.MlsColor</class>
+    <class>com.mindliner.entities.MlsColorScheme</class>
+    <class>com.mindliner.entities.UserQuery</class>
+    <class>com.mindliner.entities.mlsClient</class>
+    <class>com.mindliner.entities.mlsContact</class>
+    <class>com.mindliner.entities.mlsCountry</class>
+    <class>com.mindliner.entities.mlsForeignDataSource</class>
+    <class>com.mindliner.entities.mlsKnowlet</class>
+    <class>com.mindliner.entities.mlsLog</class>
+    <class>com.mindliner.entities.mlsNickName</class>
+    <class>com.mindliner.entities.mlsObject</class>
+    <class>com.mindliner.entities.mlsObjectCollection</class>
+    <class>com.mindliner.entities.mlsRatingDetail</class>
+    <class>com.mindliner.entities.mlsRatingRange</class>
+    <class>com.mindliner.entities.mlsTask</class>
+    <class>com.mindliner.entities.mlsUser</class>
+    <class>com.mindliner.entities.mlsWeekPlan</class>
+    <class>com.mindliner.entities.mlsWorkUnit</class>
+    <class>com.mindliner.entities.SoftwareFeature</class>
+    <class>com.mindliner.entities.Synchunit</class>
+    <class>com.mindliner.entities.Syncher</class>
+    <class>com.mindliner.entities.MlsSpreadsheet</class>
+    <class>com.mindliner.entities.MlsImage</class>
+    <class>com.mindliner.entities.MlAuthenticationGroups</class>
+    <class>com.mindliner.entities.MlsLink</class>
+    <class>com.mindliner.entities.MlsImageURL</class>
+    <class>com.mindliner.entities.SysEnvironment</class>
+    <class>com.mindliner.entities.Island</class>
+    <class>com.mindliner.entities.Release</class>
+    <class>com.mindliner.entities.UserDefaults</class>
+    <class>com.mindliner.entities.UserClientLink</class>
+    <class>com.mindliner.entities.UserClientLinkPk</class>
+    <class>com.mindliner.entities.MlAuthorization</class>
+    <class>com.mindliner.entities.MlObjectDefaults</class>
+    <class>com.mindliner.entities.MlObjectDefaultsConfidentialities</class>
+    <class>com.mindliner.entities.MlsUserReport</class>
+    <class>com.mindliner.entities.mlsWorksphereMap</class>
+    <class>com.mindliner.entities.mlsWorksphereMapNode</class>
+    <class>com.mindliner.entities.MlsContainer</class>
+    <class>com.mindliner.entities.MlsContainerMap</class>
+    <class>com.mindliner.entities.MlsContainermapObjectPosition</class>
+    <class>com.mindliner.entities.MlsContainermapObjectLink</class>
+    <class>com.mindliner.entities.MlsEvent</class>
+    <class>com.mindliner.entities.MlsSubscription</class>
+    <class>com.mindliner.categories.MlsNewsType</class>
+    <class>com.mindliner.entities.MlUserPreferences</class>
+    <class>com.mindliner.entities.MlsNews</class>
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <properties>
+      <property name="hibernate.show_sql" value="true"/>
+    </properties>
+  </persistence-unit>
+</persistence>

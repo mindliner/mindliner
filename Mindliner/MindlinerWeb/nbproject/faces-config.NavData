@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene Scope="Project" version="2">
+    <Scope Scope="Faces Configuration Only"/>
+    <Scope Scope="Project">
+        <Node id="enrollment.xhtml" x="1150" y="450" zoom="true"/>
+        <Node id="statistics/lineChartReport.xhtml" x="150" y="450" zoom="true"/>
+        <Node id="forms/signupForm.xhtml" x="650" y="450" zoom="true"/>
+        <Node id="forms/addSubscriptionForm.xhtml" x="400" y="900" zoom="true"/>
+        <Node id="workspace.xhtml" x="1400" y="150" zoom="true"/>
+        <Node id="forms/addPoolForm.xhtml" x="1900" y="150" zoom="true"/>
+        <Node id="masteradmin/userDetails.xhtml" x="1650" y="450" zoom="true"/>
+        <Node id="masteradmin/deleteClientConfirmation.xhtml" x="1400" y="600" zoom="true"/>
+        <Node id="masteradmin/dataManager.xhtml" x="900" y="450" zoom="true"/>
+        <Node id="forms/newsForm.xhtml" x="150" y="300" zoom="true"/>
+        <Node id="forms/relativesForm.xhtml" x="1150" y="750" zoom="true"/>
+        <Node id="dashboard.xhtml" x="650" y="150" zoom="true"/>
+        <Node id="masteradmin/addUser.xhtml" x="2150" y="150" zoom="true"/>
+        <Node id="statistics/barChartReport.xhtml" x="900" y="750" zoom="true"/>
+        <Node id="datapools.xhtml" x="1150" y="600" zoom="true"/>
+        <Node id="statistics/userLinksReport.xhtml" x="1150" y="150" zoom="true"/>
+        <Node id="masteradmin/adminHome.xhtml" x="400" y="600" zoom="true"/>
+        <Node id="forms/objectForm.xhtml" x="1650" y="150" zoom="true"/>
+        <Node id="codes/500.xhtml" x="650" y="300" zoom="true"/>
+        <Node id="templates/email/dataPoolInvitation.html" x="150" y="600" zoom="true"/>
+        <Node id="templates/header.xhtml" x="150" y="1200" zoom="true"/>
+        <Node id="forms/inviteUserForm.xhtml" x="400" y="750" zoom="true"/>
+        <Node id="templates/layout.xhtml" x="650" y="750" zoom="true"/>
+        <Node id="forms/subscriptionsForm.xhtml" x="150" y="150" zoom="true"/>
+        <Node id="timeout.xhtml" x="400" y="450" zoom="true"/>
+        <Node id="masteradmin/MasterAdmTmpl.xhtml" x="1400" y="450" zoom="true"/>
+        <Node id="statistics/userActivityReport.xhtml" x="400" y="300" zoom="true"/>
+        <Node id="account.xhtml" x="650" y="900" zoom="true"/>
+        <Node id="invitations.xhtml" x="650" y="600" zoom="true"/>
+        <Node id="codes/404.xhtml" x="150" y="900" zoom="true"/>
+        <Node id="masteradmin/iconManager.xhtml" x="150" y="1050" zoom="true"/>
+        <Node id="signup.xhtml" x="1650" y="300" zoom="true"/>
+        <Node id="masteradmin/addIcons.xhtml" x="400" y="1050" zoom="true"/>
+        <Node id="templates/email/dataPoolAndMindlinerInvitation.html" x="400" y="150" zoom="true"/>
+        <Node id="forms/newObjectForm.xhtml" x="150" y="750" zoom="true"/>
+        <Node id="masteradmin/releaseManager.xhtml" x="1400" y="300" zoom="true"/>
+        <Node id="news.xhtml" x="1150" y="300" zoom="true"/>
+        <Node id="templates/palette.html" x="900" y="600" zoom="true"/>
+        <Node id="forms/listObjectsForm.xhtml" x="900" y="300" zoom="true"/>
+        <Node id="codes/401.xhtml" x="1900" y="300" zoom="true"/>
+        <Node id="forms/searchForm.xhtml" x="900" y="150" zoom="true"/>
+    </Scope>
+    <Scope Scope="All Faces Configurations"/>
+</Scene>

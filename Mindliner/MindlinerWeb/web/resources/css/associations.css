@@ -1,0 +1,19 @@
+.fdgNodeSelected {
+    fill: #66CCCC !important;
+}
+
+#associationsButtons p, #associationsButtons div{
+    display: inline-block;
+    padding-top: 0.25em;
+    text-align: center;
+    height: 1.5em;
+    cursor: pointer;
+}
+
+#associationsButtonsOnClick {
+    visibility: hidden;
+}
+
+#fdgRootHistoryButton {
+    background: lightgrey;
+}

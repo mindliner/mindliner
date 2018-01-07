@@ -1,0 +1,25 @@
+*--------------*
+|    Files     |
+*--------------*
+
+* bower.json
+* package.json
+
+contain dependencies when running a test web server with nodejs & npm and should not be put on the productive web server.
+See https://docs.angularjs.org/tutorial for more details.
+
+*.htaccess
+
+contains project specific configuration for the Apache web server (such as URL rewrite rules).
+
+
+*--------------------------------*
+|    Deployment on Production    |
+*--------------------------------*
+
+Compress mindliner.css (e.g. via http://csscompressor.com/) and save as
+* mindliner.min.css
+
+Do not forget to change to mindliner.min.css on production.
+Note: There is no straightforward way to minify a AngularJS file afaik.
+

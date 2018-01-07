@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:body>
+        <!-- Hide small search field at navigation-->
+        <script>
+            $(document).ready(function() {
+                $('#smallsearchfield-banner').hide();
+                $('#smallsearchfield-nav').hide();
+            });
+        </script>
+        <h:panelGrid columns="1">
+            <h:dataTable styleClass="ml-datatable hide-empty-cells" value="#{searchBB.searchResults}" var="item" rules="rows" 
+                         headerClass="results-header" footerClass="center" columnClasses="icon-column,break-words" rows="#{searchBB.rowsToShow}">
+                <!--Table Header (number of results)-->
+                <f:facet name="header">#{searchBB.searchResults.size()} Results
+                </f:facet>
+                <!--Table Footer (used to provide extra information)-->
+                <f:facet name="footer">
+                    <h:outputText value="#{txt['NoSearchResults']}" rendered="#{searchBB.searchResults.size() == 0}"/>
+                </f:facet>
+                <!--Type Icon Column-->
+                <h:column>
+                    <h:graphicImage styleClass="IconColumn" alt="#{objectBB.getObjectClassAltString(item)}" url="#{iconBB.getClassIconUrl(item)}"/>
+                </h:column>
+                <!--Headline, User, Description Column-->
+                <h:column>
+                    <h:link value="#{item.headline}" outcome="workspace" rendered="#{!item.archived}" title="#{item.description}">
+                        <f:param name="id" value="#{item.id}"/>
+                    </h:link>
+
+                    <h:link class="expired" value="#{item.headline}" outcome="workspace" rendered="#{item.archived}" title="#{item.description}">
+                        <f:param name="id" value="#{item.id}"/>
+                    </h:link>
+                    <h:outputText class="secondaryInformation" value=" (by #{item.owner.userName}) "/>
+                </h:column>
+                <!--Privacy Icon Column-->
+                <h:column>
+                    <h:graphicImage class="IconColumn" alt="Privacy" url="#{iconBB.getPrivacyIconUrl(item)}" rendered="#{item.privateAccess}"/>
+                </h:column>
+            </h:dataTable>
+            <!-- MORE | LESS Handles -->        
+            <h:panelGroup class="block center fakeButton" style="margin:auto;" rendered="#{searchBB.searchResults.size() > 0 }" >
+                <h:commandLink class="text" value="#{txt['More']}" rendered="#{searchBB.rowsToShow lt searchBB.searchResults.size()}"
+                               action="#{searchBB.setRowsToShow(searchBB.rowsToShow+10)}">
+                    <f:ajax execute="@form" render="@form"/>
+                </h:commandLink>
+                <h:outputText value=' | ' rendered='#{searchBB.rowsToShow lt searchBB.searchResults.size() and searchBB.rowsToShow > 5}'/>
+                <h:commandLink class="text" value="#{txt['Less']}" rendered="#{searchBB.rowsToShow > 5}" 
+                               action="#{searchBB.setRowsToShow(5)}">
+                    <f:ajax execute="@form" render="@form"/>
+                </h:commandLink>
+            </h:panelGroup>
+        </h:panelGrid>
+    </h:body>
+</html>

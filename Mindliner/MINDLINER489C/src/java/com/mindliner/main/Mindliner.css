@@ -1,0 +1,48 @@
+.hyperLink {
+	font-family: "Trebuchet MS", Arial, Geneva, Helvetica;
+	font-size: 10pt;
+	font-weight: bold;
+	color: Navy;
+	line-height: 16px;
+	text-decoration: underline
+}
+.body {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10pt}
+.topicTitle {
+	font-family: "Times New Roman", Times, serif;
+	font-size: 14pt;
+	font-weight: bolder;
+	color: Navy;
+	border-bottom-width: thin
+}
+.tableTitle {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12pt;
+	font-weight: bolder;
+	color: Black;
+	border-bottom-width: thin
+}
+.subscription {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9pt;
+	color: Gray;
+}
+.itemlist {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10pt}
+.keyWord {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	color: Maroon;
+	font-weight: bold
+}
+.menuItem {  font-family: "Times New Roman", Times, serif; font-size: 10pt; font-weight: bolder}
+.code {
+	font-family: "Courier New", Courier, mono;
+	font-size: 12pt;
+	font-style: normal;
+	font-weight: bold ;
+	color: Silver;
+}
+.note {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9pt;
+	color: Silver;
+}

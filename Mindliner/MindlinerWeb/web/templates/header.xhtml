@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <body>
+        <ui:composition>
+            <div id="fixed-top" class="sb-slide">
+                <img src="../resources/images/menu.png" class="sb-toggle-left" />
+            </div>
+            <h:link outcome="#{not empty request.remoteUser ? 'dashboard' : 'signup'}" value="Mindliner" styleClass="header-title">
+                <h:graphicImage library="images" name="logo.png" />
+            </h:link>
+            <h:link style="float:right; margin-top:0.5em; margin-right: 1.0em;" class="rounded fakeButton" value="#{txt['SignIn']}" 
+                    id="signInButton" outcome="workspace" rendered="#{empty request.remoteUser}"/>
+            <h:form id="smallsearchfield-nav" style="display:inline;">
+                <h:panelGroup class="banner-search" rendered="#{not empty request.remoteUser}">
+                    <h:inputText class="rounded-left small-search" id="searchstring" value="#{searchBB.searchString}" size="20" 
+                                 title="Enter search words or the term id followed by the object id"  tabindex="1"/>
+                    <h:commandButton class="rounded-right small-search-button" id="nav-searchbtn" title="Alternatively use ENTER in the search box"
+                                     action="#{searchBB.loadObjectsMatchingSearchString()}">
+                        <f:ajax execute="@form" render="@form"/>
+                    </h:commandButton>
+                    <!--<h:commandButton action="#{subscriptionBB.deliver()}" value="Deliver"/>-->
+                </h:panelGroup>
+            </h:form>
+            <h:form id="nav" rendered="#{not empty request.remoteUser}">
+                <h:outputText value="#{mindlinerWeb.currentUser.firstName}" class="header-user label"/>
+                <p:menuButton value=" ">
+                    <p:menuitem value="Dashboard" outcome="dashboard"/>
+                    <p:menuitem value="Workspace" outcome="workspace"/>
+                    <p:menuitem value="Masteradmin" outcome="masteradmin/adminHome" rendered="#{masterAdminBB.masterAdmin}"/>
+                    <p:separator />
+                    <p:menuitem value="Account Settings" outcome="account"/>
+                    <p:menuitem value="News &#38; Subscriptions" outcome="news" rendered="#{mindlinerWeb.authorizedForSubscription}"/>
+                    <p:menuitem value="Datapools" outcome="datapools"/>
+                </p:menuButton>                 
+            </h:form>
+        </ui:composition>
+    </body>
+</html>

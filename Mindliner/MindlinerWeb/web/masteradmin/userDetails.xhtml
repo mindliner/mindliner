@@ -1,0 +1,160 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>User Details</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="adminHome.xhtml">
+            <ui:define name="content">
+
+                <h:form id="userForm">
+                    <h:panelGrid columns="2" columnClasses="rounded underlay mlpanel, mlpanel" headerClass="title">
+                        <f:facet name="header">
+                            <h:outputText value="User Details"/>
+                        </f:facet>
+                        <!--Control Panel for Users of a specified Client-->
+                        <h:panelGrid columns="1" rendered="#{masterAdminBB.currentClient != null}">
+                            <h:outputText value="Users of &quot;#{masterAdminBB.currentClient.name}&quot;" class="h3-style"/>
+                            <h:selectOneRadio id="userSelector" 
+                                              value="#{masterAdminBB.currentUser}" 
+                                              layout="pageDirection" 
+                                              styleClass="ml-datatable"
+                                              >
+                                <f:selectItems value="#{masterAdminBB.currentClient.users}"/>
+
+                                <!-- see for the following ref to target component: 
+                                http://stackoverflow.com/questions/8634156/how-to-reference-components-in-jsf-ajax-cannot-find-component-with-identifier/8644762#8644762-->
+
+                                <f:ajax render="userDetails"/>
+
+                                <f:converter binding="#{mlUserConverter}"/>
+                            </h:selectOneRadio>
+                            <h:commandButton value="Create User" class="rounded mlButton" action="addUser?faces-redirect=true" immediate="true"/>
+                        </h:panelGrid>
+                        <!--Control Panel for all Users-->
+                        <h:panelGrid columns="1" rendered="#{masterAdminBB.currentClient == null}">
+                            <h3>All Users</h3>
+                            <h:selectOneMenu id="allUserSelector" 
+                                              value="#{masterAdminBB.currentUser}" 
+                                              styleClass="ml-datatable"
+                                              >
+                                <f:selectItems value="#{masterAdminBB.usersSortedByLoginDesc}"/>
+
+                                <!-- see for the following ref to target component: 
+                                http://stackoverflow.com/questions/8634156/how-to-reference-components-in-jsf-ajax-cannot-find-component-with-identifier/8644762#8644762-->
+
+                                <f:ajax render="userDetails"/>
+
+                                <f:converter binding="#{mlUserConverter}"/>
+                            </h:selectOneMenu>
+                        </h:panelGrid>
+                     
+                        <h:panelGrid id="userDetails" 
+                                     columns="2" 
+                                     rendered="#{masterAdminBB.currentUser != null}" 
+                                     columnClasses="mlpanel">
+
+                            <h:outputLabel styleClass="labelText" value="Username:" for="currentUserField"/>
+                            <h:outputText id="currentUserField" value="#{masterAdminBB.currentUser.userName} (#{masterAdminBB.currentUser.firstName} #{masterAdminBB.currentUser.lastName}, id = #{masterAdminBB.currentUser.id})"/>
+
+                            <h:outputLabel  styleClass="labelText" value="Status"/>
+                            <h:panelGroup id="userStateGroup">
+                                <h:outputText value="User account is active. " rendered="#{masterAdminBB.currentUser.active}"/>
+                                <h:commandButton id="userInactivateButton" value="Inactivate" action="#{masterAdminBB.inactivateCurrentUser()}" rendered="#{masterAdminBB.currentUser.active}">
+                                    <f:ajax render="userStateGroup"/>
+                                </h:commandButton>
+
+                                <h:outputText value="User account is inactive. " rendered="#{!masterAdminBB.currentUser.active}"/>
+                                <h:commandButton value="Activate" action="#{masterAdminBB.activateCurrentUser()}" rendered="#{!masterAdminBB.currentUser.active}">
+                                    <f:ajax render="userStateGroup"/>
+                                </h:commandButton>
+
+                            </h:panelGroup>
+                            <h:outputLabel styleClass="labelText" value="Last Seen:" for="lastSeenField"/>
+                            <h:outputText id="lastSeenField" value="#{masterAdminBB.currentUser.lastSeen}"/>
+
+                            <h:outputLabel styleClass="labelText" for="objectcount" value="Object Count"/>
+                            <h:outputText id="objectcount" value="#{mindlinerWeb.getObjectCount(masterAdminBB.currentUser)}"/>
+
+                            <h:outputLabel styleClass="labelText" for="loginCountField" value="Login Count:"/>
+                            <h:outputText id="loginCountField" value="#{masterAdminBB.currentUser.loginCount}"/>
+
+                            <h:outputLabel styleClass="labelText" value="Set New Password" for="changePasswordButton"/>
+                            <h:panelGroup>
+                                <h:inputSecret value="#{masterAdminBB.password}"/>
+                                <h:commandButton id="changePasswordButton" value="Update Password" action="#{userBB.savePasswordForUser(masterAdminBB.currentUser, masterAdminBB.password)}"/>
+                            </h:panelGroup>
+
+                            <h:outputLabel styleClass="labelText" for="maxconftable" value="Memberships:"/>
+                            <h:dataTable id="maxconftable" var="conf" value="#{masterAdminBB.currentUser.maxConfidentialities}" 
+                                         styleClass="ml-datatable" headerClass="ml-datatable-header" rowClasses="ml-datatable-odd-rows, ml-datatable-even-rows">
+                                <h:column>
+                                    <f:facet name="header">Data Pool</f:facet>
+                                    <h:outputText value="#{conf.client}"/>
+                                </h:column>
+
+                                <h:column>
+                                    <f:facet name="header">Max. Confidentiality</f:facet>
+                                    <h:outputText value="#{conf.name}"/>
+                                </h:column>
+                            </h:dataTable>
+
+                            <h:outputLabel styleClass="labelText" for="showLog" value="Show Log" />
+                            <h:selectBooleanCheckbox id="showLog"  value="#{masterAdminBB.showLog}">
+                                <f:ajax render="logTable"/>
+                            </h:selectBooleanCheckbox>
+
+                            <h:outputLabel value="." for="logTable"/>
+                            <h:dataTable id="logTable" var="logEntry" 
+                                         value="#{masterAdminBB.currentUserLog}" 
+                                         styleClass="ml-datatable"
+                                         headerClass="ml-datatable-header"
+                                         rowClasses="ml-datatable-odd-rows, ml-datatable-even-rows"
+                                         captionClass="ml-datatable-caption">
+
+                                <h:column rendered="#{masterAdminBB.showLog}">
+                                    <f:facet name="header">Log Date</f:facet>
+                                    <h:outputText value="#{logEntry.time}"/>
+                                </h:column>
+
+                                <h:column rendered="#{masterAdminBB.showLog}">
+                                    <f:facet name="header">Method</f:facet>
+                                    <h:outputText value="#{logEntry.method}"/>
+                                </h:column>
+
+                                <h:column rendered="#{masterAdminBB.showLog}">
+                                    <f:facet name="header">Log</f:facet>
+                                    <h:outputText value="#{logEntry.headline}"/>
+                                </h:column>
+                            </h:dataTable>
+
+                            <h:outputLabel styleClass="labelText" value="Features" for="featureTable" rendered="#{masterAdminBB.masterAdmin}"/>
+                            <h:dataTable id="featureTable" value="#{masterAdminBB.currentUserFeatures}" var="feature" 
+                                         styleClass="ml-datatable"
+                                         headerClass="ml-datatable-header"
+                                         rowClasses="ml-datatable-odd-rows, ml-datatable-even-rows"
+                                         rendered="#{masterAdminBB.masterAdmin}">
+                                <h:column>
+                                    <f:facet name="header">Feature</f:facet>
+                                    <h:outputText value="#{feature.feature.name}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">Active</f:facet>
+                                    <h:selectBooleanCheckbox value="#{feature.active}">
+                                        <f:ajax render="featureTable"/>
+                                    </h:selectBooleanCheckbox>
+                                </h:column>
+                            </h:dataTable>
+                        </h:panelGrid>
+                    </h:panelGrid>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+    </h:body>
+</html>
+

@@ -1,0 +1,3 @@
+ALTER TABLE `mindliner5`.`links` CHANGE COLUMN `RELATIVE_TYPE` `RELATIVE_TYPE` VARCHAR(64) NOT NULL DEFAULT 'OBJECT';
+
+update links set relative_type = 'OBJECT';

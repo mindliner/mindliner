@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Line Chart Report</title>
+        <script src="../resources/js/d3.v3.min.js"></script>
+        <script src="../resources/js/lineChartReport.js"></script>
+        <link href="../resources/css/lineChartReport.css" rel="stylesheet" type="text/css" />
+    </h:head>
+    <h:body>
+        <h2>Line Chart Report</h2>
+        <h:form>
+            <h:selectOneMenu value="">
+                <f:selectItem itemValue="Cream Latte" itemLabel="Coffee3 - Cream Latte" />
+                <f:selectItem itemValue="Extreme Mocha" itemLabel="Coffee3 - Extreme Mocha" />
+                <f:selectItem itemValue="Buena Vista" itemLabel="Coffee3 - Buena Vista" />
+            </h:selectOneMenu>
+
+            <div id="svgContainer2"></div> 
+            <script>
+                var data = '[{"name": "dataset1","values": [{"amount": 1,"date": "2014-01-01"},{"amount": 2,"date": "2014-01-02"}]}]';
+
+                var chart = buildLineChart(data);
+            </script>
+
+            <div id="buttons">
+                <h:commandButton value="Last Week" type="button" onclick='chart.changeDate("week");' />
+                <h:commandButton value="Last Month" type="button" onclick='chart.changeDate("month");' />
+                <h:commandButton value="Last Year" type="button" onclick='chart.changeDate("year");' />
+            </div>
+        </h:form>
+    </h:body>
+</html>
+

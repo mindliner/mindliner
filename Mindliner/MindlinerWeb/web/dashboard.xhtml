@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:body>
+        <ui:composition template="/templates/layout.xhtml">
+            <ui:define name="title">Mindliner | Dashboard</ui:define>
+            <ui:define name="fullwidth-content">
+                 <!--SCRIPTS & CSS-->
+                <h:outputScript name="d3.v3.min.js" library="js"/>
+                <h:outputScript name="lineChartReport.js" library="js"/>
+                <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+                <h:outputStylesheet name="lineChartReport.css" library="css"/>
+                
+                <!--SEARCH BOX-->
+                <h:form id="searchbox-form" rendered="#{mindlinerWeb.datapoolAvailable()}">
+                    <h:outputText class="h3-style" value="#{txt['SearchboxInfoText']}"/>
+                    <ui:include src="forms/searchForm.xhtml">
+                        <ui:param name="searchInputClass" value="search" />
+                        <ui:param name="searchButtonClass" value="search-button"/>
+                        <ui:param name="settingsIcon" value="settings-icon"/>
+                        <ui:param name="addButtonStyle" value="background-color:white; vertical-align:middle; margin-top:2.2em;"/>
+                        <ui:param name="fontSize" value=""/>
+                    </ui:include>
+                </h:form>
+ 
+                <div id="dashboard">
+                    <!--NEWS FORM-->
+                    <h:form id="news" class="turquoise left" rendered="#{mindlinerWeb.authorizedForSubscription}">
+                                        <!-- Hide small search field at navigation-->
+                        <ui:include src="forms/newsForm.xhtml">
+                            <ui:param name="showTitle" value="true"/>
+                            <ui:param name="loadMore" value="false"/>
+                        </ui:include>
+                    </h:form>
+                    <!--KEY NUMERICS ON THE GLOBAL MINDLINER SYSTEM--> 
+                    <h:form id="statistics" class="left">
+                        <h:outputText class="uppercase block title" value="#{txt['GlobalMindlinerStatisticsTitle']}"/>
+                        <h:panelGrid columns="2" class="underlay" columnClasses="right-column, left-column">
+                            <h:outputLabel id="objectLabel" value="#{txt['ObjectsLabel']}"/>
+                            <h:outputText id="objectCount" value="#{reportBB.totalObjectCount}">
+                                <f:convertNumber pattern="###,###,###"/>
+                            </h:outputText>
+                            <h:outputLabel id="linkLabel" value="#{txt['LinksLabel']}"/>
+                            <h:outputText id="linkCount" value="#{reportBB.totalLinkCount}">
+                                <f:convertNumber pattern="###,###,###"/>
+                            </h:outputText>
+                            <h:outputLabel id="userLabel" value="#{txt['UsersLabel']}"/>
+                             <h:outputText  id="loggedInUsers" value="#{reportBB.loggedInUserCount}">
+                                <p:poll interval="3" update="loggedInUsers" />
+                            </h:outputText>
+                            <h:outputLabel id="lastUpdateLabel" value="#{txt['LastUpdateLabel']}"/>
+                            <h:outputText id="lastModification" value="#{reportBB.lastObjectModificationTime}">
+                                <f:convertDateTime timeStyle="full" type="time"/>
+                            </h:outputText>
+                        </h:panelGrid>
+                        <p:poll interval="5" update="objectCount, linkCount, loggedInUsers, lastModification"/>
+                    </h:form>
+                    <!--REPORTS-->
+<!--                    <h:form class="left" id="activityChartsForm" rendered="#{mindlinerWeb.datapoolAvailable()}"
+                            style="border:2px solid #4E9797;">
+                        <ui:include src="/statistics/userActivityReport.xhtml" />
+                    </h:form>-->
+                </div>
+            </ui:define>
+        </ui:composition>
+        
+        <f:metadata>
+            <f:event type="preRenderView" listener="#{subscriptionBB.setNumNewsRows(25)}" />
+        </f:metadata>
+    </h:body>
+</html>

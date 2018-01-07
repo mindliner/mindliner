@@ -1,0 +1,1 @@
+INSERT INTO `mindliner5`.`knowletcategories` (`ID`, `NAME`, `LINKING_RECOMMENDED`, `CLIENT_ID`) VALUES ('11', 'bug report', '1', '1');

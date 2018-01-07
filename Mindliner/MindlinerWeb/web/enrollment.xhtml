@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:body>
+        <ui:composition template="templates/layout.xhtml">
+            <ui:define name="title">Mindliner | Enrollment Failed</ui:define>
+            <ui:define name="content">
+                <h:form style="text-align:center;">
+                    <h1 style="color: tomato;">Enrollment Failed</h1>
+                    <h:outputText value="Your error message is displayed above. If you feel that something is not right, please write an email to "/>
+                    <h:outputLink value="mailto:support@mindliner.com">
+                        <h:outputText value="Mindliner."/>
+                    </h:outputLink>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

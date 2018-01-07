@@ -1,0 +1,605 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3,
+h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address,
+big, cite, code, del, dfn, em, font, img, ins, kbd, q, s,
+samp, small, strike, strong, sub, sup, tt, var, b, u, i,
+center, dl, dt, dd, ol, ul, li, fieldset, form, label,
+legend, table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0; padding: 0; border: 0; outline: 0;
+    font-size: 100%; vertical-align: baseline;
+    background: transparent; }
+ol, ul { list-style: none; }
+a { text-decoration:none; }
+
+/* ----------------- HTML Tags -------------------- */
+
+/* Fallback for browsers without HTML5 support */
+header, section, footer, aside, nav, main, article, figure {
+    display: block; 
+}
+
+html {
+    font-family: 'Trebuchet MS', sans-serif;
+    font-weight: 100;
+    background: url("lightbulb.jpg") no-repeat top left fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+h1 {
+    font-size: 3.0em;
+    color: #93D8E3;
+    margin-bottom: 0.5em;
+}
+
+h2 {
+    text-align: center;
+    margin: 0.5em;
+    color: #034E5A;
+    font-size: 2.0em;
+}
+
+h3 {
+    font-size: 1.5em;
+    text-align: center;
+    margin: 0.5em;
+    color: #034E5A;
+}
+
+p {
+    margin-bottom: 5px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: white;
+}
+
+header h1 {
+    padding-left : 1.0em;
+    padding-right: 1.0em;
+    font-size: 4.0em;
+    color: #4E9797;
+    position: relative;
+}
+
+.sb-slide img,
+header h1 img {
+    max-height: 1.5em;
+    position: relative;
+    top: 0.3em;
+    left: 0.2em;
+}
+
+nav {
+    text-align: right;
+    display: table-cell;
+}
+
+nav a {
+    color: #1B4D4D;
+    font-size: 1.5em;
+    padding: 1.0em;
+    text-decoration: none;
+    font-family: 'Open Sans', sans-serif;
+}
+
+footer {
+    margin-top: 500px;
+    background: #034E5A;
+}
+
+footer p,
+footer a {
+ color: #BFE6E6;
+ font-size: small;
+}
+
+video {
+    margin: auto;
+    border: 2pt solid #093636;
+    display: block;
+    margin-top: 3.0em;
+    margin-bottom: 3.0em;
+}
+
+strong {
+    font-weight: 900;
+}
+
+/* ----------------- Wrappers -------------------- */
+
+.header-wrapper {
+   width: 100%;
+}
+
+.footer-wrapper {
+    margin: auto;
+    padding: 2.0em;
+    text-align: center;
+}
+
+.image-wrapper {
+    width: 92%;
+    margin: auto;
+    margin-top: 1.0em;
+    margin-bottom: 2.0em;
+}
+
+/* ----------------- General Styles -------------------- */
+
+.smaller {
+    font-size: smaller;
+}
+
+.medium {
+    font-size: medium;
+}
+
+.larger {
+    font-size: larger;
+}
+
+.x-large {
+    font-size: x-large;
+}
+
+.hidden {
+    display: none;
+}
+
+.ml-turquoise {
+    color: #4E9797;
+}
+
+.error-bar {
+    background: lightsalmon;
+    padding: 1.0em;
+    text-align: center;
+    color: crimson;
+}
+
+.row {
+    display: table-row;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+/* ----------------- Index -------------------- */
+
+#content {
+    margin-top: 240px;
+    margin-left: 10%;
+    margin-right: 14%;
+    max-width: 1280px;
+}
+
+/** Quotes **/
+#quote {font-size: 150%; height:2.0em;background:#4E9797; color:#BFE6E6;}
+#quote ul {list-style:none;}
+#quote li {display:none; position: absolute; padding-top:0.4em; padding-left: 2.8em;overflow:hidden;white-space:nowrap;}
+#quote li.active {display:block; vertical-align:middle;}
+#quote li.next {display:block; vertical-align:middle; margin-left: 300px; margin-right:-300px; opacity:0;}
+
+
+/** Anchors **/
+#anchor-bar {
+    position: fixed;
+    top: 50%;
+    right: 60px;
+}
+
+#anchor-bar li {
+    text-align: right;
+    margin-bottom: 1.5em;
+    list-style: square url("circle.png");
+}
+
+#anchor-bar li:hover {
+    list-style: square url("circle-dark.png");
+}
+
+#anchor-bar li.active {
+    list-style: square url("circle-dark.png");
+}
+
+#anchor-bar li > a {
+    color: #337373;
+    text-decoration: none;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#anchor-bar li > a:hover,
+#anchor-bar li.active > a {
+    color: #093636;
+    font-size: larger;
+    font-weight: 600;
+}
+
+#signing
+{
+    position: fixed;
+    top: 15px;
+    right: 30px;
+}
+
+/* Following two rules are needed as a workaround for the fixed header */
+.anchor {
+   position: relative;
+   padding-top: 135px;
+}
+
+#about, #benefits, #partners, #team {
+    visibility: hidden;
+}
+
+/* ----------------- General Section/Article Layouts -------------------- */
+
+.chapter {
+    margin-left: 1.0em;
+    margin-top: 5.0em;
+    overflow: auto;
+}
+
+.col-1-entry {
+    width: 90%;
+    padding: 4%;
+    margin: 1%;
+    background: white;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.col-3-entry {
+    float: left;
+    width: 320px;
+    height: 300px;
+    padding: 1.5em;
+    margin: 0.7em;
+    background: white;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    float: left;
+    text-align: center;
+}
+
+.col-2-entry {
+    float: left;
+    width: 480px;
+    height: 210px;
+    padding: 1.8em;
+    margin: 0.7em;
+    background: white;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    float: left;
+    text-align: center;
+}
+
+.slogan-light {
+    font-family: 'Trebuchet MS', sans-serif;
+    text-align: left;
+    color: #034E5A;
+    font-size: 2.0em;
+    margin: 15px;
+    margin-left: 40%;
+    margin-right: 5%;
+}
+
+.slogan-dark {
+    font-family: 'Trebuchet MS', sans-serif;
+    text-align: left;
+    color: #BFE6E6;
+    font-size: 2.0em;
+    margin: 15px;
+    padding-top: 1.0em;
+    max-width: 650px;
+}
+
+.chapter ul {
+    text-align: left;
+    padding: 1.0em;
+    padding-left: 2.0em;
+    text-indent: -2.0em;
+}
+
+.chapter ul li {
+    margin-bottom: 0.5em;
+}
+
+.chapter ul li:before {
+    content: '\2713';
+    padding: 0.5em;
+    color: #337373;
+    font-weight: 900;
+}
+
+/* ----------------- Impressum -------------------- */
+
+#impressum {
+    max-width: 600px;
+}
+
+#impressum  h2 {
+    font-size: 2.0em;
+    text-align: left;
+    margin: 0.5em 0 0.5em 0;
+    color: #4E9797;
+}
+
+#impressum h3{
+    color: #BFE6E6;
+    text-align: left;
+    margin: 0.2em 0 0.2em 0;
+}
+
+#impressum a,
+#impressum p {
+    color: #BFE6E6;
+}
+
+#impressum section {
+    margin-top: 2.0em;
+    margin-bottom: 3.0em;
+}
+
+/* ----------------- Tutorials -------------------- */
+
+.video-section {
+    padding: 1.0em;
+    background: white;
+    cursor: pointer;
+    margin: 1.0em;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    width: 80%;
+    margin: auto;
+    margin-bottom: 1.5em;
+}
+
+.description {
+    text-align: center;
+    width: 75%;
+    margin: auto;
+}
+
+.arrow-down {
+	width: 0; 
+	height: 0; 
+	border-left: 20px solid transparent;
+	border-right: 20px solid transparent;
+	border-top: 20px solid #337373;
+    margin: auto;
+    margin-top: 1.0em;
+}
+
+.arrow-up {
+	width: 0; 
+	height: 0; 
+	border-left: 20px solid transparent;
+	border-right: 20px solid transparent;
+	border-bottom: 20px solid #337373;
+    margin: auto;
+    margin-top: 1.0em;
+}
+
+/* ----------------- Downloads -------------------- */
+
+.link-section {
+    margin-top: 1.0em;
+    text-align: center;
+}
+
+.download-link:last-of-type {
+    margin-bottom: 10px;
+}
+
+.download-link {
+    padding: 2px;
+    background: #BFE6E6;
+    width: 60%;
+    margin: auto;
+    margin-top: 5px;
+    border-radius: 5px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.download-link > a {
+    color: #337373;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+article > .button:hover{
+    background: #337373;
+}
+
+article > .button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #034E5A;
+    color: #BFE6E6;
+}
+
+.button:hover,
+.download-link:hover {
+    background: #F6F2AE;
+}
+
+.button {
+    text-decoration: none;
+    color: #337373;
+    padding: 0.5em 1.0em 0.5em 1.0em;
+    background: #BFE6E6;
+    margin: 5px;
+    margin-bottom: 0.5em;
+    border-radius: 5px;
+    display: inline-block;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* ----------------- Slidebar -------------------- */
+
+img.sb-toggle-left {
+    display: none;
+}
+
+.navbar-title {
+    font-size: 1.7em;
+    display: none;
+}
+
+#slidebar {
+    background: white;
+}
+
+
+#slidebar li {
+    background: #337373;
+    list-style: none;
+    padding: 20px;
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+    border-bottom: 1px solid white;
+    text-align: center;
+}
+
+#slidebar li > a {
+    text-decoration: none;
+    font-size: medium;
+    color: white;
+    font-weight: bold;
+}
+
+#slidebar a {
+    color: #034E5A;
+}
+
+#slidebar p {
+    color: #034E5A;
+    font-size: x-small;
+    margin-left: 5px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+.sb-slide {
+    display: inline;
+    line-height: 2.0em;
+}
+
+#social img {
+    display: block;
+    margin: auto;
+    margin-top: 1.0em;
+}
+
+/* ----------------- Media Queries -------------------- */
+
+/* Change navigation style */
+@media only screen and (max-width: 1000px) {
+    
+    nav {
+        display: none;
+    }
+    
+    header  h1 {
+        display: none;
+    }
+    
+    .navbar-title {
+        display: inline;
+        padding: 0;
+        vertical-align: middle;
+    }
+
+    img.sb-toggle-left {
+        padding: 0.5em 1.0em 1.0em 0.5em;
+        display: inline;
+        vertical-align: middle;
+    }
+    
+    #anchor-bar {
+        display: none;
+    }
+    
+    #signing {
+        font-size: x-small;
+        top: 5px;
+        right: 5px;
+    }
+    
+    #fb-button {
+        display: none;
+    }
+    
+}
+
+/* Change section/article style */
+@media only screen and (max-width: 755px) {  
+    
+    #content {
+        margin: 100px 0.0em 0.0em 0.0em;
+        padding: 1.0em;
+    }
+    
+    .col-1-entry,
+    .col-3-entry,
+    .col-2-entry {
+        float: left;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        background: white;
+        margin: 2.0em 0 1.0em 0;
+    }
+    
+    .chapter {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    .chapter p {
+        padding: 1.0em;
+        word-wrap: break-word;
+    }
+    
+    .chapter ul {    
+        padding: 2.0em;
+        padding-left: 4.0em;
+    }
+    
+    .image-wrapper {
+        margin-bottom: 0;
+    }
+    
+    .chapter h1 {
+        margin-bottom: 0;
+    }
+    
+    .slogan-light {
+        display: none;
+    }
+    
+    #quote {
+        display: none;
+    }
+    
+    article > .button {
+        position: relative;
+    }
+    
+    h1 {
+        text-align: center;
+    }
+    
+}

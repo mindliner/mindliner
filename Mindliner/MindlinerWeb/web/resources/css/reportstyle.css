@@ -1,0 +1,21 @@
+/* 
+    Document   : reportstyle
+    Created on : 04.07.2013, 12:14:37
+    Author     : Marius Messerli
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+.arcstyle path {
+    stroke: white;
+    stroke-width: 2px;
+}
+
+.chordText{
+    
+}
+

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1">
+        <file>
+            <url>src/java/com/mindliner/gui/WeekPlanner.java</url>
+            <line>41</line>
+        </file>
+        <file>
+            <url>src/java/com/mindliner/weekplanner/WeekPlanner.java</url>
+            <line>335</line>
+        </file>
+        <file>
+            <url>src/java/com/mindliner/gui/tablemanager/MindlinerObjectTable.java</url>
+            <line>355</line>
+            <line>1022</line>
+        </file>
+        <file>
+            <url>src/java/com/mindliner/view/MindlinerMapperImpl.java</url>
+            <line>392</line>
+        </file>
+    </editor-bookmarks>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="20">
+        <file>
+            <url>src/java/com/mindliner/gui/tablemanager/MindlinerObjectTable.java</url>
+            <bookmark id="0">
+                <name/>
+                <line>1213</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>src/java/com/mindliner/clientobjects/MlcSpreadsheet.java</url>
+            <bookmark id="10">
+                <name/>
+                <line>70</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>src/java/com/mindliner/weekplanner/WorkPlanTransferHandler.java</url>
+            <bookmark id="13">
+                <name/>
+                <line>70</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>src/java/com/mindliner/gui/WeekPlanner.java</url>
+            <bookmark id="0">
+                <name/>
+                <line>41</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>src/java/com/mindliner/cache/MainCache.java</url>
+            <bookmark id="2">
+                <name/>
+                <line>207</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>src/java/com/mindliner/cache/WorkPlanCacheImpl.java</url>
+            <bookmark id="15">
+                <name/>
+                <line>406</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>src/java/com/mindliner/synch/SynchConfigurator.java</url>
+            <bookmark id="3">
+                <name/>
+                <line>590</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>src/java/com/mindliner/main/PeoplePanel.java</url>
+            <bookmark id="11">
+                <name/>
+                <line>479</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>src/java/com/mindliner/cache/ObjectCacheImpl.java</url>
+            <bookmark id="1">
+                <name/>
+                <line>341</line>
+                <key/>
+            </bookmark>
+            <bookmark id="12">
+                <name/>
+                <line>676</line>
+                <key/>
+            </bookmark>
+            <bookmark id="5">
+                <name/>
+                <line>973</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>src/java/com/mindliner/view/MindlinerMapperImpl.java</url>
+            <bookmark id="0">
+                <name/>
+                <line>398</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>src/java/com/mindliner/weekplanner/WeekPlanner.java</url>
+            <bookmark id="0">
+                <name/>
+                <line>605</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>src/java/com/mindliner/main/MindlinerMain.java</url>
+            <bookmark id="20">
+                <name/>
+                <line>627</line>
+                <key/>
+            </bookmark>
+            <bookmark id="14">
+                <name/>
+                <line>711</line>
+                <key/>
+            </bookmark>
+            <bookmark id="17">
+                <name/>
+                <line>1588</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>src/java/com/mindliner/view/positioner/BrizPositioner.java</url>
+            <bookmark id="16">
+                <name/>
+                <line>81</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>src/java/com/mindliner/commands/CellTypeUpdateCommand.java</url>
+            <bookmark id="9">
+                <name/>
+                <line>105</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group/>
+    </open-files>
+</project-private>

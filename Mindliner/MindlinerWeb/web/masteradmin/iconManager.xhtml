@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Mindliner Icon Manager</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="adminHome.xhtml">
+            <ui:define name="content">
+                <h2><h:outputText value="Icons of Data Pool: #{masterAdminBB.currentClient}"/></h2>
+                <h:form id="iconForm">
+
+                    <h:commandButton value="Ensure WSM Icons" styleClass="mlButton rounded" action="#{imageBB.ensureWSMIcons(masterAdminBB.currentClient)}"/>
+                    <h:commandButton value="Select All" styleClass="mlButton rounded" action="#{imageBB.selectAll()}"/>
+                    <h:commandButton value="Deselect All" styleClass="mlButton rounded" action="#{imageBB.deselectAll()}"/>
+                    <h:commandButton value="Save Descriptions" styleClass="mlButton rounded" action="#{imageBB.saveDescriptions()}"/>
+                    <h:commandButton 
+                        styleClass="deleteButton mlButton rounded" 
+                        value="Delete Selected" 
+                        action="#{imageBB.deleteSelectedIcons()}"/>
+
+                    <h:dataTable id="iconTable"                                  
+                                 value="#{imageBB.getIcons(masterAdminBB.currentClient)}"
+                                 var="icon"
+                                 styleClass="ml-datatable"
+                                 rowClasses="ml-datatable-odd-rows, ml-datatable-even-rows"
+                                 headerClass="ml-datatable-header"
+                                 columnClasses="center">
+
+                        <h:column>
+                            <f:facet name="header">Sel</f:facet>
+                            <h:selectBooleanCheckbox value="#{imageBB.iconSelection[icon.id]}"/>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Icon</f:facet>
+                            <p:graphicImage value="#{imageRetriever.image}" alt="#{icon.description}" height="32" width="32">
+                                <f:param name="imageId" value="#{icon.id}"/>
+                            </p:graphicImage>
+                            
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                Headline (Name)
+                            </f:facet>
+                            <h:outputText value="#{icon.headline}"/>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                Description (Meaning)
+                            </f:facet>
+                            <h:inputText value="#{icon.description}"/>
+                        </h:column>
+
+                    </h:dataTable>
+
+                    <h:commandButton styleClass="mlButton rounded" value="Add icons" action="addIcons.xhtml"/>
+
+                </h:form>
+            </ui:define>
+        </ui:composition>
+
+    </h:body>
+</html>
+

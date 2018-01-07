@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html ng-app="mindlinerApp">
+    <head>
+        <title>Mindliner</title>
+        <meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=0"/>
+        <!--CSS-->
+        <link rel="stylesheet" href="css/mindliner.css" type="text/css" charset="utf-8" />
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans" type="text/css">
+        <link rel="stylesheet" href="css/slidebars.min.css" type="text/css"/>
+        <!--FAVICON-->
+        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+        <!--SCRIPTS-->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <!--Fallback scripts in case CDN is unavailable-->
+        <script>window.jQuery || document.write('<script src="js/jquery-1.11.3.min.js">\x3C/script>')</script>
+        <script src="js/mindliner.js"></script>
+        <script src="js/slogans.js"></script>
+        <!--HTML5 support for , has to be commented out-->
+        <!--[if lt IE 9]>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.js"></script>
+        <![endif]-->
+	<base href="/">
+    </head>
+    <body>
+    <div id="sb-site" class="top-padding">
+        <header>
+            <noscript>
+                <div class="error-bar">
+                    <p><strong> This page requires Javascript to run correctly.</strong> </p>
+                </div>
+            </noscript>
+            <div class="header-wrapper" ng-controller="headerController">
+                <div class="row">
+                    <div class="sb-slide">
+                        <img src="images/menu.png" class="sb-toggle-left"/>
+                        <h1 class="navbar-title"> Mindliner</h1>
+                    </div>
+                    <a href="/"><h1>Mindliner<img src="images/logo.png"></h1></a>
+                    <nav>
+                        <a href="/product">Product</a>
+                        <a href="/downloads">Get Started</a>
+                        <a href="/tutorials">Tutorials</a>
+                    </nav>
+                    <div id="signing">
+                        <a href="https://www.facebook.com/mindliner">
+                            <img id="fb-button" src="images/facebook.svg" alt="Find us on Facebook" height="45" width="45" style="vertical-align:middle;">
+                        </a>
+                        <a class="uppercase button" href="https://mls1.mindliner.com:8181/MF2/faces/signup.xhtml">Sign Up</a>
+                        <a class="uppercase button" href="https://mls1.mindliner.com:8181/MF2/faces/dashboard.xhtml">Sign In</a>
+                    </div>
+                </div>
+                <section id="quote">
+                    <ul>
+                        <li ng-repeat="slogan in slogans"
+                            ng-click="activeIndex=$index;"
+                            ng-class={active:(activeIndex?activeIndex==$index:$first)}>
+                            {{slogan.slogan}}
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </header>
+        
+        <div>
+            <section ng-view id="content">
+                <!--Content from templates-->
+            </section>
+        </div>
+
+        <footer>
+            <div class="footer-wrapper">
+                <a href="/impressum">Impressum</a>
+                <p>&#169; Mindliner 2015. All Rights Reserved.</p>
+            </div>
+        </footer>
+    </div>   
+        <div id="slidebar" class="sb-slidebar sb-left">
+            <li><a class="slidebar-link" href="/product" onclick="">Product</a></li>
+            <li><a class="slidebar-link" href="/downloads">Get Started</a></li>
+            <li><a class="slidebar-link" href="/tutorials">Tutorials</a></li>
+            <div id="social">
+                <a href="https://www.facebook.com/mindliner">
+                    <img src="images/facebook.svg" alt="Find us on Facebook" height="45" width="45">
+                </a>
+            </div>
+            <p>Powered by <a href="http://plugins.adchsm.me/slidebars/">Slidebars</a> &#169; Adam Smith</p>
+        </div>
+                
+        <!-- Slidebars -->
+        <script src="js/slidebars.min.js"></script>
+        <script>
+            (function($) {
+                $(document).ready(function() {
+                    $.slidebars();
+                    $("a.slidebar-link").on("click", function() {
+                        $("img.sb-toggle-left").click();
+                    });
+                });
+            }) (jQuery);
+        </script>
+    </body>
+</html>

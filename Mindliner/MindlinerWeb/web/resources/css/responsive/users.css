@@ -1,0 +1,54 @@
+/* Based on https://css-tricks.com/examples/ResponsiveTables/responsive.php*/
+
+@media
+only screen and (max-width: 799px)  {
+    
+    
+    #userTable table, 
+    #userTable thead, 
+    #userTable tbody, 
+    #userTable th, 
+    #userTable td, 
+    #userTable tr {
+        width: auto;
+        display: block;
+    }
+
+    /* Hide table headers (but not display: none;, for accessibility) */
+    #userTable thead tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+    }
+    
+    table#userTable tr {
+        border-bottom: 1px solid #1B4D4D;
+    }
+    
+    table#userTable td {
+        border: none;
+        border-bottom: 1px dotted #4E9797;
+        position: relative;
+        padding-left: 43%;
+        padding-bottom: 0.5em;
+        height: 100%;
+        text-align: left;
+    }
+    
+    table#userTable td:before {
+            /* Now like a table header */
+            position: absolute;
+            /* Top/left values mimic padding */
+            top: 0.5em;
+            left: 6px;
+            width: 45%;
+            padding-right: 10px;
+            white-space: nowrap;
+    }
+    
+    /* Label feature data */
+    table#userTable td:nth-of-type(1):before { content: "User Name"; font-weight: bold;}
+    table#userTable td:nth-of-type(2):before { content: "Name"; font-weight: bold;}
+    table#userTable td:nth-of-type(3):before { content: "Active"; font-weight: bold;}
+    table#userTable td:nth-of-type(4):before { content: "Conf."; font-weight: bold;}
+}

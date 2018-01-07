@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:body>
+        <h:outputText value="#{txt['InviteUser']}" class="h3-style"/>
+        <h:outputText value="#{txt['InviteUserInfo']}" class="block secondaryInformation" />
+        <h:panelGrid columns="2" id="userEnrollmentGrid">
+            <!--EMAIL-->
+            <h:outputLabel for="userid" value="#{txt['UserNameOrEmail']}"/>
+            <h:panelGroup>
+                <h:message for="userid" errorClass="rounded barError"/>
+                <h:inputText id="userid" value="#{clientBB.userId}" style="width:90%">
+                    <f:validateRequired />
+                </h:inputText>
+            </h:panelGroup>
+            <!--MAXIMUM CONFIDENTIALITY-->
+            <h:outputLabel class="labelText" for="maxconf" value="#{txt['MaxConfidentiality']}" rendered="#{clientBB.dataPool.confidentialities.size() > 1}"/>
+            <h:selectOneMenu id="maxconf" value="#{clientBB.selectedMaxConfidentiality}" rendered="#{clientBB.dataPool.confidentialities.size() > 1}">
+                <f:selectItems value="#{clientBB.dataPool.confidentialities}"/>
+                <f:converter binding="#{mlConfidentialityConverter}">
+                </f:converter>
+            </h:selectOneMenu>
+            <h:commandButton id="inviteButton" class="smaller rounded mlButton" value="#{txt['SendInvitation']}" action="#{clientBB.inviteUser()}"/>
+        </h:panelGrid>
+    </h:body>
+</html>

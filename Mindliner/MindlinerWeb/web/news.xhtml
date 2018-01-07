@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:body>
+        <ui:composition template="/templates/layout.xhtml">
+            <ui:define name="title">Mindliner | News</ui:define>
+            <ui:define name="content">
+                <h:outputStylesheet name="responsive/subscriptions.css" library="css"/>
+                <p:tabView id="tab" widgetVar="tabView">
+                    <p:tab title="News" id="newsTab">
+                        <h:form id="newsForm">
+                            <ui:include src="forms/newsForm.xhtml">
+                                <ui:param name="showTitle" value="false"/>
+                                <ui:param name="loadMore" value="true"/>
+                            </ui:include>
+                        </h:form>
+                    </p:tab>
+                    <p:tab title="Subscriptions" id="subscriptionsTab">
+                         <h:form id="subscriptionsForm">
+                            <ui:include src="forms/subscriptionsForm.xhtml"/>
+                        </h:form>
+                        <h:form id="newSubscriptionsForm">
+                            <ui:include src="forms/addSubscriptionForm.xhtml"/>
+                        </h:form>
+                    </p:tab>
+                </p:tabView>
+                
+                <script>
+                    var tabidx = location.search.split('tabidx=')[1];
+                    if(!tabidx || tabIdx > 1) tabidx=0;
+                    PF('tabView').select(tabidx);
+                 </script>
+                
+            </ui:define>
+        </ui:composition>
+        <f:metadata>
+            <f:event type="preRenderView" listener="#{subscriptionBB.setNumNewsRows(subscriptionBB.news.size())}" />
+        </f:metadata>
+    </h:body>
+</html>
