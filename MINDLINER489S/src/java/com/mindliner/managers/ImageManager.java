@@ -170,6 +170,7 @@ public class ImageManager implements ImageManagerRemote, ImageManagerLocal {
     }
 
     @RolesAllowed(value = {"MasterAdmin", "Admin", "User"})
+    @Override
     public MlsImage getImage(int imageID) throws NonExistingObjectException, InsufficientAccessRightException {
         MlsImage i = em.find(MlsImage.class, imageID);
         if (i == null) {

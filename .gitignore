@@ -1,0 +1,16 @@
+.DS*
+/MindlinerClassLib/build/
+/MINDLINER489C/build/
+/MindlinerStarter/dist/
+/MindlinerStarter/build/
+/MindlinerClassLib/dist/
+/MINDLINER489S/dist/
+/MINDLINER489S/build/
+/MINDLINER489C/dist/
+/Mindliner10/build/
+/MindlinerWeb/build/
+/MindlinerWeb/dist/
+/Mindliner10/dist/
+/MindlinerClassLib Kopie/build/
+/MindlinerClassLib Kopie/dist/
+/MindlinerClassLib Kopie/nbproject/private/

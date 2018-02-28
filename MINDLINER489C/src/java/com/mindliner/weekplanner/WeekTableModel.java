@@ -92,58 +92,58 @@ public class WeekTableModel extends AbstractTableModel {
                 return "Headline";
 
             case ALLOCATED_TOTAL_COLUMN_INDEX:
-                return "Sum(P)";
+                return "∑P";
 
             case ACTUAL_TOTAL_COLUMN_INDEX:
-                return "Sum(A)";
+                return "∑A";
 
             case ROLLING_AVERAGE_COLUMN_INDEX:
                 return "Avg";
 
             case TO_GO_COLUMN_INDEX:
-                return "ToGo";
+                return "2Go";
 
             case MONDAY_COLUMN_INDEX + ACTUAL_COLUMN_OFFSET:
-                return "MON(A)";
+                return "MA";
 
             case MONDAY_COLUMN_INDEX + PLAN_COLUMN_OFFSET:
-                return "MON(P)";
+                return "MP";
 
             case TUESDAY_COLUMN_INDEX + ACTUAL_COLUMN_OFFSET:
-                return "TUE(A)";
+                return "TA";
 
             case TUESDAY_COLUMN_INDEX + PLAN_COLUMN_OFFSET:
-                return "TUE(P)";
+                return "TP";
 
             case WEDNESDAY_COLUMN_INDEX + ACTUAL_COLUMN_OFFSET:
-                return "WED(A)";
+                return "WA";
 
             case WEDNESDAY_COLUMN_INDEX + PLAN_COLUMN_OFFSET:
-                return "WED(P)";
+                return "WP";
 
             case THURSDAY_COLUMN_INDEX + ACTUAL_COLUMN_OFFSET:
-                return "THR(A)";
+                return "TA";
 
             case THURSDAY_COLUMN_INDEX + PLAN_COLUMN_OFFSET:
-                return "THR(P)";
+                return "TP";
 
             case FRIDAY_COLUMN_INDEX + ACTUAL_COLUMN_OFFSET:
-                return "FRI(A)";
+                return "FA";
 
             case FRIDAY_COLUMN_INDEX + PLAN_COLUMN_OFFSET:
-                return "FRI(P)";
+                return "FP";
 
             case SATURDAY_COLUMN_INDEX + ACTUAL_COLUMN_OFFSET:
-                return "SAT(A)";
+                return "SAA";
 
             case SATURDAY_COLUMN_INDEX + PLAN_COLUMN_OFFSET:
-                return "SAT(P)";
+                return "SAP";
 
             case SUNDAY_COLUMN_INDEX + ACTUAL_COLUMN_OFFSET:
-                return "SUN(A)";
+                return "SUA";
 
             case SUNDAY_COLUMN_INDEX + PLAN_COLUMN_OFFSET:
-                return "SUN(P)";
+                return "SUP";
 
             default:
                 throw new IllegalArgumentException("Illegal column argument: " + column);

@@ -12,7 +12,7 @@
     <import file="nbproject/build-impl.xml"/>
     
     <!-- Release number must be updated manually -->
-    <property name="mindliner.name" value="Mindliner_2.6.24" />
+    <property name="mindliner.name" value="Mindliner_2.6.25" />
     <!--
 
     There exist several targets which are by default empty and which can be 

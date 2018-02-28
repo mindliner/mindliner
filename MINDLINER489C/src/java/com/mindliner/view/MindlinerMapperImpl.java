@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates and open the template in
- * the editor.
- */
 package com.mindliner.view;
 
 import com.mindliner.cache.CacheEngineStatic;
@@ -73,8 +69,6 @@ import com.mindliner.clientobjects.MlMapNode;
  */
 public class MindlinerMapperImpl extends MindlinerMapper implements SelectionObserver {
 
-    private static final String PDF_EXPORT_DIRECTORY_KEY = "pdfexportloc";
-    private static final String SVG_EXPORT_DIRECTORY_KEY = "svgexportloc";
     private final ZoomPanListener zoomAndPanListener;
     private PickIdentifyer pickIdentifyer = null;
 
@@ -529,148 +523,6 @@ public class MindlinerMapperImpl extends MindlinerMapper implements SelectionObs
             return;
         }
         getZoomAndPanListener().translate(transX / coordTransform.getScaleX(), transY / coordTransform.getScaleY());
-    }
-
-    /**
-     * SVGGraphics2D does not adopt transformation to the transformation of the
-     * FontRenderContext. Therefore we need a wrapper/delegator that uses the
-     * FontRenderContext from the original Graphics object
-     */
-    private class MlSvgGenerator extends SVGGraphics2D {
-
-        private Graphics2D g2;
-
-        public MlSvgGenerator(Graphics2D g2, Document domFactory) {
-            super(domFactory);
-            this.g2 = g2;
-        }
-
-        @Override
-        public FontRenderContext getFontRenderContext() {
-            return g2.getFontRenderContext();
-        }
-    }
-
-    @Override
-    public void exportToSvg() {
-        String filePath = showExportDialog("svg", SVG_EXPORT_DIRECTORY_KEY);
-        if (filePath == null) {
-            return;
-        }
-        DOMImplementation domImpl
-                = GenericDOMImplementation.getDOMImplementation();
-
-        // Create an instance of org.w3c.dom.Document.
-        String svgNS = "http://www.w3.org/2000/svg";
-        Document document = domImpl.createDocument(svgNS, "svg", null);
-
-        Graphics g = getGraphics();
-        Graphics2D g2 = (Graphics2D) g;
-        setupGraphics(g2);
-
-        // Create an instance of the SVG Generator.
-        SVGGraphics2D svgGenerator = new MlSvgGenerator(g2, document);
-
-        DefaultBackgroundPainter bp = new DefaultBackgroundPainter();
-        bp.setBackground(Color.white);
-        bp.paint(svgGenerator, this);
-
-        setupGraphics(svgGenerator);
-        render(svgGenerator, MapNodeStatusManager.getCurrentSelection(), false);
-
-        // Finally, stream out SVG to the standard output using
-        // UTF-8 encoding.
-        try {
-            OutputStreamWriter out = new OutputStreamWriter(
-                    new FileOutputStream(filePath),
-                    Charset.forName("UTF-8").newEncoder()
-            );
-            svgGenerator.stream(out, false);
-            out.flush();
-            out.close();
-
-        } catch (UnsupportedEncodingException ex) {
-            Logger.getLogger(MindlinerMapperImpl.class
-                    .getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(MindlinerMapperImpl.class
-                    .getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    @Override
-    public void exportToPdf() {
-        String filePath = showExportDialog("pdf", PDF_EXPORT_DIRECTORY_KEY);
-        if (filePath == null) {
-            return;
-        }
-        PDDocument doc = null;
-        try {
-            doc = new PDDocument();
-            int w = (int) (getWidth());
-            int h = (int) (getHeight());
-            PDPage page = new PDPage(new PDRectangle(w, h));
-            doc.addPage(page);
-            PDPageContentStream content = new PDPageContentStream(doc, page);
-
-            BufferedImage bi = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
-            Graphics2D g2 = bi.createGraphics();
-            DefaultBackgroundPainter bp = new DefaultBackgroundPainter();
-            bp.setBackground(Color.white);
-            bp.paint(g2, this);
-            setupGraphics(g2);
-            render(g2, MapNodeStatusManager.getCurrentSelection(), false);
-
-            PDXObjectImage ximage = new PDJpeg(doc, bi);
-            content.drawImage(ximage, 0, 0);
-            content.close();
-
-            doc.save(filePath);
-            doc.close();
-        } catch (IOException | COSVisitorException ex) {
-            JOptionPane.showMessageDialog(null, "Unexpected error during PDF export.", "PDF Export", JOptionPane.ERROR_MESSAGE);
-            Logger
-                    .getLogger(MindlinerMapperImpl.class
-                            .getName()).log(Level.SEVERE, "PDF Export failed", ex);
-            if (doc
-                    != null) {
-                try {
-                    doc.close();
-                } catch (IOException ex2) {
-                    Logger.getLogger(MindlinerMapperImpl.class.getName()).log(Level.SEVERE, null, ex2);
-                }
-            }
-        }
-    }
-
-    private String showExportDialog(final String fileType, String directoryKey) {
-        final JFileChooser fc = new JFileChooser(FileLocationPreferences.getLocation(directoryKey));
-        fc.setDialogTitle("Save " + fileType.toUpperCase() + " File");
-        fc.setFileFilter(new FileFilter() {
-            @Override
-            public boolean accept(File f) {
-                if (f.isDirectory()) {
-                    return true;
-                }
-
-                String s = f.getName();
-                return s.endsWith("." + fileType);
-            }
-
-            @Override
-            public String getDescription() {
-                return "*." + fileType;
-            }
-        });
-        fc.setSelectedFile(new File("Mindliner Map." + fileType));
-        int returnVal = fc.showSaveDialog(null);
-        if (returnVal == JFileChooser.APPROVE_OPTION) {
-            File f = fc.getSelectedFile();
-            FileLocationPreferences.setLocation(directoryKey, f.getParent());
-            return f.getAbsolutePath();
-        } else {
-            return null;
-        }
     }
 
 }

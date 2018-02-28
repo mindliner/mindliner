@@ -19,7 +19,6 @@ import com.mindliner.json.TreeRelativesJson;
 import com.mindliner.managers.LinkManagerRemote;
 import com.mindliner.managers.ObjectManagerRemote;
 import com.mindliner.managers.SearchManagerRemote;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;

@@ -33,11 +33,11 @@ public class Release implements Serializable {
      * Change the following two records for every release, set devstate to false
      * and change the version string
      */
-    private static final boolean DEVELOPMENT_STATE = true;
-    public static final String VERSION_STRING = "Mindliner 2.6.24 dev";
+    private static final boolean DEVELOPMENT_STATE = false;
+    public static final String VERSION_STRING = "Mindliner 2.6.25";
 
     // YYYYMMDDNN where nn is just a two-digit running number for releases of the day
-    public static final int VERSION_NUMBER = 2017100201;
+    public static final int VERSION_NUMBER = 2018022801;
 
     // make this the oldest version that is still compatible with this server
     public static final int OLDEST_DESKTOP_VERSION = 2017092501;

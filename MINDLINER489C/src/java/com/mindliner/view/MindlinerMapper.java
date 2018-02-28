@@ -30,7 +30,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import org.apache.poi.ss.formula.eval.NotImplementedException;
 import com.mindliner.clientobjects.MlMapNode;
 
 /**
@@ -64,14 +63,6 @@ public abstract class MindlinerMapper extends JPanel implements GraphView, Objec
 
     @Override
     public abstract void ensureNodeInView(boolean onlyWhenOffscreen);
-
-    public void exportToPdf() {
-        throw new NotImplementedException("PDF Export");
-    }
-
-    public void exportToSvg() {
-        throw new NotImplementedException("SVG Export");
-    }
 
     /**
      * Returns the object under the cursor.

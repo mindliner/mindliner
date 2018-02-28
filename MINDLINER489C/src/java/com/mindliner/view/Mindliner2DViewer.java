@@ -108,36 +108,6 @@ public class Mindliner2DViewer extends javax.swing.JPanel implements OnlineServi
         });
     }
 
-    public void exportToPdf() {
-        mapper.exportToPdf();
-    }
-
-    public void exportToSvg() {
-        mapper.exportToSvg();
-    }
-
-    /**
-     * THESE CALLS HAVE BEEN REMOVED WITH REMOVING THE ACTION LISTENERS. SEE
-     * THAT THESE FUNCTIONS ARE CALLED ELSEWHERE IF REQUIRED
-     *
-     * updateConnectors((ConnectorType) ConnectorTypeCombo.getSelectedItem());
-     * maxWordLength = Integer.parseInt(WordMaxLength.getText());
-     * updateAtomizer(mapper.getNodeBuilder());
-     * mapper.setNodes(mapper.getNodeBuilder().buildNodes(objects));
-     *
-     *
-     * GridFrame.FrameType frameType = (GridFrame.FrameType)
-     * MapPrefsFrameCombobox.getSelectedItem(); switch (frameType) { case
-     * SceneFrame: mapper.setFrame(new SceneFrame()); break;
-     *
-     * case FixedPositionFrame: mapper.setFrame(new
-     * FixedPositionFrame(mapper.getZoomAndPanListener(), mapper)); break;
-     *
-     * default: throw new IllegalStateException("Unknown selection made in the
-     * frame type combobox."); }
-     *
-     * @return The name of this online service.
-     */
     @Override
     public String getServiceName() {
         return "Map Viewer";

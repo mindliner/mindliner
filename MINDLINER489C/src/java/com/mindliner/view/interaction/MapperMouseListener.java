@@ -39,6 +39,7 @@ import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 import com.mindliner.clientobjects.MlMapNode;
+import com.mindliner.main.OSValidator;
 import java.util.ResourceBundle;
 
 /**
@@ -69,13 +70,8 @@ public class MapperMouseListener implements MouseListener, MouseMotionListener {
                             SelectionManager.clearConnectionSelection();
 
                             if (e.isControlDown()) {
-                                if (!e.isPopupTrigger()) {
-                                    /**
-                                     * if we are working on the Mac with a
-                                     * single button mouse then we don't want to
-                                     * change the selection but simple bring up
-                                     * the context menu
-                                     */
+                                if (!OSValidator.isMac()) {
+                                    // for the Mac cntrl-click would unselect the object we want to work with
                                     handleCtrlSelection(n);
                                 }
                             } else if (e.isShiftDown()) {

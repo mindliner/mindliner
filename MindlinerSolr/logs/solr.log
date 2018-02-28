@@ -5543,3 +5543,634 @@ INFO  - 2018-01-07 08:36:33.364; org.apache.solr.core.SolrCore; [mindliner_core_
 INFO  - 2018-01-07 08:36:35.031; org.apache.solr.core.SolrCore; [mindliner_core_dev] webapp=/solr path=/select params={q=*:*&fl=id,+modification,+dtype,+lifetime&fq=%2Bclevel:[*+TO+100]&fq=client_id:(1+3+5+11+12+28+37+53+61+67+72+74+79+80+82+84+88+113+121)&fq=+%2B(private:false+owner_id:1)&fq=archived:false&fq=dtype:TASK&sort=modification+desc,+score+desc&rows=100&wt=javabin&version=2} hits=1945 status=0 QTime=9 
 INFO  - 2018-01-07 08:36:35.701; org.apache.solr.core.SolrCore; [mindliner_core_dev] webapp=/solr path=/select params={q=*:*&fl=id,+modification,+dtype,+lifetime&fq=%2Bclevel:[*+TO+100]&fq=client_id:(1+3+5+11+12+28+37+53+61+67+72+74+79+80+82+84+88+113+121)&fq=+%2B(private:false+owner_id:1)&fq=archived:false&fq=dtype:TASK&sort=modification+desc,+score+desc&rows=100&wt=javabin&version=2} hits=1945 status=0 QTime=1 
 INFO  - 2018-01-07 08:39:59.408; org.apache.solr.core.SolrCore; [mindliner_core_dev] webapp=/solr path=/select params={q=*:*&fl=id,+modification,+dtype,+lifetime&fq=%2Bclevel:[*+TO+100]&fq=client_id:(1+3+5+11+12+28+37+53+61+67+72+74+79+80+82+84+88+113+121)&fq=+%2B(private:false+owner_id:1)&fq=archived:false&fq=dtype:OCOL&sort=modification+desc,+score+desc&rows=100&wt=javabin&version=2} hits=1957 status=0 QTime=2 
+INFO  - 2018-02-16 15:57:18.095; org.eclipse.jetty.server.Server; jetty-8.1.10.v20130312
+INFO  - 2018-02-16 15:57:18.115; org.eclipse.jetty.deploy.providers.ScanningAppProvider; Deployment monitor /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/contexts at interval 0
+INFO  - 2018-02-16 15:57:18.119; org.eclipse.jetty.deploy.DeploymentManager; Deployable added: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/contexts/solr-jetty-context.xml
+INFO  - 2018-02-16 15:57:19.587; org.eclipse.jetty.webapp.StandardDescriptorProcessor; NO JSP Support for /solr, did not find org.apache.jasper.servlet.JspServlet
+INFO  - 2018-02-16 15:57:19.638; org.apache.solr.servlet.SolrDispatchFilter; SolrDispatchFilter.init()
+INFO  - 2018-02-16 15:57:19.651; org.apache.solr.core.SolrResourceLoader; JNDI not configured for solr (NoInitialContextEx)
+INFO  - 2018-02-16 15:57:19.651; org.apache.solr.core.SolrResourceLoader; solr home defaulted to 'solr/' (could not find system property or JNDI)
+INFO  - 2018-02-16 15:57:19.652; org.apache.solr.core.SolrResourceLoader; new SolrResourceLoader for directory: 'solr/'
+INFO  - 2018-02-16 15:57:19.653; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/poi-ooxml-3.10-beta2.jar' to classloader
+INFO  - 2018-02-16 15:57:19.654; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/apache-mime4j-core-0.7.2.jar' to classloader
+INFO  - 2018-02-16 15:57:19.654; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/xz-1.4.jar' to classloader
+INFO  - 2018-02-16 15:57:19.655; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/poi-3.10-beta2.jar' to classloader
+INFO  - 2018-02-16 15:57:19.655; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/poi-ooxml-schemas-3.10-beta2.jar' to classloader
+INFO  - 2018-02-16 15:57:19.655; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/pdfbox-1.8.4.jar' to classloader
+INFO  - 2018-02-16 15:57:19.656; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/xercesImpl-2.9.1.jar' to classloader
+INFO  - 2018-02-16 15:57:19.656; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/tika-parsers-1.5.jar' to classloader
+INFO  - 2018-02-16 15:57:19.658; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/netcdf-4.2-min.jar' to classloader
+INFO  - 2018-02-16 15:57:19.658; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/bcmail-jdk15-1.45.jar' to classloader
+INFO  - 2018-02-16 15:57:19.659; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/vorbis-java-tika-0.1.jar' to classloader
+INFO  - 2018-02-16 15:57:19.660; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/icu4j-53.1.jar' to classloader
+INFO  - 2018-02-16 15:57:19.660; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/bcprov-jdk15-1.45.jar' to classloader
+INFO  - 2018-02-16 15:57:19.661; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/tika-core-1.5.jar' to classloader
+INFO  - 2018-02-16 15:57:19.661; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/solr-dataimporthandler-4.8.0.jar' to classloader
+INFO  - 2018-02-16 15:57:19.664; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/jdom-1.0.jar' to classloader
+INFO  - 2018-02-16 15:57:19.664; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/solr-cell-4.9.0.jar' to classloader
+INFO  - 2018-02-16 15:57:19.665; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/juniversalchardet-1.0.3.jar' to classloader
+INFO  - 2018-02-16 15:57:19.665; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/xmlbeans-2.3.0.jar' to classloader
+INFO  - 2018-02-16 15:57:19.665; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/jhighlight-1.0.jar' to classloader
+INFO  - 2018-02-16 15:57:19.665; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/vorbis-java-core-0.1.jar' to classloader
+INFO  - 2018-02-16 15:57:19.666; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/apache-mime4j-dom-0.7.2.jar' to classloader
+INFO  - 2018-02-16 15:57:19.666; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/jempbox-1.8.4.jar' to classloader
+INFO  - 2018-02-16 15:57:19.666; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/aspectjrt-1.6.11.jar' to classloader
+INFO  - 2018-02-16 15:57:19.667; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/rome-0.9.jar' to classloader
+INFO  - 2018-02-16 15:57:19.667; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/tika-xmp-1.5.jar' to classloader
+INFO  - 2018-02-16 15:57:19.667; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/dom4j-1.6.1.jar' to classloader
+INFO  - 2018-02-16 15:57:19.667; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/metadata-extractor-2.6.2.jar' to classloader
+INFO  - 2018-02-16 15:57:19.667; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/fontbox-1.8.4.jar' to classloader
+INFO  - 2018-02-16 15:57:19.668; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/xmpcore-5.1.2.jar' to classloader
+INFO  - 2018-02-16 15:57:19.668; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/mysql-connector-java-5.1.22-bin.jar' to classloader
+INFO  - 2018-02-16 15:57:19.668; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/commons-compress-1.7.jar' to classloader
+INFO  - 2018-02-16 15:57:19.668; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/poi-scratchpad-3.10-beta2.jar' to classloader
+INFO  - 2018-02-16 15:57:19.669; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/boilerpipe-1.1.0.jar' to classloader
+INFO  - 2018-02-16 15:57:19.669; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/isoparser-1.0-RC-1.jar' to classloader
+INFO  - 2018-02-16 15:57:19.669; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/tagsoup-1.2.1.jar' to classloader
+INFO  - 2018-02-16 15:57:19.848; org.apache.solr.core.ConfigSolr; Loading container configuration from /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/solr.xml
+INFO  - 2018-02-16 15:57:19.948; org.apache.solr.core.CorePropertiesLocator; Config-defined core root directory: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr
+INFO  - 2018-02-16 15:57:19.955; org.apache.solr.core.CoreContainer; New CoreContainer 1652807864
+INFO  - 2018-02-16 15:57:19.956; org.apache.solr.core.CoreContainer; Loading cores into CoreContainer [instanceDir=solr/]
+INFO  - 2018-02-16 15:57:19.963; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting socketTimeout to: 0
+INFO  - 2018-02-16 15:57:19.964; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting urlScheme to: null
+INFO  - 2018-02-16 15:57:19.967; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting connTimeout to: 0
+INFO  - 2018-02-16 15:57:19.967; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting maxConnectionsPerHost to: 20
+INFO  - 2018-02-16 15:57:19.967; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting corePoolSize to: 0
+INFO  - 2018-02-16 15:57:19.967; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting maximumPoolSize to: 2147483647
+INFO  - 2018-02-16 15:57:19.967; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting maxThreadIdleTime to: 5
+INFO  - 2018-02-16 15:57:19.968; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting sizeOfQueue to: -1
+INFO  - 2018-02-16 15:57:19.968; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting fairnessPolicy to: false
+INFO  - 2018-02-16 15:57:20.179; org.apache.solr.logging.LogWatcher; SLF4J impl is org.slf4j.impl.Log4jLoggerFactory
+INFO  - 2018-02-16 15:57:20.180; org.apache.solr.logging.LogWatcher; Registering Log Listener [Log4j (org.slf4j.impl.Log4jLoggerFactory)]
+INFO  - 2018-02-16 15:57:20.181; org.apache.solr.core.CoreContainer; Host Name: 
+INFO  - 2018-02-16 15:57:20.215; org.apache.solr.core.CorePropertiesLocator; Looking for core definitions underneath /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr
+INFO  - 2018-02-16 15:57:20.225; org.apache.solr.core.CorePropertiesLocator; Found core mindliner_core in /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/
+INFO  - 2018-02-16 15:57:20.228; org.apache.solr.core.CorePropertiesLocator; Found core mindliner_core_dev in /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/
+INFO  - 2018-02-16 15:57:20.229; org.apache.solr.core.CorePropertiesLocator; Found 2 core definitions
+INFO  - 2018-02-16 15:57:20.231; org.apache.solr.core.SolrResourceLoader; new SolrResourceLoader for directory: '/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/'
+INFO  - 2018-02-16 15:57:20.237; org.apache.solr.core.SolrResourceLoader; new SolrResourceLoader for directory: '/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/'
+INFO  - 2018-02-16 15:57:20.332; org.apache.solr.core.SolrConfig; Adding specified lib dirs to ClassLoader
+WARN  - 2018-02-16 15:57:20.333; org.apache.solr.core.SolrResourceLoader; Can't find (or read) directory to add to classloader: ../../../contrib/extraction/lib (resolved as: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/../../../contrib/extraction/lib).
+WARN  - 2018-02-16 15:57:20.337; org.apache.solr.core.SolrResourceLoader; Can't find (or read) directory to add to classloader: ../../../dist/ (resolved as: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/../../../dist).
+WARN  - 2018-02-16 15:57:20.337; org.apache.solr.core.SolrResourceLoader; Can't find (or read) directory to add to classloader: ../../../contrib/clustering/lib/ (resolved as: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/../../../contrib/clustering/lib).
+WARN  - 2018-02-16 15:57:20.338; org.apache.solr.core.SolrResourceLoader; Can't find (or read) directory to add to classloader: ../../../dist/ (resolved as: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/../../../dist).
+WARN  - 2018-02-16 15:57:20.338; org.apache.solr.core.SolrResourceLoader; Can't find (or read) directory to add to classloader: ../../../contrib/langid/lib/ (resolved as: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/../../../contrib/langid/lib).
+WARN  - 2018-02-16 15:57:20.338; org.apache.solr.core.SolrResourceLoader; Can't find (or read) directory to add to classloader: ../../../dist/ (resolved as: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/../../../dist).
+WARN  - 2018-02-16 15:57:20.338; org.apache.solr.core.SolrResourceLoader; Can't find (or read) directory to add to classloader: ../../../contrib/velocity/lib (resolved as: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/../../../contrib/velocity/lib).
+WARN  - 2018-02-16 15:57:20.338; org.apache.solr.core.SolrResourceLoader; Can't find (or read) directory to add to classloader: ../../../dist/ (resolved as: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/../../../dist).
+INFO  - 2018-02-16 15:57:20.337; org.apache.solr.core.SolrConfig; Adding specified lib dirs to ClassLoader
+WARN  - 2018-02-16 15:57:20.339; org.apache.solr.core.SolrResourceLoader; Can't find (or read) directory to add to classloader: ../../../contrib/extraction/lib (resolved as: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/../../../contrib/extraction/lib).
+WARN  - 2018-02-16 15:57:20.339; org.apache.solr.core.SolrResourceLoader; Can't find (or read) directory to add to classloader: ../../../dist/ (resolved as: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/../../../dist).
+WARN  - 2018-02-16 15:57:20.339; org.apache.solr.core.SolrResourceLoader; Can't find (or read) directory to add to classloader: ../../../contrib/clustering/lib/ (resolved as: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/../../../contrib/clustering/lib).
+WARN  - 2018-02-16 15:57:20.339; org.apache.solr.core.SolrResourceLoader; Can't find (or read) directory to add to classloader: ../../../dist/ (resolved as: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/../../../dist).
+WARN  - 2018-02-16 15:57:20.347; org.apache.solr.core.SolrResourceLoader; Can't find (or read) directory to add to classloader: ../../../contrib/langid/lib/ (resolved as: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/../../../contrib/langid/lib).
+WARN  - 2018-02-16 15:57:20.347; org.apache.solr.core.SolrResourceLoader; Can't find (or read) directory to add to classloader: ../../../dist/ (resolved as: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/../../../dist).
+WARN  - 2018-02-16 15:57:20.347; org.apache.solr.core.SolrResourceLoader; Can't find (or read) directory to add to classloader: ../../../contrib/velocity/lib (resolved as: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/../../../contrib/velocity/lib).
+WARN  - 2018-02-16 15:57:20.347; org.apache.solr.core.SolrResourceLoader; Can't find (or read) directory to add to classloader: ../../../dist/ (resolved as: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/../../../dist).
+INFO  - 2018-02-16 15:57:20.375; org.apache.solr.update.SolrIndexConfig; IndexWriter infoStream solr logging is enabled
+INFO  - 2018-02-16 15:57:20.379; org.apache.solr.core.SolrConfig; Using Lucene MatchVersion: LUCENE_48
+INFO  - 2018-02-16 15:57:20.386; org.apache.solr.update.SolrIndexConfig; IndexWriter infoStream solr logging is enabled
+INFO  - 2018-02-16 15:57:20.392; org.apache.solr.core.SolrConfig; Using Lucene MatchVersion: LUCENE_48
+INFO  - 2018-02-16 15:57:20.519; org.apache.solr.core.SolrConfig; Loaded SolrConfig: solrconfig.xml
+INFO  - 2018-02-16 15:57:20.524; org.apache.solr.schema.IndexSchema; Reading Solr Schema from schema.xml
+INFO  - 2018-02-16 15:57:20.528; org.apache.solr.core.SolrConfig; Loaded SolrConfig: solrconfig.xml
+INFO  - 2018-02-16 15:57:20.528; org.apache.solr.schema.IndexSchema; Reading Solr Schema from schema.xml
+INFO  - 2018-02-16 15:57:20.561; org.apache.solr.schema.IndexSchema; [mindliner_core] Schema name=example
+INFO  - 2018-02-16 15:57:20.572; org.apache.solr.schema.IndexSchema; [mindliner_core_dev] Schema name=example
+WARN  - 2018-02-16 15:57:20.642; org.apache.solr.core.SolrResourceLoader; Solr loaded a deprecated plugin/analysis class [solr.IntField]. Please consult documentation how to replace it accordingly.
+WARN  - 2018-02-16 15:57:20.642; org.apache.solr.core.SolrResourceLoader; Solr loaded a deprecated plugin/analysis class [solr.IntField]. Please consult documentation how to replace it accordingly.
+WARN  - 2018-02-16 15:57:20.646; org.apache.solr.core.SolrResourceLoader; Solr loaded a deprecated plugin/analysis class [solr.LongField]. Please consult documentation how to replace it accordingly.
+WARN  - 2018-02-16 15:57:20.646; org.apache.solr.core.SolrResourceLoader; Solr loaded a deprecated plugin/analysis class [solr.LongField]. Please consult documentation how to replace it accordingly.
+WARN  - 2018-02-16 15:57:20.650; org.apache.solr.core.SolrResourceLoader; Solr loaded a deprecated plugin/analysis class [solr.FloatField]. Please consult documentation how to replace it accordingly.
+WARN  - 2018-02-16 15:57:20.653; org.apache.solr.core.SolrResourceLoader; Solr loaded a deprecated plugin/analysis class [solr.DoubleField]. Please consult documentation how to replace it accordingly.
+WARN  - 2018-02-16 15:57:20.655; org.apache.solr.core.SolrResourceLoader; Solr loaded a deprecated plugin/analysis class [solr.FloatField]. Please consult documentation how to replace it accordingly.
+WARN  - 2018-02-16 15:57:20.656; org.apache.solr.core.SolrResourceLoader; Solr loaded a deprecated plugin/analysis class [solr.DateField]. Please consult documentation how to replace it accordingly.
+WARN  - 2018-02-16 15:57:20.894; org.apache.solr.core.SolrResourceLoader; Solr loaded a deprecated plugin/analysis class [solr.ThaiWordFilterFactory]. Please consult documentation how to replace it accordingly.
+INFO  - 2018-02-16 15:57:20.913; org.apache.solr.schema.IndexSchema; unique key field: id
+INFO  - 2018-02-16 15:57:20.913; org.apache.solr.schema.IndexSchema; unique key field: id
+INFO  - 2018-02-16 15:57:20.922; org.apache.solr.rest.RestManager$Registry; Registered ManagedResource impl org.apache.solr.rest.schema.analysis.ManagedWordSetResource for path /schema/analysis/stopwords/english
+INFO  - 2018-02-16 15:57:20.922; org.apache.solr.rest.RestManager$Registry; Registered ManagedResource impl org.apache.solr.rest.schema.analysis.ManagedWordSetResource for path /schema/analysis/stopwords/english
+INFO  - 2018-02-16 15:57:20.922; org.apache.solr.rest.RestManager$Registry; Registered ManagedResource impl org.apache.solr.rest.schema.analysis.ManagedSynonymFilterFactory$SynonymManager for path /schema/analysis/synonyms/english
+INFO  - 2018-02-16 15:57:20.922; org.apache.solr.rest.RestManager$Registry; Registered ManagedResource impl org.apache.solr.rest.schema.analysis.ManagedSynonymFilterFactory$SynonymManager for path /schema/analysis/synonyms/english
+INFO  - 2018-02-16 15:57:21.028; org.apache.solr.schema.FileExchangeRateProvider; Reloading exchange rates from file currency.xml
+INFO  - 2018-02-16 15:57:21.029; org.apache.solr.schema.FileExchangeRateProvider; Reloading exchange rates from file currency.xml
+INFO  - 2018-02-16 15:57:21.031; org.apache.solr.schema.FileExchangeRateProvider; Reloading exchange rates from file currency.xml
+INFO  - 2018-02-16 15:57:21.036; org.apache.solr.schema.FileExchangeRateProvider; Reloading exchange rates from file currency.xml
+INFO  - 2018-02-16 15:57:21.108; org.apache.solr.core.CoreContainer; Creating SolrCore 'mindliner_core_dev' using configuration from instancedir /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/
+INFO  - 2018-02-16 15:57:21.108; org.apache.solr.core.CoreContainer; Creating SolrCore 'mindliner_core' using configuration from instancedir /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/
+INFO  - 2018-02-16 15:57:21.121; org.apache.solr.core.SolrCore; solr.NRTCachingDirectoryFactory
+INFO  - 2018-02-16 15:57:21.121; org.apache.solr.core.SolrCore; solr.NRTCachingDirectoryFactory
+INFO  - 2018-02-16 15:57:21.127; org.apache.solr.core.SolrCore; [mindliner_core_dev] Opening new SolrCore at /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/, dataDir=/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/data/
+INFO  - 2018-02-16 15:57:21.127; org.apache.solr.core.SolrCore; [mindliner_core] Opening new SolrCore at /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/, dataDir=/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/data/
+INFO  - 2018-02-16 15:57:21.128; org.apache.solr.core.JmxMonitoredMap; No JMX servers found, not exposing Solr information with JMX.
+INFO  - 2018-02-16 15:57:21.128; org.apache.solr.core.JmxMonitoredMap; No JMX servers found, not exposing Solr information with JMX.
+INFO  - 2018-02-16 15:57:21.132; org.apache.solr.core.SolrCore; [mindliner_core] Added SolrEventListener for newSearcher: org.apache.solr.core.QuerySenderListener{queries=[]}
+INFO  - 2018-02-16 15:57:21.132; org.apache.solr.core.SolrCore; [mindliner_core] Added SolrEventListener for firstSearcher: org.apache.solr.core.QuerySenderListener{queries=[{q=static firstSearcher warming in solrconfig.xml}]}
+INFO  - 2018-02-16 15:57:21.134; org.apache.solr.core.SolrCore; [mindliner_core_dev] Added SolrEventListener for newSearcher: org.apache.solr.core.QuerySenderListener{queries=[]}
+INFO  - 2018-02-16 15:57:21.136; org.apache.solr.core.SolrCore; [mindliner_core_dev] Added SolrEventListener for firstSearcher: org.apache.solr.core.QuerySenderListener{queries=[{q=static firstSearcher warming in solrconfig.xml}]}
+INFO  - 2018-02-16 15:57:21.143; org.apache.solr.core.CachingDirectoryFactory; return new directory for /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/data
+INFO  - 2018-02-16 15:57:21.145; org.apache.solr.core.SolrCore; New index directory detected: old=null new=/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/data/index/
+INFO  - 2018-02-16 15:57:21.146; org.apache.solr.core.CachingDirectoryFactory; return new directory for /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/data/index
+INFO  - 2018-02-16 15:57:21.149; org.apache.solr.core.CachingDirectoryFactory; return new directory for /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/data
+INFO  - 2018-02-16 15:57:21.149; org.apache.solr.core.SolrCore; New index directory detected: old=null new=/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/data/index/
+INFO  - 2018-02-16 15:57:21.150; org.apache.solr.core.CachingDirectoryFactory; return new directory for /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/data/index
+INFO  - 2018-02-16 15:57:21.165; org.apache.solr.core.SolrCore; created json: solr.JSONResponseWriter
+INFO  - 2018-02-16 15:57:21.166; org.apache.solr.core.SolrCore; adding lazy queryResponseWriter: solr.VelocityResponseWriter
+INFO  - 2018-02-16 15:57:21.165; org.apache.solr.core.SolrCore; created json: solr.JSONResponseWriter
+INFO  - 2018-02-16 15:57:21.166; org.apache.solr.core.SolrCore; adding lazy queryResponseWriter: solr.VelocityResponseWriter
+INFO  - 2018-02-16 15:57:21.166; org.apache.solr.core.SolrCore; created velocity: solr.VelocityResponseWriter
+INFO  - 2018-02-16 15:57:21.168; org.apache.solr.core.SolrCore; created xslt: solr.XSLTResponseWriter
+INFO  - 2018-02-16 15:57:21.168; org.apache.solr.response.XSLTResponseWriter; xsltCacheLifetimeSeconds=5
+INFO  - 2018-02-16 15:57:21.166; org.apache.solr.core.SolrCore; created velocity: solr.VelocityResponseWriter
+INFO  - 2018-02-16 15:57:21.169; org.apache.solr.core.SolrCore; created xslt: solr.XSLTResponseWriter
+INFO  - 2018-02-16 15:57:21.169; org.apache.solr.response.XSLTResponseWriter; xsltCacheLifetimeSeconds=5
+INFO  - 2018-02-16 15:57:21.233; org.apache.solr.core.SolrCore; no updateRequestProcessorChain defined as default, creating implicit default
+INFO  - 2018-02-16 15:57:21.233; org.apache.solr.core.SolrCore; no updateRequestProcessorChain defined as default, creating implicit default
+INFO  - 2018-02-16 15:57:21.240; org.apache.solr.core.RequestHandlers; created /select: solr.SearchHandler
+INFO  - 2018-02-16 15:57:21.241; org.apache.solr.core.RequestHandlers; created /query: solr.SearchHandler
+INFO  - 2018-02-16 15:57:21.242; org.apache.solr.core.RequestHandlers; created /select: solr.SearchHandler
+INFO  - 2018-02-16 15:57:21.242; org.apache.solr.core.RequestHandlers; created /query: solr.SearchHandler
+INFO  - 2018-02-16 15:57:21.242; org.apache.solr.core.RequestHandlers; created /get: solr.RealTimeGetHandler
+INFO  - 2018-02-16 15:57:21.243; org.apache.solr.core.RequestHandlers; created /browse: solr.SearchHandler
+INFO  - 2018-02-16 15:57:21.242; org.apache.solr.core.RequestHandlers; created /get: solr.RealTimeGetHandler
+INFO  - 2018-02-16 15:57:21.243; org.apache.solr.core.RequestHandlers; created /browse: solr.SearchHandler
+INFO  - 2018-02-16 15:57:21.245; org.apache.solr.core.RequestHandlers; created /update: solr.UpdateRequestHandler
+INFO  - 2018-02-16 15:57:21.246; org.apache.solr.core.RequestHandlers; created /update: solr.UpdateRequestHandler
+INFO  - 2018-02-16 15:57:21.246; org.apache.solr.core.RequestHandlers; created /update/json: solr.UpdateRequestHandler
+INFO  - 2018-02-16 15:57:21.246; org.apache.solr.core.RequestHandlers; created /update/csv: solr.UpdateRequestHandler
+INFO  - 2018-02-16 15:57:21.247; org.apache.solr.core.RequestHandlers; adding lazy requestHandler: solr.extraction.ExtractingRequestHandler
+INFO  - 2018-02-16 15:57:21.246; org.apache.solr.core.RequestHandlers; created /update/json: solr.UpdateRequestHandler
+INFO  - 2018-02-16 15:57:21.247; org.apache.solr.core.RequestHandlers; created /update/csv: solr.UpdateRequestHandler
+INFO  - 2018-02-16 15:57:21.248; org.apache.solr.core.RequestHandlers; adding lazy requestHandler: solr.extraction.ExtractingRequestHandler
+INFO  - 2018-02-16 15:57:21.248; org.apache.solr.core.RequestHandlers; created /update/extract: solr.extraction.ExtractingRequestHandler
+INFO  - 2018-02-16 15:57:21.248; org.apache.solr.core.RequestHandlers; adding lazy requestHandler: solr.FieldAnalysisRequestHandler
+INFO  - 2018-02-16 15:57:21.249; org.apache.solr.core.RequestHandlers; created /analysis/field: solr.FieldAnalysisRequestHandler
+INFO  - 2018-02-16 15:57:21.249; org.apache.solr.core.RequestHandlers; adding lazy requestHandler: solr.DocumentAnalysisRequestHandler
+INFO  - 2018-02-16 15:57:21.249; org.apache.solr.core.RequestHandlers; created /analysis/document: solr.DocumentAnalysisRequestHandler
+INFO  - 2018-02-16 15:57:21.247; org.apache.solr.core.RequestHandlers; created /update/extract: solr.extraction.ExtractingRequestHandler
+INFO  - 2018-02-16 15:57:21.251; org.apache.solr.core.RequestHandlers; adding lazy requestHandler: solr.FieldAnalysisRequestHandler
+INFO  - 2018-02-16 15:57:21.251; org.apache.solr.core.RequestHandlers; created /analysis/field: solr.FieldAnalysisRequestHandler
+INFO  - 2018-02-16 15:57:21.251; org.apache.solr.core.RequestHandlers; adding lazy requestHandler: solr.DocumentAnalysisRequestHandler
+INFO  - 2018-02-16 15:57:21.251; org.apache.solr.core.RequestHandlers; created /analysis/document: solr.DocumentAnalysisRequestHandler
+INFO  - 2018-02-16 15:57:21.252; org.apache.solr.core.RequestHandlers; created /admin/: solr.admin.AdminHandlers
+INFO  - 2018-02-16 15:57:21.251; org.apache.solr.core.RequestHandlers; created /admin/: solr.admin.AdminHandlers
+INFO  - 2018-02-16 15:57:21.254; org.apache.solr.core.RequestHandlers; created /admin/ping: solr.PingRequestHandler
+INFO  - 2018-02-16 15:57:21.254; org.apache.solr.core.RequestHandlers; created /admin/ping: solr.PingRequestHandler
+INFO  - 2018-02-16 15:57:21.255; org.apache.solr.core.RequestHandlers; created /debug/dump: solr.DumpRequestHandler
+INFO  - 2018-02-16 15:57:21.256; org.apache.solr.core.RequestHandlers; created /debug/dump: solr.DumpRequestHandler
+INFO  - 2018-02-16 15:57:21.266; org.apache.solr.core.RequestHandlers; created /replication: solr.ReplicationHandler
+INFO  - 2018-02-16 15:57:21.266; org.apache.solr.core.RequestHandlers; created /replication: solr.ReplicationHandler
+INFO  - 2018-02-16 15:57:21.271; org.apache.solr.core.RequestHandlers; created /dataimport: org.apache.solr.handler.dataimport.DataImportHandler
+INFO  - 2018-02-16 15:57:21.272; org.apache.solr.core.RequestHandlers; adding lazy requestHandler: solr.SearchHandler
+INFO  - 2018-02-16 15:57:21.272; org.apache.solr.core.RequestHandlers; created /dataimport: org.apache.solr.handler.dataimport.DataImportHandler
+INFO  - 2018-02-16 15:57:21.288; org.apache.solr.core.RequestHandlers; adding lazy requestHandler: solr.SearchHandler
+INFO  - 2018-02-16 15:57:21.288; org.apache.solr.core.RequestHandlers; created /spell: solr.SearchHandler
+INFO  - 2018-02-16 15:57:21.288; org.apache.solr.core.RequestHandlers; adding lazy requestHandler: solr.SearchHandler
+INFO  - 2018-02-16 15:57:21.288; org.apache.solr.core.RequestHandlers; created /suggest: solr.SearchHandler
+INFO  - 2018-02-16 15:57:21.289; org.apache.solr.core.RequestHandlers; adding lazy requestHandler: solr.SearchHandler
+INFO  - 2018-02-16 15:57:21.289; org.apache.solr.core.RequestHandlers; created /tvrh: solr.SearchHandler
+INFO  - 2018-02-16 15:57:21.289; org.apache.solr.core.RequestHandlers; adding lazy requestHandler: solr.SearchHandler
+INFO  - 2018-02-16 15:57:21.289; org.apache.solr.core.RequestHandlers; created /terms: solr.SearchHandler
+INFO  - 2018-02-16 15:57:21.288; org.apache.solr.core.RequestHandlers; created /spell: solr.SearchHandler
+INFO  - 2018-02-16 15:57:21.289; org.apache.solr.core.RequestHandlers; adding lazy requestHandler: solr.SearchHandler
+INFO  - 2018-02-16 15:57:21.290; org.apache.solr.core.RequestHandlers; created /suggest: solr.SearchHandler
+INFO  - 2018-02-16 15:57:21.290; org.apache.solr.core.RequestHandlers; adding lazy requestHandler: solr.SearchHandler
+INFO  - 2018-02-16 15:57:21.291; org.apache.solr.core.RequestHandlers; created /tvrh: solr.SearchHandler
+INFO  - 2018-02-16 15:57:21.291; org.apache.solr.core.RequestHandlers; adding lazy requestHandler: solr.SearchHandler
+INFO  - 2018-02-16 15:57:21.292; org.apache.solr.core.RequestHandlers; created /terms: solr.SearchHandler
+INFO  - 2018-02-16 15:57:21.293; org.apache.solr.core.RequestHandlers; adding lazy requestHandler: solr.SearchHandler
+INFO  - 2018-02-16 15:57:21.293; org.apache.solr.core.RequestHandlers; created /elevate: solr.SearchHandler
+INFO  - 2018-02-16 15:57:21.289; org.apache.solr.core.RequestHandlers; adding lazy requestHandler: solr.SearchHandler
+INFO  - 2018-02-16 15:57:21.294; org.apache.solr.core.RequestHandlers; created /elevate: solr.SearchHandler
+INFO  - 2018-02-16 15:57:21.310; org.apache.solr.handler.loader.XMLLoader; xsltCacheLifetimeSeconds=60
+INFO  - 2018-02-16 15:57:21.312; org.apache.solr.handler.loader.XMLLoader; xsltCacheLifetimeSeconds=60
+INFO  - 2018-02-16 15:57:21.312; org.apache.solr.handler.loader.XMLLoader; xsltCacheLifetimeSeconds=60
+INFO  - 2018-02-16 15:57:21.313; org.apache.solr.handler.loader.XMLLoader; xsltCacheLifetimeSeconds=60
+INFO  - 2018-02-16 15:57:21.314; org.apache.solr.handler.loader.XMLLoader; xsltCacheLifetimeSeconds=60
+INFO  - 2018-02-16 15:57:21.314; org.apache.solr.handler.loader.XMLLoader; xsltCacheLifetimeSeconds=60
+INFO  - 2018-02-16 15:57:21.343; org.apache.solr.update.CommitTracker; Hard AutoCommit: if uncommited for 15000ms; 
+INFO  - 2018-02-16 15:57:21.343; org.apache.solr.update.CommitTracker; Soft AutoCommit: disabled
+INFO  - 2018-02-16 15:57:21.347; org.apache.solr.update.CommitTracker; Hard AutoCommit: if uncommited for 15000ms; 
+INFO  - 2018-02-16 15:57:21.347; org.apache.solr.update.CommitTracker; Soft AutoCommit: disabled
+INFO  - 2018-02-16 15:57:21.374; org.apache.solr.core.SolrDeletionPolicy; SolrDeletionPolicy.onInit: commits: num=1
+	commit{dir=NRTCachingDirectory(NIOFSDirectory@/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/data/index lockFactory=NativeFSLockFactory@/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/data/index; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_q,generation=26}
+INFO  - 2018-02-16 15:57:21.375; org.apache.solr.core.SolrDeletionPolicy; newest commit generation = 26
+INFO  - 2018-02-16 15:57:21.384; org.apache.solr.search.SolrIndexSearcher; Opening Searcher@24142b0a[mindliner_core] main
+INFO  - 2018-02-16 15:57:21.399; org.apache.solr.core.SolrDeletionPolicy; SolrDeletionPolicy.onInit: commits: num=1
+	commit{dir=NRTCachingDirectory(NIOFSDirectory@/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/data/index lockFactory=NativeFSLockFactory@/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/data/index; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_e4,generation=508}
+INFO  - 2018-02-16 15:57:21.399; org.apache.solr.core.SolrDeletionPolicy; newest commit generation = 508
+INFO  - 2018-02-16 15:57:21.401; org.apache.solr.rest.ManagedResourceStorage$FileStorageIO; File-based storage initialized to use dir: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/conf
+INFO  - 2018-02-16 15:57:21.402; org.apache.solr.rest.RestManager; Initializing RestManager with initArgs: {storageDir=/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/conf/}
+INFO  - 2018-02-16 15:57:21.403; org.apache.solr.rest.ManagedResourceStorage; Reading _rest_managed.json using file:dir=/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/conf
+WARN  - 2018-02-16 15:57:21.404; org.apache.solr.rest.ManagedResource; No stored data found for /rest/managed
+WARN  - 2018-02-16 15:57:21.404; org.apache.solr.rest.ManagedResource; No registered observers for /rest/managed
+INFO  - 2018-02-16 15:57:21.405; org.apache.solr.rest.RestManager; Initializing 2 registered ManagedResources
+INFO  - 2018-02-16 15:57:21.405; org.apache.solr.rest.ManagedResourceStorage; Reading _schema_analysis_stopwords_english.json using file:dir=/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/conf
+INFO  - 2018-02-16 15:57:21.417; org.apache.solr.rest.ManagedResourceStorage; Loaded LinkedHashMap at path _schema_analysis_stopwords_english.json using file:dir=/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/conf
+INFO  - 2018-02-16 15:57:21.417; org.apache.solr.rest.ManagedResource; Loaded initArgs {ignoreCase=true} for /schema/analysis/stopwords/english
+INFO  - 2018-02-16 15:57:21.417; org.apache.solr.rest.schema.analysis.ManagedWordSetResource; Loaded 35 words for /schema/analysis/stopwords/english
+INFO  - 2018-02-16 15:57:21.418; org.apache.solr.rest.ManagedResource; Notified 1 observers of /schema/analysis/stopwords/english
+INFO  - 2018-02-16 15:57:21.418; org.apache.solr.rest.ManagedResourceStorage; Reading _schema_analysis_synonyms_english.json using file:dir=/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/conf
+INFO  - 2018-02-16 15:57:21.419; org.apache.solr.rest.ManagedResourceStorage; Loaded LinkedHashMap at path _schema_analysis_synonyms_english.json using file:dir=/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/conf
+INFO  - 2018-02-16 15:57:21.419; org.apache.solr.rest.ManagedResource; Loaded initArgs {ignoreCase=true,format=solr} for /schema/analysis/synonyms/english
+INFO  - 2018-02-16 15:57:21.419; org.apache.solr.rest.schema.analysis.ManagedSynonymFilterFactory$SynonymManager; Loaded 3 synonym mappings for /schema/analysis/synonyms/english
+INFO  - 2018-02-16 15:57:21.421; org.apache.solr.rest.ManagedResource; Notified 1 observers of /schema/analysis/synonyms/english
+INFO  - 2018-02-16 15:57:21.421; org.apache.solr.handler.component.SpellCheckComponent; Initializing spell checkers
+INFO  - 2018-02-16 15:57:21.427; org.apache.solr.spelling.DirectSolrSpellChecker; init: {name=default,field=text,classname=solr.DirectSolrSpellChecker,distanceMeasure=internal,accuracy=0.5,maxEdits=2,minPrefix=1,maxInspections=5,minQueryLength=4,maxQueryFrequency=0.01}
+INFO  - 2018-02-16 15:57:21.437; org.apache.solr.handler.component.SpellCheckComponent; No queryConverter defined, using default converter
+INFO  - 2018-02-16 15:57:21.447; org.apache.solr.handler.component.SuggestComponent; Initializing SuggestComponent
+INFO  - 2018-02-16 15:57:21.455; org.apache.solr.spelling.suggest.SolrSuggester; init: {name=mySuggester,lookupImpl=FuzzyLookupFactory,dictionaryImpl=DocumentDictionaryFactory,field=cat,weightField=price,suggestAnalyzerFieldType=string}
+INFO  - 2018-02-16 15:57:21.469; org.apache.solr.spelling.suggest.SolrSuggester; Dictionary loaded with params: {name=mySuggester,lookupImpl=FuzzyLookupFactory,dictionaryImpl=DocumentDictionaryFactory,field=cat,weightField=price,suggestAnalyzerFieldType=string}
+INFO  - 2018-02-16 15:57:21.473; org.apache.solr.handler.component.QueryElevationComponent; Loading QueryElevation from: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/conf/elevate.xml
+INFO  - 2018-02-16 15:57:21.497; org.apache.solr.handler.ReplicationHandler; Commits will be reserved for  10000
+INFO  - 2018-02-16 15:57:21.505; org.apache.solr.core.QuerySenderListener; QuerySenderListener sending requests to Searcher@24142b0a[mindliner_core] main{StandardDirectoryReader(segments_q:231:nrt)}
+INFO  - 2018-02-16 15:57:21.509; org.apache.solr.core.CoreContainer; registering core: mindliner_core
+INFO  - 2018-02-16 15:57:21.528; org.apache.solr.search.SolrIndexSearcher; Opening Searcher@6c7b4437[mindliner_core_dev] main
+INFO  - 2018-02-16 15:57:21.531; org.apache.solr.rest.ManagedResourceStorage$FileStorageIO; File-based storage initialized to use dir: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/conf
+INFO  - 2018-02-16 15:57:21.531; org.apache.solr.rest.RestManager; Initializing RestManager with initArgs: {storageDir=/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/conf/}
+INFO  - 2018-02-16 15:57:21.532; org.apache.solr.rest.ManagedResourceStorage; Reading _rest_managed.json using file:dir=/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/conf
+WARN  - 2018-02-16 15:57:21.533; org.apache.solr.rest.ManagedResource; No stored data found for /rest/managed
+WARN  - 2018-02-16 15:57:21.533; org.apache.solr.rest.ManagedResource; No registered observers for /rest/managed
+INFO  - 2018-02-16 15:57:21.533; org.apache.solr.rest.RestManager; Initializing 2 registered ManagedResources
+INFO  - 2018-02-16 15:57:21.534; org.apache.solr.rest.ManagedResourceStorage; Reading _schema_analysis_stopwords_english.json using file:dir=/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/conf
+INFO  - 2018-02-16 15:57:21.535; org.apache.solr.rest.ManagedResourceStorage; Loaded LinkedHashMap at path _schema_analysis_stopwords_english.json using file:dir=/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/conf
+INFO  - 2018-02-16 15:57:21.536; org.apache.solr.rest.ManagedResource; Loaded initArgs {ignoreCase=true} for /schema/analysis/stopwords/english
+INFO  - 2018-02-16 15:57:21.536; org.apache.solr.rest.schema.analysis.ManagedWordSetResource; Loaded 35 words for /schema/analysis/stopwords/english
+INFO  - 2018-02-16 15:57:21.538; org.apache.solr.rest.ManagedResource; Notified 1 observers of /schema/analysis/stopwords/english
+INFO  - 2018-02-16 15:57:21.539; org.apache.solr.rest.ManagedResourceStorage; Reading _schema_analysis_synonyms_english.json using file:dir=/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/conf
+INFO  - 2018-02-16 15:57:21.540; org.apache.solr.rest.ManagedResourceStorage; Loaded LinkedHashMap at path _schema_analysis_synonyms_english.json using file:dir=/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/conf
+INFO  - 2018-02-16 15:57:21.540; org.apache.solr.rest.ManagedResource; Loaded initArgs {ignoreCase=true,format=solr} for /schema/analysis/synonyms/english
+INFO  - 2018-02-16 15:57:21.541; org.apache.solr.rest.schema.analysis.ManagedSynonymFilterFactory$SynonymManager; Loaded 3 synonym mappings for /schema/analysis/synonyms/english
+INFO  - 2018-02-16 15:57:21.546; org.apache.solr.rest.ManagedResource; Notified 1 observers of /schema/analysis/synonyms/english
+INFO  - 2018-02-16 15:57:21.558; org.apache.solr.handler.component.SpellCheckComponent; Initializing spell checkers
+INFO  - 2018-02-16 15:57:21.559; org.apache.solr.spelling.DirectSolrSpellChecker; init: {name=default,field=text,classname=solr.DirectSolrSpellChecker,distanceMeasure=internal,accuracy=0.5,maxEdits=2,minPrefix=1,maxInspections=5,minQueryLength=4,maxQueryFrequency=0.01}
+INFO  - 2018-02-16 15:57:21.559; org.apache.solr.handler.component.SpellCheckComponent; No queryConverter defined, using default converter
+INFO  - 2018-02-16 15:57:21.559; org.apache.solr.handler.component.SuggestComponent; Initializing SuggestComponent
+INFO  - 2018-02-16 15:57:21.559; org.apache.solr.spelling.suggest.SolrSuggester; init: {name=mySuggester,lookupImpl=FuzzyLookupFactory,dictionaryImpl=DocumentDictionaryFactory,field=cat,weightField=price,suggestAnalyzerFieldType=string}
+INFO  - 2018-02-16 15:57:21.559; org.apache.solr.spelling.suggest.SolrSuggester; Dictionary loaded with params: {name=mySuggester,lookupImpl=FuzzyLookupFactory,dictionaryImpl=DocumentDictionaryFactory,field=cat,weightField=price,suggestAnalyzerFieldType=string}
+INFO  - 2018-02-16 15:57:21.560; org.apache.solr.handler.component.QueryElevationComponent; Loading QueryElevation from: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/conf/elevate.xml
+INFO  - 2018-02-16 15:57:21.542; org.apache.solr.core.SolrCore; [mindliner_core] webapp=null path=null params={q=static+firstSearcher+warming+in+solrconfig.xml&distrib=false&event=firstSearcher} hits=0 status=0 QTime=33 
+INFO  - 2018-02-16 15:57:21.560; org.apache.solr.core.QuerySenderListener; QuerySenderListener done.
+INFO  - 2018-02-16 15:57:21.562; org.apache.solr.handler.component.SpellCheckComponent$SpellCheckerListener; Loading spell index for spellchecker: default
+INFO  - 2018-02-16 15:57:21.562; org.apache.solr.handler.component.SpellCheckComponent$SpellCheckerListener; Loading spell index for spellchecker: wordbreak
+INFO  - 2018-02-16 15:57:21.563; org.apache.solr.handler.component.SuggestComponent$SuggesterListener; Loading suggester index for: mySuggester
+INFO  - 2018-02-16 15:57:21.563; org.apache.solr.spelling.suggest.SolrSuggester; reload()
+INFO  - 2018-02-16 15:57:21.563; org.apache.solr.spelling.suggest.SolrSuggester; build()
+INFO  - 2018-02-16 15:57:21.567; org.apache.solr.handler.ReplicationHandler; Commits will be reserved for  10000
+INFO  - 2018-02-16 15:57:21.567; org.apache.solr.core.QuerySenderListener; QuerySenderListener sending requests to Searcher@6c7b4437[mindliner_core_dev] main{StandardDirectoryReader(segments_e4:219570:nrt _12h(4.8):C20789 _12i(4.8):C4483 _12j(4.8):C15963 _12k(4.8):C6133 _12l(4.8):C17380 _12m(4.8):C737 _12n(4.8):C1 _12o(4.8):C1 _12p(4.8):C1)}
+INFO  - 2018-02-16 15:57:21.567; org.apache.solr.core.CoreContainer; registering core: mindliner_core_dev
+INFO  - 2018-02-16 15:57:21.571; org.apache.solr.core.SolrCore; [mindliner_core_dev] webapp=null path=null params={q=static+firstSearcher+warming+in+solrconfig.xml&distrib=false&event=firstSearcher} hits=0 status=0 QTime=4 
+INFO  - 2018-02-16 15:57:21.571; org.apache.solr.core.QuerySenderListener; QuerySenderListener done.
+INFO  - 2018-02-16 15:57:21.571; org.apache.solr.handler.component.SpellCheckComponent$SpellCheckerListener; Loading spell index for spellchecker: default
+INFO  - 2018-02-16 15:57:21.571; org.apache.solr.handler.component.SpellCheckComponent$SpellCheckerListener; Loading spell index for spellchecker: wordbreak
+INFO  - 2018-02-16 15:57:21.571; org.apache.solr.handler.component.SuggestComponent$SuggesterListener; Loading suggester index for: mySuggester
+INFO  - 2018-02-16 15:57:21.571; org.apache.solr.spelling.suggest.SolrSuggester; reload()
+INFO  - 2018-02-16 15:57:21.571; org.apache.solr.spelling.suggest.SolrSuggester; build()
+INFO  - 2018-02-16 15:57:21.576; org.apache.solr.servlet.SolrDispatchFilter; user.dir=/Users/marius/NetBeansProjects/mindliner/MindlinerSolr
+INFO  - 2018-02-16 15:57:21.576; org.apache.solr.servlet.SolrDispatchFilter; SolrDispatchFilter.init() done
+INFO  - 2018-02-16 15:57:21.584; org.apache.solr.core.SolrCore; [mindliner_core] Registered new searcher Searcher@24142b0a[mindliner_core] main{StandardDirectoryReader(segments_q:231:nrt)}
+INFO  - 2018-02-16 15:57:21.601; org.eclipse.jetty.server.AbstractConnector; Started SocketConnector@0.0.0.0:8983
+INFO  - 2018-02-16 15:57:23.255; org.apache.solr.core.SolrCore; [mindliner_core_dev] Registered new searcher Searcher@6c7b4437[mindliner_core_dev] main{StandardDirectoryReader(segments_e4:219570:nrt _12h(4.8):C20789 _12i(4.8):C4483 _12j(4.8):C15963 _12k(4.8):C6133 _12l(4.8):C17380 _12m(4.8):C737 _12n(4.8):C1 _12o(4.8):C1 _12p(4.8):C1)}
+INFO  - 2018-02-16 16:45:59.115; org.apache.solr.core.SolrCore; [mindliner_core_dev] webapp=/solr path=/select params={q=+%2B(headline:test^3+description:test)+%2Bowner_id:(1+2+4+5+7+19+22+28+30+39+40+50+51+52+53+54+55+56+57+58+60+62+63+64+65+66+67+69+77+78+86+107+108+110+111+121+125+134+136+138+147+148+150+155+166+167+168+171+178+189+194+195+222)&fl=id,+modification,+dtype,+lifetime&fq=%2Bclevel:[*+TO+100]&fq=client_id:(1+130+3+67+5+37+135+72+74+11+12+79+80+113+82+84+53+88+121+28+61)&fq=+%2B(private:false+owner_id:1)&fq=archived:false&sort=modification+desc,+score+desc&rows=30&wt=javabin&version=2} hits=306 status=0 QTime=415 
+INFO  - 2018-02-16 16:53:59.866; org.eclipse.jetty.server.Server; Graceful shutdown SocketConnector@0.0.0.0:8983
+INFO  - 2018-02-16 16:53:59.866; org.eclipse.jetty.server.Server; Graceful shutdown o.e.j.w.WebAppContext{/solr,file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr-webapp/webapp/},/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/webapps/solr.war
+INFO  - 2018-02-16 16:54:00.868; org.apache.solr.core.CoreContainer; Shutting down CoreContainer instance=1652807864
+INFO  - 2018-02-16 16:54:00.869; org.apache.solr.core.SolrCore; [mindliner_core]  CLOSING SolrCore org.apache.solr.core.SolrCore@571bf3f7
+INFO  - 2018-02-16 16:54:00.870; org.apache.solr.update.DirectUpdateHandler2; closing DirectUpdateHandler2{commits=0,autocommit maxTime=15000ms,autocommits=0,soft autocommits=0,optimizes=0,rollbacks=0,expungeDeletes=0,docsPending=0,adds=0,deletesById=0,deletesByQuery=0,errors=0,cumulative_adds=0,cumulative_deletesById=0,cumulative_deletesByQuery=0,cumulative_errors=0,transaction_logs_total_size=4199,transaction_logs_total_number=10}
+INFO  - 2018-02-16 16:54:00.871; org.apache.solr.update.SolrCoreState; Closing SolrCoreState
+INFO  - 2018-02-16 16:54:00.871; org.apache.solr.update.DefaultSolrCoreState; SolrCoreState ref count has reached 0 - closing IndexWriter
+INFO  - 2018-02-16 16:54:00.872; org.apache.solr.update.DefaultSolrCoreState; closing IndexWriter with IndexWriterCloser
+INFO  - 2018-02-16 16:54:00.874; org.apache.solr.core.SolrCore; [mindliner_core] Closing main searcher on request.
+INFO  - 2018-02-16 16:54:00.875; org.apache.solr.core.CachingDirectoryFactory; Closing NRTCachingDirectoryFactory - 2 directories currently being tracked
+INFO  - 2018-02-16 16:54:00.876; org.apache.solr.core.CachingDirectoryFactory; looking to close /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/data/index [CachedDir<<refCount=0;path=/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/data/index;done=false>>]
+INFO  - 2018-02-16 16:54:00.876; org.apache.solr.core.CachingDirectoryFactory; Closing directory: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/data/index
+INFO  - 2018-02-16 16:54:00.877; org.apache.solr.core.CachingDirectoryFactory; looking to close /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/data [CachedDir<<refCount=0;path=/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/data;done=false>>]
+INFO  - 2018-02-16 16:54:00.877; org.apache.solr.core.CachingDirectoryFactory; Closing directory: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/data
+INFO  - 2018-02-16 16:54:00.877; org.apache.solr.core.SolrCore; [mindliner_core_dev]  CLOSING SolrCore org.apache.solr.core.SolrCore@21cf0524
+INFO  - 2018-02-16 16:54:00.878; org.apache.solr.update.DirectUpdateHandler2; closing DirectUpdateHandler2{commits=0,autocommit maxTime=15000ms,autocommits=0,soft autocommits=0,optimizes=0,rollbacks=0,expungeDeletes=0,docsPending=0,adds=0,deletesById=0,deletesByQuery=0,errors=0,cumulative_adds=0,cumulative_deletesById=0,cumulative_deletesByQuery=0,cumulative_errors=0,transaction_logs_total_size=107131,transaction_logs_total_number=2}
+INFO  - 2018-02-16 16:54:00.878; org.apache.solr.update.SolrCoreState; Closing SolrCoreState
+INFO  - 2018-02-16 16:54:00.878; org.apache.solr.update.DefaultSolrCoreState; SolrCoreState ref count has reached 0 - closing IndexWriter
+INFO  - 2018-02-16 16:54:00.878; org.apache.solr.update.DefaultSolrCoreState; closing IndexWriter with IndexWriterCloser
+INFO  - 2018-02-16 16:54:00.879; org.apache.solr.core.SolrCore; [mindliner_core_dev] Closing main searcher on request.
+INFO  - 2018-02-16 16:54:00.880; org.apache.solr.core.CachingDirectoryFactory; Closing NRTCachingDirectoryFactory - 2 directories currently being tracked
+INFO  - 2018-02-16 16:54:00.880; org.apache.solr.core.CachingDirectoryFactory; looking to close /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/data [CachedDir<<refCount=0;path=/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/data;done=false>>]
+INFO  - 2018-02-16 16:54:00.881; org.apache.solr.core.CachingDirectoryFactory; Closing directory: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/data
+INFO  - 2018-02-16 16:54:00.881; org.apache.solr.core.CachingDirectoryFactory; looking to close /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/data/index [CachedDir<<refCount=0;path=/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/data/index;done=false>>]
+INFO  - 2018-02-16 16:54:00.881; org.apache.solr.core.CachingDirectoryFactory; Closing directory: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/data/index
+INFO  - 2018-02-16 16:54:00.883; org.eclipse.jetty.server.handler.ContextHandler; stopped o.e.j.w.WebAppContext{/solr,file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr-webapp/webapp/},/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/webapps/solr.war
+INFO  - 2018-02-23 11:32:48.837; org.eclipse.jetty.server.Server; jetty-8.1.10.v20130312
+INFO  - 2018-02-23 11:32:48.857; org.eclipse.jetty.deploy.providers.ScanningAppProvider; Deployment monitor /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/contexts at interval 0
+INFO  - 2018-02-23 11:32:48.862; org.eclipse.jetty.deploy.DeploymentManager; Deployable added: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/contexts/solr-jetty-context.xml
+INFO  - 2018-02-23 11:32:50.110; org.eclipse.jetty.webapp.StandardDescriptorProcessor; NO JSP Support for /solr, did not find org.apache.jasper.servlet.JspServlet
+INFO  - 2018-02-23 11:32:50.160; org.apache.solr.servlet.SolrDispatchFilter; SolrDispatchFilter.init()
+INFO  - 2018-02-23 11:32:50.171; org.apache.solr.core.SolrResourceLoader; JNDI not configured for solr (NoInitialContextEx)
+INFO  - 2018-02-23 11:32:50.171; org.apache.solr.core.SolrResourceLoader; solr home defaulted to 'solr/' (could not find system property or JNDI)
+INFO  - 2018-02-23 11:32:50.172; org.apache.solr.core.SolrResourceLoader; new SolrResourceLoader for directory: 'solr/'
+INFO  - 2018-02-23 11:32:50.174; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/poi-ooxml-3.10-beta2.jar' to classloader
+INFO  - 2018-02-23 11:32:50.175; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/apache-mime4j-core-0.7.2.jar' to classloader
+INFO  - 2018-02-23 11:32:50.175; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/xz-1.4.jar' to classloader
+INFO  - 2018-02-23 11:32:50.175; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/poi-3.10-beta2.jar' to classloader
+INFO  - 2018-02-23 11:32:50.176; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/poi-ooxml-schemas-3.10-beta2.jar' to classloader
+INFO  - 2018-02-23 11:32:50.176; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/pdfbox-1.8.4.jar' to classloader
+INFO  - 2018-02-23 11:32:50.176; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/xercesImpl-2.9.1.jar' to classloader
+INFO  - 2018-02-23 11:32:50.176; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/tika-parsers-1.5.jar' to classloader
+INFO  - 2018-02-23 11:32:50.178; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/netcdf-4.2-min.jar' to classloader
+INFO  - 2018-02-23 11:32:50.178; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/bcmail-jdk15-1.45.jar' to classloader
+INFO  - 2018-02-23 11:32:50.179; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/vorbis-java-tika-0.1.jar' to classloader
+INFO  - 2018-02-23 11:32:50.179; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/icu4j-53.1.jar' to classloader
+INFO  - 2018-02-23 11:32:50.179; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/bcprov-jdk15-1.45.jar' to classloader
+INFO  - 2018-02-23 11:32:50.180; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/tika-core-1.5.jar' to classloader
+INFO  - 2018-02-23 11:32:50.180; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/solr-dataimporthandler-4.8.0.jar' to classloader
+INFO  - 2018-02-23 11:32:50.180; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/jdom-1.0.jar' to classloader
+INFO  - 2018-02-23 11:32:50.180; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/solr-cell-4.9.0.jar' to classloader
+INFO  - 2018-02-23 11:32:50.180; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/juniversalchardet-1.0.3.jar' to classloader
+INFO  - 2018-02-23 11:32:50.181; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/xmlbeans-2.3.0.jar' to classloader
+INFO  - 2018-02-23 11:32:50.181; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/jhighlight-1.0.jar' to classloader
+INFO  - 2018-02-23 11:32:50.181; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/vorbis-java-core-0.1.jar' to classloader
+INFO  - 2018-02-23 11:32:50.182; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/apache-mime4j-dom-0.7.2.jar' to classloader
+INFO  - 2018-02-23 11:32:50.182; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/jempbox-1.8.4.jar' to classloader
+INFO  - 2018-02-23 11:32:50.182; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/aspectjrt-1.6.11.jar' to classloader
+INFO  - 2018-02-23 11:32:50.183; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/rome-0.9.jar' to classloader
+INFO  - 2018-02-23 11:32:50.183; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/tika-xmp-1.5.jar' to classloader
+INFO  - 2018-02-23 11:32:50.183; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/dom4j-1.6.1.jar' to classloader
+INFO  - 2018-02-23 11:32:50.184; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/metadata-extractor-2.6.2.jar' to classloader
+INFO  - 2018-02-23 11:32:50.184; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/fontbox-1.8.4.jar' to classloader
+INFO  - 2018-02-23 11:32:50.184; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/xmpcore-5.1.2.jar' to classloader
+INFO  - 2018-02-23 11:32:50.184; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/mysql-connector-java-5.1.22-bin.jar' to classloader
+INFO  - 2018-02-23 11:32:50.185; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/commons-compress-1.7.jar' to classloader
+INFO  - 2018-02-23 11:32:50.185; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/poi-scratchpad-3.10-beta2.jar' to classloader
+INFO  - 2018-02-23 11:32:50.185; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/boilerpipe-1.1.0.jar' to classloader
+INFO  - 2018-02-23 11:32:50.185; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/isoparser-1.0-RC-1.jar' to classloader
+INFO  - 2018-02-23 11:32:50.186; org.apache.solr.core.SolrResourceLoader; Adding 'file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/lib/tagsoup-1.2.1.jar' to classloader
+INFO  - 2018-02-23 11:32:50.439; org.apache.solr.core.ConfigSolr; Loading container configuration from /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/solr.xml
+INFO  - 2018-02-23 11:32:50.511; org.apache.solr.core.CorePropertiesLocator; Config-defined core root directory: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr
+INFO  - 2018-02-23 11:32:50.517; org.apache.solr.core.CoreContainer; New CoreContainer 1652807864
+INFO  - 2018-02-23 11:32:50.518; org.apache.solr.core.CoreContainer; Loading cores into CoreContainer [instanceDir=solr/]
+INFO  - 2018-02-23 11:32:50.527; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting socketTimeout to: 0
+INFO  - 2018-02-23 11:32:50.527; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting urlScheme to: null
+INFO  - 2018-02-23 11:32:50.530; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting connTimeout to: 0
+INFO  - 2018-02-23 11:32:50.531; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting maxConnectionsPerHost to: 20
+INFO  - 2018-02-23 11:32:50.531; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting corePoolSize to: 0
+INFO  - 2018-02-23 11:32:50.531; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting maximumPoolSize to: 2147483647
+INFO  - 2018-02-23 11:32:50.531; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting maxThreadIdleTime to: 5
+INFO  - 2018-02-23 11:32:50.531; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting sizeOfQueue to: -1
+INFO  - 2018-02-23 11:32:50.532; org.apache.solr.handler.component.HttpShardHandlerFactory; Setting fairnessPolicy to: false
+INFO  - 2018-02-23 11:32:50.746; org.apache.solr.logging.LogWatcher; SLF4J impl is org.slf4j.impl.Log4jLoggerFactory
+INFO  - 2018-02-23 11:32:50.747; org.apache.solr.logging.LogWatcher; Registering Log Listener [Log4j (org.slf4j.impl.Log4jLoggerFactory)]
+INFO  - 2018-02-23 11:32:50.749; org.apache.solr.core.CoreContainer; Host Name: 
+INFO  - 2018-02-23 11:32:50.800; org.apache.solr.core.CorePropertiesLocator; Looking for core definitions underneath /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr
+INFO  - 2018-02-23 11:32:50.809; org.apache.solr.core.CorePropertiesLocator; Found core mindliner_core in /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/
+INFO  - 2018-02-23 11:32:50.820; org.apache.solr.core.CorePropertiesLocator; Found core mindliner_core_dev in /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/
+INFO  - 2018-02-23 11:32:50.821; org.apache.solr.core.CorePropertiesLocator; Found 2 core definitions
+INFO  - 2018-02-23 11:32:50.822; org.apache.solr.core.SolrResourceLoader; new SolrResourceLoader for directory: '/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/'
+INFO  - 2018-02-23 11:32:50.822; org.apache.solr.core.SolrResourceLoader; new SolrResourceLoader for directory: '/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/'
+INFO  - 2018-02-23 11:32:50.891; org.apache.solr.core.SolrConfig; Adding specified lib dirs to ClassLoader
+WARN  - 2018-02-23 11:32:50.891; org.apache.solr.core.SolrResourceLoader; Can't find (or read) directory to add to classloader: ../../../contrib/extraction/lib (resolved as: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/../../../contrib/extraction/lib).
+WARN  - 2018-02-23 11:32:50.892; org.apache.solr.core.SolrResourceLoader; Can't find (or read) directory to add to classloader: ../../../dist/ (resolved as: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/../../../dist).
+WARN  - 2018-02-23 11:32:50.892; org.apache.solr.core.SolrResourceLoader; Can't find (or read) directory to add to classloader: ../../../contrib/clustering/lib/ (resolved as: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/../../../contrib/clustering/lib).
+WARN  - 2018-02-23 11:32:50.892; org.apache.solr.core.SolrResourceLoader; Can't find (or read) directory to add to classloader: ../../../dist/ (resolved as: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/../../../dist).
+WARN  - 2018-02-23 11:32:50.892; org.apache.solr.core.SolrResourceLoader; Can't find (or read) directory to add to classloader: ../../../contrib/langid/lib/ (resolved as: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/../../../contrib/langid/lib).
+WARN  - 2018-02-23 11:32:50.893; org.apache.solr.core.SolrResourceLoader; Can't find (or read) directory to add to classloader: ../../../dist/ (resolved as: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/../../../dist).
+WARN  - 2018-02-23 11:32:50.893; org.apache.solr.core.SolrResourceLoader; Can't find (or read) directory to add to classloader: ../../../contrib/velocity/lib (resolved as: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/../../../contrib/velocity/lib).
+WARN  - 2018-02-23 11:32:50.893; org.apache.solr.core.SolrResourceLoader; Can't find (or read) directory to add to classloader: ../../../dist/ (resolved as: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/../../../dist).
+INFO  - 2018-02-23 11:32:50.894; org.apache.solr.core.SolrConfig; Adding specified lib dirs to ClassLoader
+WARN  - 2018-02-23 11:32:50.895; org.apache.solr.core.SolrResourceLoader; Can't find (or read) directory to add to classloader: ../../../contrib/extraction/lib (resolved as: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/../../../contrib/extraction/lib).
+WARN  - 2018-02-23 11:32:50.895; org.apache.solr.core.SolrResourceLoader; Can't find (or read) directory to add to classloader: ../../../dist/ (resolved as: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/../../../dist).
+WARN  - 2018-02-23 11:32:50.895; org.apache.solr.core.SolrResourceLoader; Can't find (or read) directory to add to classloader: ../../../contrib/clustering/lib/ (resolved as: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/../../../contrib/clustering/lib).
+WARN  - 2018-02-23 11:32:50.895; org.apache.solr.core.SolrResourceLoader; Can't find (or read) directory to add to classloader: ../../../dist/ (resolved as: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/../../../dist).
+WARN  - 2018-02-23 11:32:50.895; org.apache.solr.core.SolrResourceLoader; Can't find (or read) directory to add to classloader: ../../../contrib/langid/lib/ (resolved as: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/../../../contrib/langid/lib).
+WARN  - 2018-02-23 11:32:50.896; org.apache.solr.core.SolrResourceLoader; Can't find (or read) directory to add to classloader: ../../../dist/ (resolved as: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/../../../dist).
+WARN  - 2018-02-23 11:32:50.896; org.apache.solr.core.SolrResourceLoader; Can't find (or read) directory to add to classloader: ../../../contrib/velocity/lib (resolved as: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/../../../contrib/velocity/lib).
+WARN  - 2018-02-23 11:32:50.896; org.apache.solr.core.SolrResourceLoader; Can't find (or read) directory to add to classloader: ../../../dist/ (resolved as: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/../../../dist).
+INFO  - 2018-02-23 11:32:50.939; org.apache.solr.update.SolrIndexConfig; IndexWriter infoStream solr logging is enabled
+INFO  - 2018-02-23 11:32:50.942; org.apache.solr.update.SolrIndexConfig; IndexWriter infoStream solr logging is enabled
+INFO  - 2018-02-23 11:32:50.944; org.apache.solr.core.SolrConfig; Using Lucene MatchVersion: LUCENE_48
+INFO  - 2018-02-23 11:32:50.945; org.apache.solr.core.SolrConfig; Using Lucene MatchVersion: LUCENE_48
+INFO  - 2018-02-23 11:32:51.080; org.apache.solr.core.SolrConfig; Loaded SolrConfig: solrconfig.xml
+INFO  - 2018-02-23 11:32:51.081; org.apache.solr.core.SolrConfig; Loaded SolrConfig: solrconfig.xml
+INFO  - 2018-02-23 11:32:51.086; org.apache.solr.schema.IndexSchema; Reading Solr Schema from schema.xml
+INFO  - 2018-02-23 11:32:51.087; org.apache.solr.schema.IndexSchema; Reading Solr Schema from schema.xml
+INFO  - 2018-02-23 11:32:51.124; org.apache.solr.schema.IndexSchema; [mindliner_core_dev] Schema name=example
+INFO  - 2018-02-23 11:32:51.138; org.apache.solr.schema.IndexSchema; [mindliner_core] Schema name=example
+WARN  - 2018-02-23 11:32:51.227; org.apache.solr.core.SolrResourceLoader; Solr loaded a deprecated plugin/analysis class [solr.IntField]. Please consult documentation how to replace it accordingly.
+WARN  - 2018-02-23 11:32:51.231; org.apache.solr.core.SolrResourceLoader; Solr loaded a deprecated plugin/analysis class [solr.LongField]. Please consult documentation how to replace it accordingly.
+WARN  - 2018-02-23 11:32:51.231; org.apache.solr.core.SolrResourceLoader; Solr loaded a deprecated plugin/analysis class [solr.LongField]. Please consult documentation how to replace it accordingly.
+WARN  - 2018-02-23 11:32:51.236; org.apache.solr.core.SolrResourceLoader; Solr loaded a deprecated plugin/analysis class [solr.FloatField]. Please consult documentation how to replace it accordingly.
+WARN  - 2018-02-23 11:32:51.236; org.apache.solr.core.SolrResourceLoader; Solr loaded a deprecated plugin/analysis class [solr.FloatField]. Please consult documentation how to replace it accordingly.
+WARN  - 2018-02-23 11:32:51.240; org.apache.solr.core.SolrResourceLoader; Solr loaded a deprecated plugin/analysis class [solr.DoubleField]. Please consult documentation how to replace it accordingly.
+WARN  - 2018-02-23 11:32:51.240; org.apache.solr.core.SolrResourceLoader; Solr loaded a deprecated plugin/analysis class [solr.DoubleField]. Please consult documentation how to replace it accordingly.
+WARN  - 2018-02-23 11:32:51.243; org.apache.solr.core.SolrResourceLoader; Solr loaded a deprecated plugin/analysis class [solr.DateField]. Please consult documentation how to replace it accordingly.
+WARN  - 2018-02-23 11:32:51.244; org.apache.solr.core.SolrResourceLoader; Solr loaded a deprecated plugin/analysis class [solr.DateField]. Please consult documentation how to replace it accordingly.
+WARN  - 2018-02-23 11:32:51.521; org.apache.solr.core.SolrResourceLoader; Solr loaded a deprecated plugin/analysis class [solr.ThaiWordFilterFactory]. Please consult documentation how to replace it accordingly.
+INFO  - 2018-02-23 11:32:51.540; org.apache.solr.schema.IndexSchema; unique key field: id
+INFO  - 2018-02-23 11:32:51.540; org.apache.solr.schema.IndexSchema; unique key field: id
+INFO  - 2018-02-23 11:32:51.549; org.apache.solr.rest.RestManager$Registry; Registered ManagedResource impl org.apache.solr.rest.schema.analysis.ManagedWordSetResource for path /schema/analysis/stopwords/english
+INFO  - 2018-02-23 11:32:51.550; org.apache.solr.rest.RestManager$Registry; Registered ManagedResource impl org.apache.solr.rest.schema.analysis.ManagedWordSetResource for path /schema/analysis/stopwords/english
+INFO  - 2018-02-23 11:32:51.550; org.apache.solr.rest.RestManager$Registry; Registered ManagedResource impl org.apache.solr.rest.schema.analysis.ManagedSynonymFilterFactory$SynonymManager for path /schema/analysis/synonyms/english
+INFO  - 2018-02-23 11:32:51.550; org.apache.solr.rest.RestManager$Registry; Registered ManagedResource impl org.apache.solr.rest.schema.analysis.ManagedSynonymFilterFactory$SynonymManager for path /schema/analysis/synonyms/english
+INFO  - 2018-02-23 11:32:51.666; org.apache.solr.schema.FileExchangeRateProvider; Reloading exchange rates from file currency.xml
+INFO  - 2018-02-23 11:32:51.669; org.apache.solr.schema.FileExchangeRateProvider; Reloading exchange rates from file currency.xml
+INFO  - 2018-02-23 11:32:51.670; org.apache.solr.schema.FileExchangeRateProvider; Reloading exchange rates from file currency.xml
+INFO  - 2018-02-23 11:32:51.675; org.apache.solr.schema.FileExchangeRateProvider; Reloading exchange rates from file currency.xml
+INFO  - 2018-02-23 11:32:51.768; org.apache.solr.core.CoreContainer; Creating SolrCore 'mindliner_core_dev' using configuration from instancedir /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/
+INFO  - 2018-02-23 11:32:51.771; org.apache.solr.core.CoreContainer; Creating SolrCore 'mindliner_core' using configuration from instancedir /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/
+INFO  - 2018-02-23 11:32:51.780; org.apache.solr.core.SolrCore; solr.NRTCachingDirectoryFactory
+INFO  - 2018-02-23 11:32:51.780; org.apache.solr.core.SolrCore; solr.NRTCachingDirectoryFactory
+INFO  - 2018-02-23 11:32:51.786; org.apache.solr.core.SolrCore; [mindliner_core_dev] Opening new SolrCore at /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/, dataDir=/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/data/
+INFO  - 2018-02-23 11:32:51.786; org.apache.solr.core.SolrCore; [mindliner_core] Opening new SolrCore at /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/, dataDir=/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/data/
+INFO  - 2018-02-23 11:32:51.787; org.apache.solr.core.JmxMonitoredMap; No JMX servers found, not exposing Solr information with JMX.
+INFO  - 2018-02-23 11:32:51.787; org.apache.solr.core.JmxMonitoredMap; No JMX servers found, not exposing Solr information with JMX.
+INFO  - 2018-02-23 11:32:51.792; org.apache.solr.core.SolrCore; [mindliner_core] Added SolrEventListener for newSearcher: org.apache.solr.core.QuerySenderListener{queries=[]}
+INFO  - 2018-02-23 11:32:51.792; org.apache.solr.core.SolrCore; [mindliner_core] Added SolrEventListener for firstSearcher: org.apache.solr.core.QuerySenderListener{queries=[{q=static firstSearcher warming in solrconfig.xml}]}
+INFO  - 2018-02-23 11:32:51.798; org.apache.solr.core.SolrCore; [mindliner_core_dev] Added SolrEventListener for newSearcher: org.apache.solr.core.QuerySenderListener{queries=[]}
+INFO  - 2018-02-23 11:32:51.798; org.apache.solr.core.SolrCore; [mindliner_core_dev] Added SolrEventListener for firstSearcher: org.apache.solr.core.QuerySenderListener{queries=[{q=static firstSearcher warming in solrconfig.xml}]}
+INFO  - 2018-02-23 11:32:51.803; org.apache.solr.core.CachingDirectoryFactory; return new directory for /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/data
+INFO  - 2018-02-23 11:32:51.805; org.apache.solr.core.CachingDirectoryFactory; return new directory for /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/data
+INFO  - 2018-02-23 11:32:51.808; org.apache.solr.core.SolrCore; New index directory detected: old=null new=/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/data/index/
+INFO  - 2018-02-23 11:32:51.809; org.apache.solr.core.SolrCore; New index directory detected: old=null new=/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/data/index/
+INFO  - 2018-02-23 11:32:51.809; org.apache.solr.core.CachingDirectoryFactory; return new directory for /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/data/index
+INFO  - 2018-02-23 11:32:51.809; org.apache.solr.core.CachingDirectoryFactory; return new directory for /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/data/index
+INFO  - 2018-02-23 11:32:51.839; org.apache.solr.core.SolrCore; created json: solr.JSONResponseWriter
+INFO  - 2018-02-23 11:32:51.840; org.apache.solr.core.SolrCore; adding lazy queryResponseWriter: solr.VelocityResponseWriter
+INFO  - 2018-02-23 11:32:51.839; org.apache.solr.core.SolrCore; created json: solr.JSONResponseWriter
+INFO  - 2018-02-23 11:32:51.840; org.apache.solr.core.SolrCore; adding lazy queryResponseWriter: solr.VelocityResponseWriter
+INFO  - 2018-02-23 11:32:51.840; org.apache.solr.core.SolrCore; created velocity: solr.VelocityResponseWriter
+INFO  - 2018-02-23 11:32:51.840; org.apache.solr.core.SolrCore; created velocity: solr.VelocityResponseWriter
+INFO  - 2018-02-23 11:32:51.842; org.apache.solr.core.SolrCore; created xslt: solr.XSLTResponseWriter
+INFO  - 2018-02-23 11:32:51.843; org.apache.solr.response.XSLTResponseWriter; xsltCacheLifetimeSeconds=5
+INFO  - 2018-02-23 11:32:51.844; org.apache.solr.core.SolrCore; created xslt: solr.XSLTResponseWriter
+INFO  - 2018-02-23 11:32:51.844; org.apache.solr.response.XSLTResponseWriter; xsltCacheLifetimeSeconds=5
+INFO  - 2018-02-23 11:32:51.907; org.apache.solr.core.SolrCore; no updateRequestProcessorChain defined as default, creating implicit default
+INFO  - 2018-02-23 11:32:51.907; org.apache.solr.core.SolrCore; no updateRequestProcessorChain defined as default, creating implicit default
+INFO  - 2018-02-23 11:32:51.915; org.apache.solr.core.RequestHandlers; created /select: solr.SearchHandler
+INFO  - 2018-02-23 11:32:51.916; org.apache.solr.core.RequestHandlers; created /query: solr.SearchHandler
+INFO  - 2018-02-23 11:32:51.915; org.apache.solr.core.RequestHandlers; created /select: solr.SearchHandler
+INFO  - 2018-02-23 11:32:51.917; org.apache.solr.core.RequestHandlers; created /query: solr.SearchHandler
+INFO  - 2018-02-23 11:32:51.918; org.apache.solr.core.RequestHandlers; created /get: solr.RealTimeGetHandler
+INFO  - 2018-02-23 11:32:51.919; org.apache.solr.core.RequestHandlers; created /browse: solr.SearchHandler
+INFO  - 2018-02-23 11:32:51.918; org.apache.solr.core.RequestHandlers; created /get: solr.RealTimeGetHandler
+INFO  - 2018-02-23 11:32:51.922; org.apache.solr.core.RequestHandlers; created /browse: solr.SearchHandler
+INFO  - 2018-02-23 11:32:51.923; org.apache.solr.core.RequestHandlers; created /update: solr.UpdateRequestHandler
+INFO  - 2018-02-23 11:32:51.923; org.apache.solr.core.RequestHandlers; created /update/json: solr.UpdateRequestHandler
+INFO  - 2018-02-23 11:32:51.923; org.apache.solr.core.RequestHandlers; created /update/csv: solr.UpdateRequestHandler
+INFO  - 2018-02-23 11:32:51.924; org.apache.solr.core.RequestHandlers; adding lazy requestHandler: solr.extraction.ExtractingRequestHandler
+INFO  - 2018-02-23 11:32:51.922; org.apache.solr.core.RequestHandlers; created /update: solr.UpdateRequestHandler
+INFO  - 2018-02-23 11:32:51.924; org.apache.solr.core.RequestHandlers; created /update/json: solr.UpdateRequestHandler
+INFO  - 2018-02-23 11:32:51.924; org.apache.solr.core.RequestHandlers; created /update/csv: solr.UpdateRequestHandler
+INFO  - 2018-02-23 11:32:51.925; org.apache.solr.core.RequestHandlers; adding lazy requestHandler: solr.extraction.ExtractingRequestHandler
+INFO  - 2018-02-23 11:32:51.925; org.apache.solr.core.RequestHandlers; created /update/extract: solr.extraction.ExtractingRequestHandler
+INFO  - 2018-02-23 11:32:51.926; org.apache.solr.core.RequestHandlers; adding lazy requestHandler: solr.FieldAnalysisRequestHandler
+INFO  - 2018-02-23 11:32:51.926; org.apache.solr.core.RequestHandlers; created /analysis/field: solr.FieldAnalysisRequestHandler
+INFO  - 2018-02-23 11:32:51.927; org.apache.solr.core.RequestHandlers; adding lazy requestHandler: solr.DocumentAnalysisRequestHandler
+INFO  - 2018-02-23 11:32:51.925; org.apache.solr.core.RequestHandlers; created /update/extract: solr.extraction.ExtractingRequestHandler
+INFO  - 2018-02-23 11:32:51.927; org.apache.solr.core.RequestHandlers; adding lazy requestHandler: solr.FieldAnalysisRequestHandler
+INFO  - 2018-02-23 11:32:51.927; org.apache.solr.core.RequestHandlers; created /analysis/field: solr.FieldAnalysisRequestHandler
+INFO  - 2018-02-23 11:32:51.927; org.apache.solr.core.RequestHandlers; adding lazy requestHandler: solr.DocumentAnalysisRequestHandler
+INFO  - 2018-02-23 11:32:51.927; org.apache.solr.core.RequestHandlers; created /analysis/document: solr.DocumentAnalysisRequestHandler
+INFO  - 2018-02-23 11:32:51.929; org.apache.solr.core.RequestHandlers; created /admin/: solr.admin.AdminHandlers
+INFO  - 2018-02-23 11:32:51.930; org.apache.solr.core.RequestHandlers; created /analysis/document: solr.DocumentAnalysisRequestHandler
+INFO  - 2018-02-23 11:32:51.931; org.apache.solr.core.RequestHandlers; created /admin/ping: solr.PingRequestHandler
+INFO  - 2018-02-23 11:32:51.932; org.apache.solr.core.RequestHandlers; created /debug/dump: solr.DumpRequestHandler
+INFO  - 2018-02-23 11:32:51.933; org.apache.solr.core.RequestHandlers; created /admin/: solr.admin.AdminHandlers
+INFO  - 2018-02-23 11:32:51.940; org.apache.solr.core.RequestHandlers; created /admin/ping: solr.PingRequestHandler
+INFO  - 2018-02-23 11:32:51.940; org.apache.solr.core.RequestHandlers; created /debug/dump: solr.DumpRequestHandler
+INFO  - 2018-02-23 11:32:51.943; org.apache.solr.core.RequestHandlers; created /replication: solr.ReplicationHandler
+INFO  - 2018-02-23 11:32:51.944; org.apache.solr.core.RequestHandlers; created /replication: solr.ReplicationHandler
+INFO  - 2018-02-23 11:32:51.959; org.apache.solr.core.RequestHandlers; created /dataimport: org.apache.solr.handler.dataimport.DataImportHandler
+INFO  - 2018-02-23 11:32:51.965; org.apache.solr.core.RequestHandlers; adding lazy requestHandler: solr.SearchHandler
+INFO  - 2018-02-23 11:32:51.965; org.apache.solr.core.RequestHandlers; created /spell: solr.SearchHandler
+INFO  - 2018-02-23 11:32:51.965; org.apache.solr.core.RequestHandlers; adding lazy requestHandler: solr.SearchHandler
+INFO  - 2018-02-23 11:32:51.966; org.apache.solr.core.RequestHandlers; created /suggest: solr.SearchHandler
+INFO  - 2018-02-23 11:32:51.966; org.apache.solr.core.RequestHandlers; adding lazy requestHandler: solr.SearchHandler
+INFO  - 2018-02-23 11:32:51.966; org.apache.solr.core.RequestHandlers; created /tvrh: solr.SearchHandler
+INFO  - 2018-02-23 11:32:51.966; org.apache.solr.core.RequestHandlers; adding lazy requestHandler: solr.SearchHandler
+INFO  - 2018-02-23 11:32:51.966; org.apache.solr.core.RequestHandlers; created /terms: solr.SearchHandler
+INFO  - 2018-02-23 11:32:51.966; org.apache.solr.core.RequestHandlers; adding lazy requestHandler: solr.SearchHandler
+INFO  - 2018-02-23 11:32:51.966; org.apache.solr.core.RequestHandlers; created /elevate: solr.SearchHandler
+INFO  - 2018-02-23 11:32:51.965; org.apache.solr.core.RequestHandlers; created /dataimport: org.apache.solr.handler.dataimport.DataImportHandler
+INFO  - 2018-02-23 11:32:51.973; org.apache.solr.core.RequestHandlers; adding lazy requestHandler: solr.SearchHandler
+INFO  - 2018-02-23 11:32:51.974; org.apache.solr.core.RequestHandlers; created /spell: solr.SearchHandler
+INFO  - 2018-02-23 11:32:51.976; org.apache.solr.core.RequestHandlers; adding lazy requestHandler: solr.SearchHandler
+INFO  - 2018-02-23 11:32:51.978; org.apache.solr.core.RequestHandlers; created /suggest: solr.SearchHandler
+INFO  - 2018-02-23 11:32:51.979; org.apache.solr.core.RequestHandlers; adding lazy requestHandler: solr.SearchHandler
+INFO  - 2018-02-23 11:32:51.980; org.apache.solr.core.RequestHandlers; created /tvrh: solr.SearchHandler
+INFO  - 2018-02-23 11:32:51.980; org.apache.solr.core.RequestHandlers; adding lazy requestHandler: solr.SearchHandler
+INFO  - 2018-02-23 11:32:51.980; org.apache.solr.core.RequestHandlers; created /terms: solr.SearchHandler
+INFO  - 2018-02-23 11:32:51.980; org.apache.solr.core.RequestHandlers; adding lazy requestHandler: solr.SearchHandler
+INFO  - 2018-02-23 11:32:51.981; org.apache.solr.core.RequestHandlers; created /elevate: solr.SearchHandler
+INFO  - 2018-02-23 11:32:51.984; org.apache.solr.handler.loader.XMLLoader; xsltCacheLifetimeSeconds=60
+INFO  - 2018-02-23 11:32:51.985; org.apache.solr.handler.loader.XMLLoader; xsltCacheLifetimeSeconds=60
+INFO  - 2018-02-23 11:32:51.987; org.apache.solr.handler.loader.XMLLoader; xsltCacheLifetimeSeconds=60
+INFO  - 2018-02-23 11:32:51.987; org.apache.solr.handler.loader.XMLLoader; xsltCacheLifetimeSeconds=60
+INFO  - 2018-02-23 11:32:51.988; org.apache.solr.handler.loader.XMLLoader; xsltCacheLifetimeSeconds=60
+INFO  - 2018-02-23 11:32:51.989; org.apache.solr.handler.loader.XMLLoader; xsltCacheLifetimeSeconds=60
+INFO  - 2018-02-23 11:32:52.016; org.apache.solr.update.CommitTracker; Hard AutoCommit: if uncommited for 15000ms; 
+INFO  - 2018-02-23 11:32:52.017; org.apache.solr.update.CommitTracker; Soft AutoCommit: disabled
+INFO  - 2018-02-23 11:32:52.036; org.apache.solr.update.CommitTracker; Hard AutoCommit: if uncommited for 15000ms; 
+INFO  - 2018-02-23 11:32:52.036; org.apache.solr.update.CommitTracker; Soft AutoCommit: disabled
+INFO  - 2018-02-23 11:32:52.056; org.apache.solr.core.SolrDeletionPolicy; SolrDeletionPolicy.onInit: commits: num=1
+	commit{dir=NRTCachingDirectory(NIOFSDirectory@/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/data/index lockFactory=NativeFSLockFactory@/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/data/index; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_q,generation=26}
+INFO  - 2018-02-23 11:32:52.056; org.apache.solr.core.SolrDeletionPolicy; newest commit generation = 26
+INFO  - 2018-02-23 11:32:52.063; org.apache.solr.search.SolrIndexSearcher; Opening Searcher@5601bc04[mindliner_core] main
+INFO  - 2018-02-23 11:32:52.066; org.apache.solr.core.SolrDeletionPolicy; SolrDeletionPolicy.onInit: commits: num=1
+	commit{dir=NRTCachingDirectory(NIOFSDirectory@/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/data/index lockFactory=NativeFSLockFactory@/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/data/index; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_e4,generation=508}
+INFO  - 2018-02-23 11:32:52.066; org.apache.solr.core.SolrDeletionPolicy; newest commit generation = 508
+INFO  - 2018-02-23 11:32:52.070; org.apache.solr.rest.ManagedResourceStorage$FileStorageIO; File-based storage initialized to use dir: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/conf
+INFO  - 2018-02-23 11:32:52.070; org.apache.solr.rest.RestManager; Initializing RestManager with initArgs: {storageDir=/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/conf/}
+INFO  - 2018-02-23 11:32:52.073; org.apache.solr.rest.ManagedResourceStorage; Reading _rest_managed.json using file:dir=/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/conf
+WARN  - 2018-02-23 11:32:52.073; org.apache.solr.rest.ManagedResource; No stored data found for /rest/managed
+WARN  - 2018-02-23 11:32:52.073; org.apache.solr.rest.ManagedResource; No registered observers for /rest/managed
+INFO  - 2018-02-23 11:32:52.074; org.apache.solr.rest.RestManager; Initializing 2 registered ManagedResources
+INFO  - 2018-02-23 11:32:52.074; org.apache.solr.rest.ManagedResourceStorage; Reading _schema_analysis_stopwords_english.json using file:dir=/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/conf
+INFO  - 2018-02-23 11:32:52.084; org.apache.solr.rest.ManagedResourceStorage; Loaded LinkedHashMap at path _schema_analysis_stopwords_english.json using file:dir=/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/conf
+INFO  - 2018-02-23 11:32:52.084; org.apache.solr.rest.ManagedResource; Loaded initArgs {ignoreCase=true} for /schema/analysis/stopwords/english
+INFO  - 2018-02-23 11:32:52.084; org.apache.solr.rest.schema.analysis.ManagedWordSetResource; Loaded 35 words for /schema/analysis/stopwords/english
+INFO  - 2018-02-23 11:32:52.085; org.apache.solr.rest.ManagedResource; Notified 1 observers of /schema/analysis/stopwords/english
+INFO  - 2018-02-23 11:32:52.085; org.apache.solr.rest.ManagedResourceStorage; Reading _schema_analysis_synonyms_english.json using file:dir=/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/conf
+INFO  - 2018-02-23 11:32:52.086; org.apache.solr.rest.ManagedResourceStorage; Loaded LinkedHashMap at path _schema_analysis_synonyms_english.json using file:dir=/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/conf
+INFO  - 2018-02-23 11:32:52.086; org.apache.solr.rest.ManagedResource; Loaded initArgs {ignoreCase=true,format=solr} for /schema/analysis/synonyms/english
+INFO  - 2018-02-23 11:32:52.087; org.apache.solr.rest.schema.analysis.ManagedSynonymFilterFactory$SynonymManager; Loaded 3 synonym mappings for /schema/analysis/synonyms/english
+INFO  - 2018-02-23 11:32:52.089; org.apache.solr.rest.ManagedResource; Notified 1 observers of /schema/analysis/synonyms/english
+INFO  - 2018-02-23 11:32:52.089; org.apache.solr.handler.component.SpellCheckComponent; Initializing spell checkers
+INFO  - 2018-02-23 11:32:52.094; org.apache.solr.spelling.DirectSolrSpellChecker; init: {name=default,field=text,classname=solr.DirectSolrSpellChecker,distanceMeasure=internal,accuracy=0.5,maxEdits=2,minPrefix=1,maxInspections=5,minQueryLength=4,maxQueryFrequency=0.01}
+INFO  - 2018-02-23 11:32:52.102; org.apache.solr.handler.component.SpellCheckComponent; No queryConverter defined, using default converter
+INFO  - 2018-02-23 11:32:52.104; org.apache.solr.handler.component.SuggestComponent; Initializing SuggestComponent
+INFO  - 2018-02-23 11:32:52.105; org.apache.solr.spelling.suggest.SolrSuggester; init: {name=mySuggester,lookupImpl=FuzzyLookupFactory,dictionaryImpl=DocumentDictionaryFactory,field=cat,weightField=price,suggestAnalyzerFieldType=string}
+INFO  - 2018-02-23 11:32:52.122; org.apache.solr.spelling.suggest.SolrSuggester; Dictionary loaded with params: {name=mySuggester,lookupImpl=FuzzyLookupFactory,dictionaryImpl=DocumentDictionaryFactory,field=cat,weightField=price,suggestAnalyzerFieldType=string}
+INFO  - 2018-02-23 11:32:52.123; org.apache.solr.handler.component.QueryElevationComponent; Loading QueryElevation from: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/conf/elevate.xml
+INFO  - 2018-02-23 11:32:52.154; org.apache.solr.handler.ReplicationHandler; Commits will be reserved for  10000
+INFO  - 2018-02-23 11:32:52.160; org.apache.solr.core.QuerySenderListener; QuerySenderListener sending requests to Searcher@5601bc04[mindliner_core] main{StandardDirectoryReader(segments_q:231:nrt)}
+INFO  - 2018-02-23 11:32:52.160; org.apache.solr.core.CoreContainer; registering core: mindliner_core
+INFO  - 2018-02-23 11:32:52.193; org.apache.solr.search.SolrIndexSearcher; Opening Searcher@3c440c88[mindliner_core_dev] main
+INFO  - 2018-02-23 11:32:52.194; org.apache.solr.rest.ManagedResourceStorage$FileStorageIO; File-based storage initialized to use dir: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/conf
+INFO  - 2018-02-23 11:32:52.194; org.apache.solr.rest.RestManager; Initializing RestManager with initArgs: {storageDir=/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/conf/}
+INFO  - 2018-02-23 11:32:52.194; org.apache.solr.rest.ManagedResourceStorage; Reading _rest_managed.json using file:dir=/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/conf
+INFO  - 2018-02-23 11:32:52.194; org.apache.solr.core.SolrCore; [mindliner_core] webapp=null path=null params={q=static+firstSearcher+warming+in+solrconfig.xml&distrib=false&event=firstSearcher} hits=0 status=0 QTime=33 
+WARN  - 2018-02-23 11:32:52.194; org.apache.solr.rest.ManagedResource; No stored data found for /rest/managed
+WARN  - 2018-02-23 11:32:52.195; org.apache.solr.rest.ManagedResource; No registered observers for /rest/managed
+INFO  - 2018-02-23 11:32:52.195; org.apache.solr.core.QuerySenderListener; QuerySenderListener done.
+INFO  - 2018-02-23 11:32:52.195; org.apache.solr.handler.component.SpellCheckComponent$SpellCheckerListener; Loading spell index for spellchecker: default
+INFO  - 2018-02-23 11:32:52.195; org.apache.solr.handler.component.SpellCheckComponent$SpellCheckerListener; Loading spell index for spellchecker: wordbreak
+INFO  - 2018-02-23 11:32:52.195; org.apache.solr.handler.component.SuggestComponent$SuggesterListener; Loading suggester index for: mySuggester
+INFO  - 2018-02-23 11:32:52.195; org.apache.solr.spelling.suggest.SolrSuggester; reload()
+INFO  - 2018-02-23 11:32:52.195; org.apache.solr.spelling.suggest.SolrSuggester; build()
+INFO  - 2018-02-23 11:32:52.195; org.apache.solr.rest.RestManager; Initializing 2 registered ManagedResources
+INFO  - 2018-02-23 11:32:52.196; org.apache.solr.rest.ManagedResourceStorage; Reading _schema_analysis_stopwords_english.json using file:dir=/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/conf
+INFO  - 2018-02-23 11:32:52.197; org.apache.solr.rest.ManagedResourceStorage; Loaded LinkedHashMap at path _schema_analysis_stopwords_english.json using file:dir=/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/conf
+INFO  - 2018-02-23 11:32:52.197; org.apache.solr.rest.ManagedResource; Loaded initArgs {ignoreCase=true} for /schema/analysis/stopwords/english
+INFO  - 2018-02-23 11:32:52.197; org.apache.solr.rest.schema.analysis.ManagedWordSetResource; Loaded 35 words for /schema/analysis/stopwords/english
+INFO  - 2018-02-23 11:32:52.199; org.apache.solr.rest.ManagedResource; Notified 1 observers of /schema/analysis/stopwords/english
+INFO  - 2018-02-23 11:32:52.199; org.apache.solr.rest.ManagedResourceStorage; Reading _schema_analysis_synonyms_english.json using file:dir=/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/conf
+INFO  - 2018-02-23 11:32:52.200; org.apache.solr.rest.ManagedResourceStorage; Loaded LinkedHashMap at path _schema_analysis_synonyms_english.json using file:dir=/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/conf
+INFO  - 2018-02-23 11:32:52.200; org.apache.solr.rest.ManagedResource; Loaded initArgs {ignoreCase=true,format=solr} for /schema/analysis/synonyms/english
+INFO  - 2018-02-23 11:32:52.201; org.apache.solr.rest.schema.analysis.ManagedSynonymFilterFactory$SynonymManager; Loaded 3 synonym mappings for /schema/analysis/synonyms/english
+INFO  - 2018-02-23 11:32:52.201; org.apache.solr.rest.ManagedResource; Notified 1 observers of /schema/analysis/synonyms/english
+INFO  - 2018-02-23 11:32:52.201; org.apache.solr.handler.component.SpellCheckComponent; Initializing spell checkers
+INFO  - 2018-02-23 11:32:52.201; org.apache.solr.spelling.DirectSolrSpellChecker; init: {name=default,field=text,classname=solr.DirectSolrSpellChecker,distanceMeasure=internal,accuracy=0.5,maxEdits=2,minPrefix=1,maxInspections=5,minQueryLength=4,maxQueryFrequency=0.01}
+INFO  - 2018-02-23 11:32:52.204; org.apache.solr.core.SolrCore; [mindliner_core] Registered new searcher Searcher@5601bc04[mindliner_core] main{StandardDirectoryReader(segments_q:231:nrt)}
+INFO  - 2018-02-23 11:32:52.204; org.apache.solr.handler.component.SpellCheckComponent; No queryConverter defined, using default converter
+INFO  - 2018-02-23 11:32:52.205; org.apache.solr.handler.component.SuggestComponent; Initializing SuggestComponent
+INFO  - 2018-02-23 11:32:52.205; org.apache.solr.spelling.suggest.SolrSuggester; init: {name=mySuggester,lookupImpl=FuzzyLookupFactory,dictionaryImpl=DocumentDictionaryFactory,field=cat,weightField=price,suggestAnalyzerFieldType=string}
+INFO  - 2018-02-23 11:32:52.205; org.apache.solr.spelling.suggest.SolrSuggester; Dictionary loaded with params: {name=mySuggester,lookupImpl=FuzzyLookupFactory,dictionaryImpl=DocumentDictionaryFactory,field=cat,weightField=price,suggestAnalyzerFieldType=string}
+INFO  - 2018-02-23 11:32:52.205; org.apache.solr.handler.component.QueryElevationComponent; Loading QueryElevation from: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/conf/elevate.xml
+INFO  - 2018-02-23 11:32:52.209; org.apache.solr.handler.ReplicationHandler; Commits will be reserved for  10000
+INFO  - 2018-02-23 11:32:52.210; org.apache.solr.core.QuerySenderListener; QuerySenderListener sending requests to Searcher@3c440c88[mindliner_core_dev] main{StandardDirectoryReader(segments_e4:219570:nrt _12h(4.8):C20789 _12i(4.8):C4483 _12j(4.8):C15963 _12k(4.8):C6133 _12l(4.8):C17380 _12m(4.8):C737 _12n(4.8):C1 _12o(4.8):C1 _12p(4.8):C1)}
+INFO  - 2018-02-23 11:32:52.212; org.apache.solr.core.CoreContainer; registering core: mindliner_core_dev
+INFO  - 2018-02-23 11:32:52.214; org.apache.solr.core.SolrCore; [mindliner_core_dev] webapp=null path=null params={q=static+firstSearcher+warming+in+solrconfig.xml&distrib=false&event=firstSearcher} hits=0 status=0 QTime=4 
+INFO  - 2018-02-23 11:32:52.214; org.apache.solr.core.QuerySenderListener; QuerySenderListener done.
+INFO  - 2018-02-23 11:32:52.214; org.apache.solr.handler.component.SpellCheckComponent$SpellCheckerListener; Loading spell index for spellchecker: default
+INFO  - 2018-02-23 11:32:52.214; org.apache.solr.handler.component.SpellCheckComponent$SpellCheckerListener; Loading spell index for spellchecker: wordbreak
+INFO  - 2018-02-23 11:32:52.214; org.apache.solr.handler.component.SuggestComponent$SuggesterListener; Loading suggester index for: mySuggester
+INFO  - 2018-02-23 11:32:52.215; org.apache.solr.spelling.suggest.SolrSuggester; reload()
+INFO  - 2018-02-23 11:32:52.215; org.apache.solr.spelling.suggest.SolrSuggester; build()
+INFO  - 2018-02-23 11:32:52.233; org.apache.solr.servlet.SolrDispatchFilter; user.dir=/Users/marius/NetBeansProjects/mindliner/MindlinerSolr
+INFO  - 2018-02-23 11:32:52.233; org.apache.solr.servlet.SolrDispatchFilter; SolrDispatchFilter.init() done
+INFO  - 2018-02-23 11:32:52.259; org.eclipse.jetty.server.AbstractConnector; Started SocketConnector@0.0.0.0:8983
+INFO  - 2018-02-23 11:32:53.768; org.apache.solr.core.SolrCore; [mindliner_core_dev] Registered new searcher Searcher@3c440c88[mindliner_core_dev] main{StandardDirectoryReader(segments_e4:219570:nrt _12h(4.8):C20789 _12i(4.8):C4483 _12j(4.8):C15963 _12k(4.8):C6133 _12l(4.8):C17380 _12m(4.8):C737 _12n(4.8):C1 _12o(4.8):C1 _12p(4.8):C1)}
+INFO  - 2018-02-23 11:33:02.552; org.apache.solr.core.SolrCore; [mindliner_core_dev] webapp=/solr path=/select params={q=+%2B(headline:perfor^3+description:perfor)+%2Bowner_id:(1+2+4+5+7+19+22+28+30+39+40+50+51+52+53+54+55+56+57+58+60+62+63+64+65+66+67+69+77+78+86+107+108+110+111+121+125+134+136+138+147+148+150+155+166+167+168+171+178+189+194+195+222)&fl=id,+modification,+dtype,+lifetime&fq=%2Bclevel:[*+TO+100]&fq=client_id:(1+130+3+67+5+37+135+72+74+11+12+79+80+113+82+84+53+88+121+28+61)&fq=+%2B(private:false+owner_id:1)&fq=archived:false&sort=modification+desc,+score+desc&rows=30&wt=javabin&version=2} hits=54 status=0 QTime=211 
+INFO  - 2018-02-24 09:26:31.022; org.eclipse.jetty.server.Server; Graceful shutdown SocketConnector@0.0.0.0:8983
+INFO  - 2018-02-24 09:26:31.054; org.eclipse.jetty.server.Server; Graceful shutdown o.e.j.w.WebAppContext{/solr,file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr-webapp/webapp/},/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/webapps/solr.war
+INFO  - 2018-02-24 09:26:32.065; org.apache.solr.core.CoreContainer; Shutting down CoreContainer instance=1652807864
+INFO  - 2018-02-24 09:26:32.071; org.apache.solr.core.SolrCore; [mindliner_core]  CLOSING SolrCore org.apache.solr.core.SolrCore@63cf3427
+INFO  - 2018-02-24 09:26:32.086; org.apache.solr.update.DirectUpdateHandler2; closing DirectUpdateHandler2{commits=0,autocommit maxTime=15000ms,autocommits=0,soft autocommits=0,optimizes=0,rollbacks=0,expungeDeletes=0,docsPending=0,adds=0,deletesById=0,deletesByQuery=0,errors=0,cumulative_adds=0,cumulative_deletesById=0,cumulative_deletesByQuery=0,cumulative_errors=0,transaction_logs_total_size=4199,transaction_logs_total_number=10}
+INFO  - 2018-02-24 09:26:32.088; org.apache.solr.update.SolrCoreState; Closing SolrCoreState
+INFO  - 2018-02-24 09:26:32.089; org.apache.solr.update.DefaultSolrCoreState; SolrCoreState ref count has reached 0 - closing IndexWriter
+INFO  - 2018-02-24 09:26:32.089; org.apache.solr.update.DefaultSolrCoreState; closing IndexWriter with IndexWriterCloser
+INFO  - 2018-02-24 09:26:32.133; org.apache.solr.core.SolrCore; [mindliner_core] Closing main searcher on request.
+INFO  - 2018-02-24 09:26:32.135; org.apache.solr.core.CachingDirectoryFactory; Closing NRTCachingDirectoryFactory - 2 directories currently being tracked
+INFO  - 2018-02-24 09:26:32.141; org.apache.solr.core.CachingDirectoryFactory; looking to close /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/data/index [CachedDir<<refCount=0;path=/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/data/index;done=false>>]
+INFO  - 2018-02-24 09:26:32.141; org.apache.solr.core.CachingDirectoryFactory; Closing directory: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/data/index
+INFO  - 2018-02-24 09:26:32.141; org.apache.solr.core.CachingDirectoryFactory; looking to close /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/data [CachedDir<<refCount=0;path=/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/data;done=false>>]
+INFO  - 2018-02-24 09:26:32.142; org.apache.solr.core.CachingDirectoryFactory; Closing directory: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core/data
+INFO  - 2018-02-24 09:26:32.142; org.apache.solr.core.SolrCore; [mindliner_core_dev]  CLOSING SolrCore org.apache.solr.core.SolrCore@7e558b5c
+INFO  - 2018-02-24 09:26:32.143; org.apache.solr.update.DirectUpdateHandler2; closing DirectUpdateHandler2{commits=0,autocommit maxTime=15000ms,autocommits=0,soft autocommits=0,optimizes=0,rollbacks=0,expungeDeletes=0,docsPending=0,adds=0,deletesById=0,deletesByQuery=0,errors=0,cumulative_adds=0,cumulative_deletesById=0,cumulative_deletesByQuery=0,cumulative_errors=0,transaction_logs_total_size=107131,transaction_logs_total_number=2}
+INFO  - 2018-02-24 09:26:32.143; org.apache.solr.update.SolrCoreState; Closing SolrCoreState
+INFO  - 2018-02-24 09:26:32.143; org.apache.solr.update.DefaultSolrCoreState; SolrCoreState ref count has reached 0 - closing IndexWriter
+INFO  - 2018-02-24 09:26:32.143; org.apache.solr.update.DefaultSolrCoreState; closing IndexWriter with IndexWriterCloser
+INFO  - 2018-02-24 09:26:32.145; org.apache.solr.core.SolrCore; [mindliner_core_dev] Closing main searcher on request.
+INFO  - 2018-02-24 09:26:32.152; org.apache.solr.core.CachingDirectoryFactory; Closing NRTCachingDirectoryFactory - 2 directories currently being tracked
+INFO  - 2018-02-24 09:26:32.152; org.apache.solr.core.CachingDirectoryFactory; looking to close /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/data/index [CachedDir<<refCount=0;path=/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/data/index;done=false>>]
+INFO  - 2018-02-24 09:26:32.153; org.apache.solr.core.CachingDirectoryFactory; Closing directory: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/data/index
+INFO  - 2018-02-24 09:26:32.153; org.apache.solr.core.CachingDirectoryFactory; looking to close /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/data [CachedDir<<refCount=0;path=/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/data;done=false>>]
+INFO  - 2018-02-24 09:26:32.153; org.apache.solr.core.CachingDirectoryFactory; Closing directory: /Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr/mindliner_core_dev/data
+INFO  - 2018-02-24 09:26:32.166; org.eclipse.jetty.server.handler.ContextHandler; stopped o.e.j.w.WebAppContext{/solr,file:/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/solr-webapp/webapp/},/Users/marius/NetBeansProjects/mindliner/MindlinerSolr/webapps/solr.war

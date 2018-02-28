@@ -3,7 +3,7 @@
     
     <!-- PROPERTIES THAT MUST BE SET BEFORE RUNNING THE SCRIPT --> 
     <!-- Where to find the asadmin executable -->
-    <property name="glassfish.asadmin" value="/home/marius/GlassFish_Server/glassfish/bin/asadmin" />
+    <property name="glassfish.asadmin" value="/Applications/NetBeans/glassfish-4.1.1/bin/asadmin" />
     <!-- Only used for target start-domain -->
     <property name="domain.name" value="domain1" />
     <!-- GF admin port. Defaults to 4848. Is used to specify which domain should be setup -->
@@ -86,7 +86,7 @@
             <arg line="create-jdbc-connection-pool"/>
             <arg line="--restype javax.sql.DataSource" />
             <arg line="--description 'Mindliner Data Pool'" />
-            <arg line="--datasourceclassname com.mysql.jdbc.jdbc2.optional.MysqlDataSource"/>
+            <arg line="--datasourceclassname org.mariadb.jdbc.MySQLDataSource"/>
             <arg line="--property URL=jdbc\:mysql\:\/\/localhost\:3306\/mindliner5?useUnicode\=true:connectionAttributes=characterEncoding\=UTF-8:User=root:Password=xx7s."/> 
             <arg line="MindlinerPool"/>
         </exec> 

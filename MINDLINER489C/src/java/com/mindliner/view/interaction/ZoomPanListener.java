@@ -4,7 +4,6 @@
  */
 package com.mindliner.view.interaction;
 
-import com.mindliner.view.MindlinerMapper;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;

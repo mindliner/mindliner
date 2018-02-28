@@ -18,7 +18,7 @@ $GLASSFISH_ASADMIN --host localhost --port $DOMAIN_PORT delete-jdbc-resource Min
 $GLASSFISH_ASADMIN --host localhost --port $DOMAIN_PORT delete-jdbc-connection-pool MindlinerPool
 
 echo "creating JDBC Connection Pool and Data Source..."
-$GLASSFISH_ASADMIN --host localhost --port $DOMAIN_PORT create-jdbc-connection-pool --restype javax.sql.DataSource --description 'Mindliner Data Pool' --datasourceclassname com.mysql.jdbc.jdbc2.optional.MysqlDataSource --property URL=jdbc\\:mysql\\://localhost\\:3307/mindliner5?useUnicode\\=true:connectionAttributes=characterEncoding\\=UTF-8:User=mindman:Password=wake.x MindlinerPool
+$GLASSFISH_ASADMIN --host localhost --port $DOMAIN_PORT create-jdbc-connection-pool --restype javax.sql.DataSource --description 'Mindliner Data Pool' --datasourceclassname org.mariadb.jdbc.MySQLDataSource --property URL=jdbc\\:mysql\\://localhost\\:3307/mindliner5?useUnicode\\=true:connectionAttributes=characterEncoding\\=UTF-8:User=mindman:Password=wake.x MindlinerPool
 $GLASSFISH_ASADMIN --host localhost --port $DOMAIN_PORT create-jdbc-resource --connectionpoolid MindlinerPool --description 'Mindliner Data Source' MindlinerDataSource
 
 echo "deleting old jdbcRealm (if exists)..."

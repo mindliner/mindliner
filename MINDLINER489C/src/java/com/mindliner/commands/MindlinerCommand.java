@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mindliner.commands;
 
 import com.mindliner.clientobjects.mlcObject;
@@ -12,7 +8,8 @@ import java.io.Serializable;
 import javax.naming.NamingException;
 
 /**
- * Mindliner's command base class. Commands are required to work asynchronously
+ * Mindliner's command base class. 
+ * Commands are enabling Mindliner to work asynchronously
  * or offline and to support the undo system.
  *
  * @author Marius Messerli

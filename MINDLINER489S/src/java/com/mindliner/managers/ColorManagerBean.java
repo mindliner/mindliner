@@ -45,10 +45,9 @@ public class ColorManagerBean implements ColorManagerRemote {
         q.setParameter("userId", userManager.getCurrentUser().getId());
         List<MlsColorScheme> resultList = q.getResultList();
         List<MlTransferColorScheme> schemes = new ArrayList<>();
-        for (MlsColorScheme s : resultList) {
-            MlTransferColorScheme st = new MlTransferColorScheme(s);
+        resultList.stream().map((s) -> new MlTransferColorScheme(s)).forEachOrdered((st) -> {
             schemes.add(st);
-        }
+        });
         return schemes;
     }
 

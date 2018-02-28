@@ -7,7 +7,7 @@ package com.mindliner.commands;
 
 /**
  *
- * @author mariu
+ * @author Marius Messerli
  */
 public class ImageUrlUpdateCommand {
     

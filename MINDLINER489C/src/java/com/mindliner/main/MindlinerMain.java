@@ -26,10 +26,7 @@ import com.mindliner.events.MindlinerMessageListener;
 import com.mindliner.events.ObjectChangeManager;
 import com.mindliner.events.SelectionManager;
 import com.mindliner.events.SelectionObserver;
-import com.mindliner.exceptions.ImportException;
 import com.mindliner.gui.ContactEditor;
-import com.mindliner.gui.PowerpointExportDialog;
-import com.mindliner.gui.PowerpointExportPanel;
 import com.mindliner.gui.StatusBar;
 import com.mindliner.gui.ObjectEditor;
 import com.mindliner.gui.UserAccountDialog;
@@ -39,14 +36,8 @@ import com.mindliner.gui.color.FixedKeyColorizer.FixedKeys;
 import com.mindliner.gui.tablemanager.TableManager;
 import com.mindliner.img.icons.MlIconLoader;
 import com.mindliner.img.icons.MlIconManager;
-import com.mindliner.importer.maps.MlFreeMindImporter;
-import com.mindliner.importer.maps.MlMapImporter;
-import com.mindliner.importer.maps.MlPowerpointImporter;
-import com.mindliner.importer.maps.MlPowerpointOldImporter;
-import com.mindliner.importer.maps.MlPowerpointXmlImporter;
 import com.mindliner.managers.UserManagerRemote;
 import com.mindliner.prefs.DividerLocationPreferences;
-import com.mindliner.prefs.FileLocationPreferences;
 import com.mindliner.prefs.MlMainPreferenceEditor;
 import com.mindliner.prefs.MlPreferenceManager;
 import com.mindliner.styles.MlStyler;
@@ -66,7 +57,6 @@ import com.mindliner.view.dispatch.MlViewDispatcherImpl;
 import com.mindliner.view.containermap.ContainerMap;
 import static com.mindliner.view.dispatch.MlObjectViewer.ViewType.Map;
 import com.mindliner.view.news.NewsContainer;
-import com.mindliner.weekplanner.WeekPlanChangeManager;
 import com.mindliner.weekplanner.WeekPlanner;
 import com.mindliner.weekplanner.WorkTracker;
 import java.awt.BorderLayout;
@@ -96,7 +86,6 @@ import java.util.prefs.Preferences;
 import javax.naming.NamingException;
 import javax.swing.ButtonGroup;
 import javax.swing.JDialog;
-import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -104,11 +93,10 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.event.ChangeEvent;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import mindlinerstarter.OSValidator;
-import com.mindliner.clientobjects.MlMapNode;
 import com.mindliner.events.HeartBeatTask;
 import com.mindliner.gui.ObjectEditorLauncher;
+import com.mindliner.weekplanner.WeekPlanChangeManager;
 import java.io.FileInputStream;
 import java.util.Properties;
 import java.util.TimerTask;
@@ -183,8 +171,8 @@ public class MindlinerMain extends javax.swing.JFrame implements OnlineService, 
         System.setProperty("java.util.prefs.PreferencesFactory", FilePreferencesFactory.class.getName());
 
         // specify absolute path in case of mac environment (relative paths are searched for in users directory)
-        String OS = System.getProperty("os.name").toLowerCase();
-        if (OS.contains("mac")) {
+        
+        if (OSValidator.isMac()) {
             String fs = System.getProperty("file.separator");
             String jarPath = MindlinerMain.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
             String basePath = null;
@@ -831,7 +819,7 @@ public class MindlinerMain extends javax.swing.JFrame implements OnlineService, 
         persistApplicationState(true);
         // go offline after persisting state or else the online status would always be offline
         OnlineManager.goOffline();
-        System.out.println("Client application terminated normally.");
+        System.out.println("MindlinerDesktop terminated normally.");
         System.exit(0);
     }
 
@@ -964,13 +952,6 @@ public class MindlinerMain extends javax.swing.JFrame implements OnlineService, 
         EditorLabel = new javax.swing.JLabel();
         MainMenuBar = new javax.swing.JMenuBar();
         FileMenu = new javax.swing.JMenu();
-        ImportMenu = new javax.swing.JMenu();
-        ImportPowerpointMenu = new javax.swing.JMenuItem();
-        ImportFreemindMenu = new javax.swing.JMenuItem();
-        ExportMenu = new javax.swing.JMenu();
-        FileExportPowerpoint = new javax.swing.JMenuItem();
-        FileExportPdf = new javax.swing.JMenuItem();
-        FileExportSvg = new javax.swing.JMenuItem();
         FileSynchronizeMenuItem = new javax.swing.JMenuItem();
         jSeparator4 = new javax.swing.JPopupMenu.Separator();
         CacheMenu = new javax.swing.JMenu();
@@ -1126,56 +1107,6 @@ public class MindlinerMain extends javax.swing.JFrame implements OnlineService, 
 
         FileMenu.setMnemonic('f');
         FileMenu.setText(bundle.getString("FileMenu")); // NOI18N
-
-        ImportMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mindliner/img/icons/2424/data_into.png"))); // NOI18N
-        ImportMenu.setText(bundle.getString("FileImportMenu")); // NOI18N
-
-        ImportPowerpointMenu.setText(bundle.getString("FileMenuImportPowerPoint")); // NOI18N
-        ImportPowerpointMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ImportPowerpointMenuActionPerformed(evt);
-            }
-        });
-        ImportMenu.add(ImportPowerpointMenu);
-
-        ImportFreemindMenu.setText(bundle.getString("FileImportFreemind")); // NOI18N
-        ImportFreemindMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ImportFreemindMenuActionPerformed(evt);
-            }
-        });
-        ImportMenu.add(ImportFreemindMenu);
-
-        FileMenu.add(ImportMenu);
-
-        ExportMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mindliner/img/icons/2424/data_out.png"))); // NOI18N
-        ExportMenu.setText(bundle.getString("FileExportMenu")); // NOI18N
-
-        FileExportPowerpoint.setText(bundle.getString("FileMenuExportPowerPoint")); // NOI18N
-        FileExportPowerpoint.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FileExportPowerpointActionPerformed(evt);
-            }
-        });
-        ExportMenu.add(FileExportPowerpoint);
-
-        FileExportPdf.setText(bundle.getString("FileMenuExportPDF")); // NOI18N
-        FileExportPdf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FileExportPdfActionPerformed(evt);
-            }
-        });
-        ExportMenu.add(FileExportPdf);
-
-        FileExportSvg.setText(bundle.getString("FileMenuExportSVG")); // NOI18N
-        FileExportSvg.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FileExportSvgActionPerformed(evt);
-            }
-        });
-        ExportMenu.add(FileExportSvg);
-
-        FileMenu.add(ExportMenu);
 
         FileSynchronizeMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mindliner/img/icons/2424/documents_exchange.png"))); // NOI18N
         FileSynchronizeMenuItem.setText(bundle.getString("FileMenuSynchronizeItems")); // NOI18N
@@ -1624,34 +1555,6 @@ private void UndoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     cr.undoLastCommand();
 }//GEN-LAST:event_UndoMenuItemActionPerformed
 
-    private void ImportFreemindMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportFreemindMenuActionPerformed
-//        JOptionPane.showMessageDialog(null, "This function is under revision and temporarily disabled", "Freemind import", JOptionPane.INFORMATION_MESSAGE);
-        if (!onlineStatus.equals(OnlineStatus.online)) {
-            JOptionPane.showMessageDialog(null, "This function is only available in online mode", "Freemind import", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            int reply = JOptionPane.showConfirmDialog(MindlinerMain.getInstance(), "Please make sure your creation defaults are the way you want them (Attributes/View Defaults).",
-                    "Freemind Import", JOptionPane.OK_CANCEL_OPTION);
-            if (reply == JOptionPane.YES_OPTION) {
-                final JFileChooser fc = new JFileChooser(FileLocationPreferences.getLocation(FREEMIND_IMPORT_DIRECTORY_KEY));
-                fc.setDialogTitle("Select Freemind File");
-                fc.setFileFilter(new FileNameExtensionFilter("Freemind", "mm"));
-                int returnVal = fc.showOpenDialog(null);
-                if (returnVal == JFileChooser.APPROVE_OPTION) {
-                    FileLocationPreferences.setLocation(FREEMIND_IMPORT_DIRECTORY_KEY, fc.getSelectedFile().getParent());
-                    try {
-                        MlMapImporter localMapImporter = new MlFreeMindImporter();
-                        mlcObject newRootObject = localMapImporter.importMap(fc.getSelectedFile());
-                        List<mlcObject> oList = new ArrayList<>();
-                        oList.add(newRootObject);
-                        MlViewDispatcherImpl.getInstance().display(oList, Map);
-                    } catch (ImportException ex) {
-                        JOptionPane.showMessageDialog(null, ex.getMessage(), "Map Import", JOptionPane.ERROR_MESSAGE);
-                    }
-                }
-            }
-        }
-    }//GEN-LAST:event_ImportFreemindMenuActionPerformed
-
     private void AboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AboutMenuItemActionPerformed
         AboutDialog.setVisible(true);
     }//GEN-LAST:event_AboutMenuItemActionPerformed
@@ -1710,38 +1613,6 @@ private void UndoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         uad.setVisible(true);
     }//GEN-LAST:event_AccountInfoButtonActionPerformed
 
-    private void ImportPowerpointMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportPowerpointMenuActionPerformed
-        if (!OnlineManager.isOnline()) {
-            JOptionPane.showMessageDialog(null, "Powerpoint import can only be used in online mode.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        final JFileChooser fc = new JFileChooser(FileLocationPreferences.getLocation(POWERPOINT_IMPORT_DIRECTORY_KEY));
-        fc.setDialogTitle("Select Powerpoint File");
-        fc.setFileFilter(new FileNameExtensionFilter("Powerpoint Presentations", "ppt", "pptx"));
-        int returnVal = fc.showOpenDialog(null);
-        if (returnVal == JFileChooser.APPROVE_OPTION) {
-            FileLocationPreferences.setLocation(POWERPOINT_IMPORT_DIRECTORY_KEY, fc.getSelectedFile().getParent());
-            try {
-                MlPowerpointImporter pptImporter;
-                if (fc.getSelectedFile().getAbsolutePath().endsWith("ppt")) {
-                    pptImporter = new MlPowerpointOldImporter(fc.getSelectedFile());
-                } else {
-                    pptImporter = new MlPowerpointXmlImporter(fc.getSelectedFile());
-                }
-                pptImporter.importMap(fc.getSelectedFile());
-            } catch (ImportException ex) {
-                JOptionPane.showMessageDialog(null, "Unexpected error during Powerpoint import. See log file for further information.", "Powerpoint Import", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-    }//GEN-LAST:event_ImportPowerpointMenuActionPerformed
-    private void FileExportPowerpointActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FileExportPowerpointActionPerformed
-        PowerpointExportPanel panel = new PowerpointExportPanel();
-        List<MlMapNode> nodes = mindmapView.getNodes();
-        panel.setNodes(nodes);
-        PowerpointExportDialog dialog = new PowerpointExportDialog(panel);
-        dialog.setVisible(true);
-    }//GEN-LAST:event_FileExportPowerpointActionPerformed
-
     private void BugReportMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BugReportMenuItemActionPerformed
         try {
             mlcKnowlet k = (mlcKnowlet) createNewObject(mlcKnowlet.class, "", "");
@@ -1755,14 +1626,6 @@ private void UndoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     private void ViewMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewMenuActionPerformed
 
     }//GEN-LAST:event_ViewMenuActionPerformed
-
-    private void FileExportPdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FileExportPdfActionPerformed
-        mindmapView.exportToPdf();
-    }//GEN-LAST:event_FileExportPdfActionPerformed
-
-    private void FileExportSvgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FileExportSvgActionPerformed
-        mindmapView.exportToSvg();
-    }//GEN-LAST:event_FileExportSvgActionPerformed
 
     private void AccountAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AccountAdminActionPerformed
         try {
@@ -1850,10 +1713,6 @@ private void UndoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     private javax.swing.JSeparator EditMenuSeparator;
     private javax.swing.JLabel EditorLabel;
     private javax.swing.JMenu ExecutionMenu;
-    private javax.swing.JMenu ExportMenu;
-    private javax.swing.JMenuItem FileExportPdf;
-    private javax.swing.JMenuItem FileExportPowerpoint;
-    private javax.swing.JMenuItem FileExportSvg;
     private javax.swing.JMenu FileMenu;
     private javax.swing.JMenuItem FileMenuQuit;
     private javax.swing.JMenuItem FileSaveMenu;
@@ -1861,9 +1720,6 @@ private void UndoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     private javax.swing.JMenuItem ForceLoginScreen;
     private javax.swing.JMenuItem GoOfflineMenu;
     private javax.swing.JMenuItem GoOnlineMenu;
-    private javax.swing.JMenuItem ImportFreemindMenu;
-    private javax.swing.JMenu ImportMenu;
-    private javax.swing.JMenuItem ImportPowerpointMenu;
     private javax.swing.JLabel IncomingMessageLabel;
     private javax.swing.JMenuItem InsertCollection;
     private javax.swing.JMenuItem InsertContact;
