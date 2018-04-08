@@ -4,6 +4,7 @@
  */
 package com.mindliner.view.interaction;
 
+import com.mindliner.main.OSValidator;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -28,8 +29,8 @@ import javax.swing.JComponent;
  */
 public class ZoomPanListener implements MouseListener, MouseMotionListener, MouseWheelListener {
     
-    public static final int DEFAULT_MIN_ZOOM_LEVEL = -60;
-    public static final int DEFAULT_MAX_ZOOM_LEVEL = 30;
+    public static final int DEFAULT_MIN_ZOOM_LEVEL = -50;
+    public static final int DEFAULT_MAX_ZOOM_LEVEL = 20;
     public static final int NEUTRAL_ZOOM_LEVEL = 0;
     public static final double DEFAULT_ZOOM_MULTIPLICATION_FACTOR = 1.05;
     private final JComponent targetCanvas;
