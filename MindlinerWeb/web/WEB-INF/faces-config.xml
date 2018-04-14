@@ -19,4 +19,9 @@
 		<var>txt</var>
 	   </resource-bundle>
      </application>
+    <managed-bean>
+        <managed-bean-name>parliotaBB</managed-bean-name>
+        <managed-bean-class>com.mindliner.web.backbeans.ParliotaBB</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
 </faces-config>

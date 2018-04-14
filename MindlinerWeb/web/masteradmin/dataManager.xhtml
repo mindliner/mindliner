@@ -13,7 +13,6 @@
                 <h1><h:outputText value="Managing Data Pool #{masterAdminBB.currentClient}"/></h1>
                 <h:form id="dataForm" enctype="multipart/form-data">
 
-
                     <!--Icon Section -->
                     <h2>Icons</h2>
 
@@ -65,6 +64,34 @@
 
                     <h:commandButton value="Initialize Islands" action="#{masterAdminBB.initializeIslands()}"/>
                     <h:commandButton value="Delete Islands" action="#{masterAdminBB.deleteIslands()}"/>
+
+                    <!--Parliota Secion-->
+
+                    <h2>Parliota</h2>
+                    
+                    <f:event listener="#{parliota.setDatapool(masterAdminBB.currentClient)}" type="preRenderView" />
+
+                    <h:outputLabel class="labelText" for="parliotaSeed" value="Enter parliota seed"/>
+                    <h:inputSecret id="parliotaSeed" value="#{parliotaBB.seed}"/>
+                    <h:panelGrid columns="2" cellspacing="5" style="width:70%;">
+                         DATAPOOL SELECTOR 
+                        <h:outputLabel for="dpSelector" 
+                                       value="#{txt['DatapoolLabel']}"/>
+                        <h:outputText value="#{parliotaBB.datapool}"/>
+                        <h:selectOneMenu id="dpSelector" title="#{txt['OnlyEditableWhenOwned']}" value="#{parliotaBB.datapool}">
+                            <f:selectItems value="#{parliotaBB.dataPools}"/>
+                            <f:converter binding="#{mlDataPoolConverter}"/>
+                            <f:ajax render="confSelector" />
+                        </h:selectOneMenu>
+                         CONFIDENTIALITY SELECTOR 
+                        <h:outputLabel for="confSelector" value="#{txt['ConfidentialityLabel']}"/>
+                        <h:outputText value="#{parliotaBB.confidentiality}"/>
+                        <h:selectOneMenu id="confSelector" value="#{parliotaBB.confidentiality}">
+                            <f:selectItems value="#{parliotaBB.confidentialities}"/>
+                            <f:converter binding="#{mlConfidentialityConverter}"/>
+                        </h:selectOneMenu>
+                    </h:panelGrid>
+                    <h:commandButton styleClass="mlButton rounded" value="Read From Tangle" action="#{parliotaBB.readMeeting()}"/>
 
                 </h:form>
             </ui:define>

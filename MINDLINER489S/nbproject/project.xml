@@ -20,6 +20,18 @@
             <included-library dirs="200">file.reference.slf4j-log4j12-1.7.6.jar</included-library>
             <included-library dirs="200">file.reference.solr-solrj-4.8.0.jar</included-library>
             <included-library dirs="200">file.reference.gson-2.2.4.jar</included-library>
+            <included-library dirs="200">file.reference.jota-0.9.11-SNAPSHOT.jar</included-library>
+            <included-library dirs="200">file.reference.bcprov-jdk15on-1.58.jar</included-library>
+            <included-library dirs="200">file.reference.commons-io-2.5.jar</included-library>
+            <included-library dirs="200">file.reference.commons-lang3-3.6.jar</included-library>
+            <included-library dirs="200">file.reference.commons-pool2-2.4.2.jar</included-library>
+            <included-library dirs="200">file.reference.converter-gson-2.3.0.jar</included-library>
+            <included-library dirs="200">file.reference.okhttp-3.8.0.jar</included-library>
+            <included-library dirs="200">file.reference.slf4j-api-1.7.25.jar</included-library>
+            <included-library dirs="200">file.reference.slf4j-simple-1.7.24.jar</included-library>
+            <included-library dirs="200">file.reference.okio-1.13.0.jar</included-library>
+            <included-library dirs="200">file.reference.retrofit-2.3.0.jar</included-library>
+            <included-library dirs="200">file.reference.gson-2.8.1.jar</included-library>
             <source-roots>
                 <root id="src.dir"/>
             </source-roots>

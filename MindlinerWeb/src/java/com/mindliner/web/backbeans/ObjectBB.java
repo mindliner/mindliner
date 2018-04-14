@@ -319,10 +319,10 @@ public class ObjectBB implements Serializable {
         if (o == null) {
             return "";
         }
-        ObjectType type = getType(o);
+        ObjectType oType = getType(o);
 
-        return type == null ? MlClassHandler.getClassNameOnly(o.getClass().getName())
-                : com.mindliner.web.util.Messages.getStringFromBundle(type.toString());
+        return oType == null ? MlClassHandler.getClassNameOnly(o.getClass().getName())
+                : com.mindliner.web.util.Messages.getStringFromBundle(oType.toString());
     }
 
     public void deleteObjectById(String objectId) {
@@ -335,7 +335,6 @@ public class ObjectBB implements Serializable {
      * Allows the user to delete her/his own objects, only.
      *
      * @param o The object to be deleted.
-     * @return the next page
      */
     public void deleteObject(mlsObject o) {
         try {

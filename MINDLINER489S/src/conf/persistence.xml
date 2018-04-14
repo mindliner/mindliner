@@ -57,7 +57,7 @@
     <class>com.mindliner.categories.MlsNewsType</class>
     <class>com.mindliner.entities.MlUserPreferences</class>
     <class>com.mindliner.entities.MlsNews</class>
-    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="hibernate.show_sql" value="true"/>
     </properties>
